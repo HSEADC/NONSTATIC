@@ -1,4 +1,15 @@
-body {
-  background-color: green;
+body > *,
+body > * > * {
+  text-decoration: none;
+  color: black;
+  display: block;
   font-family: 'PT Root UI', sans-serif;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+body {
+  width: 70vw;
+  margin: 0 auto;
 }

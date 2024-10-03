@@ -102,23 +102,139 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      template: './src/articles.html',
-      filename: './articles.html'
+      template: './src/practice.html',
+      filename: './practice.html'
     }),
 
     new HtmlWebpackPlugin({
-      template: './src/board-games.html',
-      filename: './board-games.html'
+      template: './src/sandbox.html',
+      filename: './sandbox.html'
     }),
 
     new HtmlWebpackPlugin({
-      template: './src/articles/about-games.html',
-      filename: './articles/about-games.html'
+      template: './src/tests.html',
+      filename: './tests.html'
     }),
 
     new HtmlWebpackPlugin({
-      template: './src/board-games/gloomhaven.html',
-      filename: './board-games/gloomhaven.html'
+      template: './src/art-projects.html',
+      filename: './art-projects.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/art-projects/branding/primary.html',
+      filename: './art-projects/branding/primary.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/art-projects/installations/audio-synthesis.html',
+      filename: './art-projects/installations/audio-synthesis.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/art-projects/web-design/under-voyager.html',
+      filename: './art-projects/web-design/under-voyager.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/art-projects/branding.html',
+      filename: './art-projects/branding.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/art-projects/installations.html',
+      filename: './art-projects/installations.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/art-projects/web-design.html',
+      filename: './art-projects/web-design.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/history/MIT.html',
+      filename: './history/MIT.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/history.html',
+      filename: './history.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/practice/code/technologies/5pjs.html',
+      filename: './practice/code/technologies/5pjs.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/practice/code/technologies/python.html',
+      filename: './practice/code/technologies/python.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/practice/code/technologies.html',
+      filename: './practice/code/technologies.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/practice/code/tutorials.html',
+      filename: './practice/code/tutorials.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/practice/graphic-redactors/technologies.html',
+      filename: './practice/graphic-redactors/technologies.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/practice/graphic-redactors/tutorials.html',
+      filename: './practice/graphic-redactors/tutorials.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template:
+        './src/practice/graphic-redactors/technologies/illustrator.html',
+      filename: './practice/graphic-redactors/technologies/illustrator.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/practice/graphic-redactors/technologies/photoshop.html',
+      filename: './practice/graphic-redactors/technologies/photoshop.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template:
+        './src/practice/visual-programming/technologies/touchdesigner.html',
+      filename: './practice/visual-programming/technologies/touchdesigner.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/practice/visual-programming/technologies.html',
+      filename: './practice/visual-programming/technologies.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/practice/visual-programming/tutorials.html',
+      filename: './practice/visual-programming/tutorials.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/practice/visual-programming/tutorials/blob.html',
+      filename: './practice/visual-programming/tutorials/blob.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/practice/code.html',
+      filename: './practice/code.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/practice/visual-programming.html',
+      filename: './practice/visual-programming.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/practice/graphic-redactors.html',
+      filename: './practice/graphic-redactors.html'
     })
 
     // Article
