@@ -65,19 +65,19 @@ html {
   top: 0;
   left: 0;
   align-items: end;
-  mask-image: url('./Mask.png');
+  mask-image: url('/src/images/Mask.png');
   mask-size: 100% 100%;
   mask-position: top;
   mask-repeat: no-repeat;
 }
 .glitchBody {
-  background-image: url('./glitchMain.png');
+  background-image: url('/src/images/glitchMain.png');
   width: 100%;
   aspect-ratio: 1;
   background-size: 100% 100%;
 }
 .glitchTail {
-  background-image: url('./glitchStretch.png');
+  background-image: url('/src/images/glitchStretch.png');
   width: 43%;
   background-size: 100% 100%;
   position: relative;
