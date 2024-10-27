@@ -3,6 +3,16 @@
   --greyTitle: #cccccc;
 }
 
+.mixBlendMode {
+  background-color: white;
+  mix-blend-mode: hue;
+  width: 100vw;
+  height: 800vh;
+  z-index: 100;
+  position: absolute;
+  top: 0;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12,6 +22,9 @@
 /* Main body styling */
 body,
 html {
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f9;
   overflow-x: clip;
   font-family: Arial, sans-serif;
 }
@@ -27,7 +40,7 @@ html {
 
 /* Gradient Line styling */
 .line {
-  width: 5px;
+  width: 0.5vw;
   height: 100vh;
   background: linear-gradient(
     to bottom,
@@ -42,6 +55,36 @@ html {
   position: sticky;
   top: 0;
   margin-bottom: 50px;
+}
+.glitchLeft {
+  width: 20vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  align-items: end;
+  mask-image: url('./Mask.png');
+  mask-size: 100% 100%;
+  mask-position: top;
+  mask-repeat: no-repeat;
+}
+.glitchBody {
+  background-image: url('./glitchMain.png');
+  width: 100%;
+  aspect-ratio: 1;
+  background-size: 100% 100%;
+}
+.glitchTail {
+  background-image: url('./glitchStretch.png');
+  width: 43%;
+  background-size: 100% 100%;
+  position: relative;
+  margin-top: -19.5%;
+  margin-right: 21%;
+  animation-name: tailSpread;
+  animation-timeline: scroll();
 }
 
 /* Text styling */
@@ -61,18 +104,18 @@ html {
   position: relative;
 }
 .loveExperiment {
-  top: 120%;
+  top: 60vw;
   left: 0;
   width: 100%;
 }
 .formCollector {
   width: 50%;
-  top: 180%;
+  top: 90vw;
   left: 10%;
 }
 .readArticleText {
   width: 50%;
-  top: 180%;
+  top: 90vw;
   right: 10%;
 }
 .readArticleText,
@@ -85,10 +128,13 @@ html {
   flex-wrap: wrap;
   align-items: center;
   flex-direction: column;
+  z-index: 5;
+  font-size: 1.5vw;
 }
 .text > span {
   background: #fff;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+  padding: 0.5vw;
 }
 .upperLines,
 .lowerLines {
@@ -126,6 +172,7 @@ html {
   top: 10vw;
   width: 100%;
 }
+
 @keyframes godown {
   0% {
     transform: translateY(0);
@@ -135,5 +182,13 @@ html {
   }
   100% {
     transform: translateY(0);
+  }
+}
+@keyframes tailSpread {
+  0% {
+    height: 0vw;
+  }
+  100% {
+    height: 200vw;
   }
 }
