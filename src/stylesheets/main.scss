@@ -46,10 +46,10 @@ button {
     #e3d748 84.5%,
     rgba(181, 136, 64, 0) 100%
   );
-  position: sticky;
+  position: relative;
   top: 0;
   margin-bottom: 50px;
-  filter: blur(5px);
+  filter: blur(15px);
 }
 
 /* Text styling */
@@ -113,7 +113,7 @@ form > span {
 .upperLines,
 .lowerLines {
   width: 100vw;
-  filter: blur(5px);
+  filter: blur(15px);
 }
 .namingLogo + div {
   content: 'медиа сервис про генеративную графику';
