@@ -1,0 +1,79 @@
+@media (max-width: 820px) {
+  .namingLogo {
+    font-size: 14vw;
+  }
+  .namingLogo + div,
+  .progressWarning {
+    display: none;
+  }
+  .text,
+  input,
+  button {
+    font-size: 4vw;
+  }
+  .upperLines,
+  .lowerLines {
+    width: 200%;
+    margin-left: -50%;
+    filter: blur(3px);
+  }
+  .line {
+    filter: blur(2px);
+  }
+  .loveExperiment {
+    top: 90vw;
+  }
+  .formCollector {
+    top: 120vw;
+    left: 25vw;
+  }
+  .readArticleText {
+    top: 160vw;
+    left: 25vw;
+  }
+  .banana,
+  .qrCode {
+    width: 13vw;
+  }
+  .text > span,
+  form > span,
+  button,
+  input {
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+  }
+}
+@media (max-width: 850px) and (orientation: landscape) {
+  .upperLines,
+  .lowerLines {
+    filter: blur(2px);
+  }
+  .line {
+    filter: blur(2px);
+  }
+}
+@media (max-width: 400px) {
+  .upperLines,
+  .lowerLines {
+    width: 200%;
+    margin-left: -50%;
+    filter: blur(2px);
+  }
+  .line {
+    filter: blur(2px);
+  }
+  .text > span,
+  form > span,
+  button,
+  input {
+    box-shadow: 0px -0.5px 5px 0px rgba(0, 0, 0, 0.1);
+  }
+  .text,
+  input,
+  button {
+    font-size: 5vw;
+  }
+  .formCollector {
+    width: 80%;
+    left: 10%;
+  }
+}
