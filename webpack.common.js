@@ -7,6 +7,9 @@ const webpack = require('webpack')
 const path = require('path')
 
 module.exports = {
+  stats: {
+    children: true
+  },
   entry: {
     index: './src/index.js'
   },
