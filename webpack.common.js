@@ -162,7 +162,7 @@ module.exports = {
 
     new HtmlWebpackPlugin({
       template: './src/about-us.html',
-      filename: './history.html'
+      filename: './about-us.html'
     }),
 
     new HtmlWebpackPlugin({
