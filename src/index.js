@@ -25,9 +25,7 @@ async function handleSubmit(event) {
       } else {
         response.json().then((data) => {
           if (Object.hasOwn(data, 'errors')) {
-            status.innerHTML = data['errors']
-              .map((error) => error['message'])
-              .join(', ')
+            status.innerHTML = 'чет не сработало('
           } else {
             status.innerHTML = 'чет не сработало('
           }

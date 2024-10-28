@@ -36,9 +36,7 @@ function _handleSubmit() {
             } else {
               response.json().then(function (data) {
                 if (Object.hasOwn(data, 'errors')) {
-                  status.innerHTML = data['errors'].map(function (error) {
-                    return error['message'];
-                  }).join(', ');
+                  status.innerHTML = 'чет не сработало(';
                 } else {
                   status.innerHTML = 'чет не сработало(';
                 }
