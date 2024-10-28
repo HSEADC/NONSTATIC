@@ -48,9 +48,9 @@ if (preview) {
   scrollIncrementIndex = 4
 }
 
-let paths = document.querySelectorAll('div > svg > path')
+let paths = document.querySelectorAll('.scrollLine')
 let scrollContainer = document.getElementById('scrollContainer')
-let currentTextIndex = 1
+let currentTextIndex = 3
 
 paths.forEach((path) => {
   let pathLength = path.getTotalLength()

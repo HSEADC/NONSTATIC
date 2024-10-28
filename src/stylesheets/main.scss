@@ -8,16 +8,136 @@
   padding: 0;
   box-sizing: border-box;
 }
+.articleBody {
+  overflow-x: hidden;
+}
+
+.backLineGradient {
+  position: absolute;
+  left: 50%;
+  z-index: 1;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+}
+
+h2 {
+  font-size: 6vw;
+  color: var(--greyTitle);
+  width: 100%;
+  text-align: center;
+  margin-bottom: 3vw;
+  margin-top: 3vw;
+}
+h3 {
+  font-size: 3vw;
+  margin-left: 8vw;
+}
+
+.labels > span {
+  background-image: linear-gradient(
+    179deg,
+    rgba(255, 255, 255, 0.2) 0.7%,
+    rgba(42, 42, 42, 0.4) 25.41%,
+    rgba(255, 255, 255, 0.2) 50.13%,
+    rgba(42, 42, 42, 0.4) 74.85%,
+    rgba(255, 255, 255, 0) 99.57%
+  );
+}
 
 /* Main body styling */
 body,
 html {
   justify-content: center;
   align-items: center;
-  background-color: #f4f4f9;
+  background-color: #fafafa;
   overflow-x: clip;
   font-family: 'Arial Narrow', sans-serif;
 }
+h3 + p {
+  position: relative;
+  z-index: 5;
+}
+.detailsBox {
+  position: relative;
+  z-index: 5;
+  width: 18vw;
+  margin: 0 auto;
+  margin-bottom: 2vw;
+  display: flex;
+  background: #fff;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+  padding: 0.5vw;
+  flex-direction: column;
+}
+h5,
+h3 {
+  font-weight: 800;
+}
+.mainArticleLead {
+  flex-direction: row;
+  display: flex;
+  margin: 0 auto;
+  gap: 1vw;
+  width: 53vw;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.mainArticleLead {
+  margin-bottom: 2vw;
+}
+.articlePreview {
+  z-index: 5;
+  background-image: url('/src/images/banana_cover.svg');
+  width: 10vw;
+  aspect-ratio: 1;
+  background-repeat: no-repeat;
+  background-size: contain;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+}
+.mainThought {
+  width: 18vw;
+}
+h3 + p {
+  background-color: white;
+  width: 60vw;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+
+  margin: 0 auto;
+  margin-top: 1vw;
+  margin-bottom: 4vw;
+}
+
+.labels,
+.detailsBox > span {
+  font-size: 1vw;
+}
+.labels {
+  justify-content: space-between;
+  width: 100%;
+  display: flex;
+}
+.detailsBox > span > span {
+  opacity: 0.5;
+}
+
+.photo1 {
+  background-image: url('/src/images/NO_Node.svg');
+}
+.photo2 {
+  background-image: url('/src/images/Error_Node.png');
+}
+
+.photo3 {
+  background-image: url('/src/images/generative_Art.svg');
+}
+
+h5,
+p {
+  font-size: 1.3vw;
+}
+
 input,
 button {
   font-family: 'Arial Narrow', sans-serif;
@@ -49,6 +169,9 @@ button {
   position: relative;
   top: 0;
   margin-bottom: 50px;
+  filter: blur(5px);
+}
+.backLineGradient {
   filter: blur(5px);
 }
 
@@ -131,7 +254,7 @@ a {
   left: 10vw;
   position: absolute;
 }
-.namingLogo + div {
+.preview > .namingLogo + div {
   content: 'медиа сервис про генеративную графику';
   width: auto;
   font-size: 1vw;
@@ -195,22 +318,84 @@ input {
   background-size: 100% 100%;
   background-position: center;
 }
-@keyframes godown {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(15vw);
-  }
-  100% {
-    transform: translateY(0);
-  }
+
+.preview > .progressWarning {
+  position: absolute;
+  top: 20%;
 }
-@keyframes tailSpread {
-  0% {
-    height: 0vw;
-  }
-  100% {
-    height: 200vw;
-  }
+
+h3 + .detailsBox {
+  margin-top: 1vw;
+}
+
+.progressWarning {
+  margin-top: 2vw;
+}
+
+.namingLogo + .flexWe > div {
+  margin-top: 0vw;
+}
+
+.flexWe {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 4vw;
+}
+.flexWe > div {
+  width: unset;
+}
+
+.mainLines {
+  filter: blur(5px);
+  position: relative;
+}
+.infoPage {
+  display: flex;
+  width: 60vw;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8vw 15vw;
+  margin-bottom: 10vw;
+  position: relative;
+  margin-top: -24vw;
+}
+footer {
+  width: 100%;
+  display: flex;
+  position: relative;
+  z-index: 4;
+  justify-content: space-between;
+  background-color: white;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+  padding: 0.5vw 2vw;
+}
+footer > div,
+footer > div > div {
+  font-size: 1.5vw;
+}
+.socialNetworks {
+  display: flex;
+  gap: 2vw;
+}
+
+.infoBox {
+  flex-direction: column;
+  display: flex;
+  width: 15vw;
+  justify-content: center;
+  gap: 1vw;
+}
+.infoBox > div {
+  align-items: flex-start;
+}
+
+.infoBox > * {
+  width: 100%;
+}
+.infoBox > p {
+  font-size: 1vw;
 }
