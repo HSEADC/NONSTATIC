@@ -1,5 +1,45 @@
 import './index.css'
 
+var form = document.getElementById('my-form')
+
+async function handleSubmit(event) {
+  event.preventDefault()
+  var status = document.getElementById('my-form-status')
+  var button = document.getElementById('my-form-button')
+  var collectEmails = document.querySelector('.collectEmails')
+  var data = new FormData(event.target)
+  fetch(event.target.action, {
+    method: form.method,
+    body: data,
+    headers: {
+      Accept: 'application/json'
+    }
+  })
+    .then((response) => {
+      status.style.display = 'block'
+      if (response.ok) {
+        status.innerHTML = 'спасибо <33'
+        button.remove()
+        collectEmails.remove()
+        form.reset()
+      } else {
+        response.json().then((data) => {
+          if (Object.hasOwn(data, 'errors')) {
+            status.innerHTML = data['errors']
+              .map((error) => error['message'])
+              .join(', ')
+          } else {
+            status.innerHTML = 'чет не сработало('
+          }
+        })
+      }
+    })
+    .catch((error) => {
+      status.innerHTML = 'чет не сработало('
+    })
+}
+form.addEventListener('submit', handleSubmit)
+
 let paths = document.querySelectorAll('.preview > div > svg > path')
 
 paths.forEach((path) => {
@@ -50,6 +90,15 @@ window.addEventListener('scroll', () => {
       span2.textContent = parts.slice(1, 3).join(' ')
       newText.appendChild(span1)
       newText.appendChild(span2)
+      if (currentTextIndex === 0) {
+        let qrCode = document.createElement('div')
+        qrCode.classList.add('qrCode')
+        let qrCodeLink = document.createElement('a')
+        qrCodeLink.classList.add('qrCodeLink')
+        qrCodeLink.href = 'https://t.me/nonstatic_generativ'
+        qrCode.appendChild(qrCodeLink)
+        newText.appendChild(qrCode)
+      }
     } else if (currentTextIndex == 3) {
       let parts = messages[currentTextIndex].split(' ')
       let span1 = document.createElement('span')
