@@ -112,8 +112,8 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      template: './src/tests.html',
-      filename: './tests.html'
+      template: './src/styleguide.html',
+      filename: './styleguide.html'
     }),
 
     new HtmlWebpackPlugin({
