@@ -1,0 +1,28 @@
+.filters {
+  gap: 2vw;
+
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 2vw;
+  }
+  h6 {
+    &:first-of-type {
+      width: 100%;
+    }
+  }
+}
+.materials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  div {
+    flex: 1 1 calc((100% - 2 * 2em) / 3);
+    aspect-ratio: 1;
+    padding: 2em;
+    background-color: white;
+  }
+}

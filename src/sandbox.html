@@ -3,12 +3,73 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Песочница</title>
+
+    <title>Песочница для генератива NONSTATIC</title>
+    <meta name="title" content="Песочница для генератива NONSTATIC" />
+    <meta
+      name="description"
+      content="Песочница, в которой ты можешь тестировать код онлайн прямо на сайте"
+    />
+
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://hseadc.github.io/NONSTATIC/sandbox"
+    />
+    <meta property="og:title" content="Песочница для генератива NONSTATIC" />
+    <meta
+      property="og:description"
+      content="Песочница, в которой ты можешь тестировать код онлайн прямо на сайте"
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/HSEADC/NONSTATIC/refs/heads/main/src/images/sandbox_preview.png"
+    />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content="https://hseadc.github.io/NONSTATIC/sandbox"
+    />
+    <meta
+      property="twitter:title"
+      content="Песочница для генератива NONSTATIC"
+    />
+    <meta
+      property="twitter:description"
+      content="Песочница, в которой ты можешь тестировать код онлайн прямо на сайте"
+    />
+    <meta
+      property="twitter:image"
+      content="https://raw.githubusercontent.com/HSEADC/NONSTATIC/refs/heads/main/src/images/sandbox_preview.png"
+    />
+    <link rel="icon" href="images/favicon.png" type="image/png" />
   </head>
   <body>
-    <h2>Песочница</h2>
-    <p>Творите прямо на сайте</p>
-    <hr />
-    <i><a href="index.html">На главную</a></i>
+    <nav class="mainMenu">
+      <h6><a href="index.html">NONSTATIC</a></h6>
+      <h6><a href="art-projects.html">Арт-галерея</a></h6>
+      <h6><a href="sandbox.html">Песочница</a></h6>
+      <h6><a href="practice.html">Статьи</a></h6>
+      <div class="searchLine">Поиск</div>
+    </nav>
+
+    <section class="sandbox">
+      <h1>Песочница</h1>
+      <textarea id="htmlCode" placeholder="Здесь HTML"></textarea>
+      <textarea id="cssCode" placeholder="Здесь CSS"></textarea>
+      <textarea id="jsCode" placeholder="Здесь JS"></textarea>
+      <button class="runCode">Тест</button>
+      <iframe id="sandbox"></iframe>
+    </section>
+    <footer>
+      <div class="naming"><a href="index.html">NONSTATIC</a></div>
+      <div class="socialNetworks">
+        <div><a href="https://t.me/nonstatic_generativ">Telegram</a></div>
+        <div>
+          <a href="https://vk.com/nonstatic_generativ?from=search">VK</a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

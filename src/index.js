@@ -2,6 +2,34 @@ import './index.css'
 
 var form = document.getElementById('my-form')
 
+function runCode() {
+  const htmlCode = document.getElementById('htmlCode').value
+  const cssCode = document.getElementById('cssCode').value
+  const jsCode = document.getElementById('jsCode').value
+
+  const sandbox = document.getElementById('sandbox')
+  const content = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <style>${cssCode}</style>
+    </head>
+    <body>
+      ${htmlCode}
+      <script>${jsCode}<\/script>
+    </body>
+    </html>
+  `
+  sandbox.srcdoc = content
+}
+
+if (document.querySelector('.runCode')) {
+  let button = document.querySelector('.runCode')
+  button.addEventListener('click', () => {
+    runCode()
+  })
+}
+
 async function handleSubmit(event) {
   event.preventDefault()
   var status = document.getElementById('my-form-status')
@@ -76,60 +104,141 @@ window.addEventListener('scroll', () => {
       path.style.strokeDasharray = `${pathLength} ${pathLength}`
     }
   })
+})
 
-  if (scrollContainer) {
-    let scrollPosition = window.scrollY + window.innerHeight
-    let containerHeight = scrollContainer.offsetHeight
+if (document.querySelector('#myCanvas')) {
+  let canvas = document.getElementById('myCanvas')
+  let ctx = canvas.getContext('2d')
+  let lines = 7
+  let maxWidthFactor = 50 // Max width is 5% of the viewport
+  let hoverRange = 4 // Number of lines affected by the hover
+  let animationSpeed = 0.05 // Speed of transition
 
-    let messages = [
-      'подписывайся на телегу',
-      'ты уже подписался?',
-      'а сейчас?',
-      'ты будешь скроллить пока не подпишешься'
-    ]
-    if (scrollPosition >= containerHeight - 100) {
-      let newText = document.createElement('div')
-      newText.classList.add('text')
-      if (currentTextIndex === 0 || currentTextIndex === 1) {
-        let parts = messages[currentTextIndex].split(' ')
-        let span1 = document.createElement('span')
-        span1.textContent = parts.slice(0, 1).join(' ')
-        let span2 = document.createElement('span')
-        span2.textContent = parts.slice(1, 3).join(' ')
-        newText.appendChild(span1)
-        newText.appendChild(span2)
-        if (currentTextIndex === 0) {
-          let qrCode = document.createElement('div')
-          qrCode.classList.add('qrCode')
-          let qrCodeLink = document.createElement('a')
-          qrCodeLink.classList.add('qrCodeLink')
-          qrCodeLink.href = 'https://t.me/nonstatic_generativ'
-          qrCode.appendChild(qrCodeLink)
-          newText.appendChild(qrCode)
-        }
-      } else if (currentTextIndex == 3) {
-        let parts = messages[currentTextIndex].split(' ')
-        let span1 = document.createElement('span')
-        span1.textContent = parts.slice(0, 2).join(' ')
-        let span2 = document.createElement('span')
-        span2.textContent = parts.slice(2, 4).join(' ')
-        let span3 = document.createElement('span')
-        span3.textContent = parts.slice(4, 6).join(' ')
-        newText.appendChild(span1)
-        newText.appendChild(span2)
-        newText.appendChild(span3)
-      } else {
-        let span = document.createElement('span')
-        span.textContent = messages[currentTextIndex]
-        newText.appendChild(span)
-      }
-      scrollContainer.appendChild(newText)
+  let hoverIndex = -1
+  let lineHeight
+  let maxWidth
+  let currentWidths = []
+  let targetWidths = []
 
-      let newLine = document.createElement('div')
-      newLine.classList.add('line')
-      scrollContainer.appendChild(newLine)
+  // Function to resize canvas and recalculate variables
+  function resizeCanvas() {
+    canvas.width = (window.innerWidth * 50) / 100 // 50% of the viewport width
+    canvas.height = (canvas.width * 150) / 300 // Maintain aspect ratio 300x150
+    lineHeight = canvas.height / lines
+    maxWidth = (maxWidthFactor * window.innerWidth) / 100
 
-      currentTextIndex = (currentTextIndex + 1) % messages.length
+    // Reset widths based on new maxWidth
+    currentWidths = Array(lines).fill(maxWidth)
+    targetWidths = Array(lines).fill(maxWidth)
+
+    drawTriangles()
+  }
+
+  function drawTriangles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+    for (let i = 0; i < lines; i++) {
+      const centerY = i * lineHeight + lineHeight / 2
+      const width = currentWidths[i]
+
+      // Set up the gradient
+      const gradient = ctx.createRadialGradient(
+        0,
+        centerY,
+        0,
+        0,
+        centerY,
+        width
+      )
+      gradient.addColorStop(0, 'rgba(177, 180, 185, 0)')
+      gradient.addColorStop(0.5, '#CEFD63')
+      gradient.addColorStop(1, 'rgba(177, 180, 185, 0)')
+
+      ctx.fillStyle = gradient
+
+      ctx.beginPath()
+      ctx.moveTo(0, centerY - lineHeight / 2) // Top right corner
+      ctx.lineTo(width, centerY) // Tip of the triangle (to the right)
+      ctx.lineTo(0, centerY + lineHeight / 2) // Bottom right corner
+      ctx.closePath()
+      ctx.fill()
+
+      ctx.strokeStyle = '#bcc9eb' // Stroke color (black)
+      ctx.lineWidth = 2 // Stroke width
+      ctx.stroke()
     }
   }
-})
+
+  // Animate the transition of widths
+  function animate() {
+    let animationInProgress = false
+
+    for (let i = 0; i < lines; i++) {
+      if (Math.abs(currentWidths[i] - targetWidths[i]) > 0.1) {
+        animationInProgress = true
+        currentWidths[i] +=
+          (targetWidths[i] - currentWidths[i]) * animationSpeed
+      }
+    }
+
+    drawTriangles()
+
+    if (animationInProgress) {
+      requestAnimationFrame(animate)
+    }
+  }
+
+  // Update the target widths based on hover
+  function updateTargetWidths() {
+    for (let i = 0; i < lines; i++) {
+      let distanceFromHover = Math.abs(i - hoverIndex)
+
+      if (hoverIndex !== -1 && distanceFromHover <= hoverRange) {
+        targetWidths[i] =
+          (maxWidth * (hoverRange - distanceFromHover)) / hoverRange
+      } else if (hoverIndex !== -1 && distanceFromHover > hoverRange) {
+        targetWidths[i] = 0
+      } else {
+        targetWidths[i] = maxWidth
+      }
+    }
+
+    animate()
+  }
+
+  // Event listeners for hover effect
+  canvas.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect()
+    const y = event.clientY - rect.top
+
+    hoverIndex = Math.floor(y / lineHeight)
+    updateTargetWidths()
+  })
+
+  canvas.addEventListener('mouseleave', () => {
+    hoverIndex = -1
+    updateTargetWidths()
+  })
+
+  // Attach resize event listener
+  window.addEventListener('resize', resizeCanvas)
+
+  // Initialize canvas
+  resizeCanvas()
+
+  // Handle mouse movement
+  canvas.addEventListener('mousemove', (e) => {
+    const mouseY = e.offsetY
+    hoverIndex = Math.floor(mouseY / lineHeight)
+    updateTargetWidths()
+  })
+
+  // Handle mouse leave
+  canvas.addEventListener('mouseleave', () => {
+    hoverIndex = -1
+    updateTargetWidths()
+  })
+
+  // Initialize
+  drawTriangles()
+}

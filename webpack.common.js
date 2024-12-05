@@ -115,8 +115,8 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      template: './src/tests.html',
-      filename: './tests.html'
+      template: './src/styleguide.html',
+      filename: './styleguide.html'
     }),
 
     new HtmlWebpackPlugin({
@@ -151,16 +151,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/art-projects/web-design.html',
       filename: './art-projects/web-design.html'
-    }),
-
-    new HtmlWebpackPlugin({
-      template: './src/history/MIT.html',
-      filename: './history/MIT.html'
-    }),
-
-    new HtmlWebpackPlugin({
-      template: './src/history.html',
-      filename: './history.html'
     }),
 
     new HtmlWebpackPlugin({
