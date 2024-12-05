@@ -5,6 +5,7 @@
     position: absolute;
     width: 100%;
     z-index: 6;
+    pointer-events: none;
   }
   .ourMission {
     position: relative;
@@ -68,7 +69,6 @@
   display: flex;
   flex-wrap: wrap;
   padding: 0;
-  margin-bottom: 0;
   h3 {
     padding-left: 0.7em;
     width: 100%;

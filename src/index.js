@@ -2,6 +2,34 @@ import './index.css'
 
 var form = document.getElementById('my-form')
 
+function runCode() {
+  const htmlCode = document.getElementById('htmlCode').value
+  const cssCode = document.getElementById('cssCode').value
+  const jsCode = document.getElementById('jsCode').value
+
+  const sandbox = document.getElementById('sandbox')
+  const content = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <style>${cssCode}</style>
+    </head>
+    <body>
+      ${htmlCode}
+      <script>${jsCode}<\/script>
+    </body>
+    </html>
+  `
+  sandbox.srcdoc = content
+}
+
+if (document.querySelector('.runCode')) {
+  let button = document.querySelector('.runCode')
+  button.addEventListener('click', () => {
+    runCode()
+  })
+}
+
 async function handleSubmit(event) {
   event.preventDefault()
   var status = document.getElementById('my-form-status')
