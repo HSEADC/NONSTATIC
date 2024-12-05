@@ -29,7 +29,7 @@ footer {
   padding: 2em 2em;
 }
 h1 {
-  font-size: 8em;
+  font-size: 5em;
   font-family: 'Arial Narrow';
 }
 h2 {
@@ -94,6 +94,15 @@ footer {
     flex-wrap: wrap;
     display: flex;
     justify-content: space-around;
+    position: relative;
+    img {
+      width: 100%;
+      bottom: 0;
+      z-index: 5;
+      right: 0;
+      max-width: 1900px;
+      position: absolute;
+    }
     h3 {
       width: 100%;
     }
@@ -116,6 +125,9 @@ footer {
 
 .infoAboutMedia {
   width: 30%;
+  img {
+    width: 100%;
+  }
   .learnAboutUs {
     margin-top: 2em;
     display: flex;
@@ -136,7 +148,6 @@ footer {
 
 .categories {
   display: flex;
-  height: 60vh;
   margin-bottom: 0;
   padding: 0;
   h3 {
@@ -167,8 +178,13 @@ footer {
       display: flex;
       flex-direction: column;
     }
+    img {
+      position: absolute;
+      width: 100%;
+      z-index: 1;
+    }
     h2 {
-      height: 70%;
+      height: 40vw;
       width: 60%;
     }
 
@@ -196,6 +212,10 @@ footer {
 .formCollector {
   display: flex;
   gap: 2em;
+  span {
+    font-family: 'Arial Narrow';
+    font-size: 1.5em;
+  }
   form {
     display: flex;
     gap: 2em;
@@ -204,6 +224,8 @@ footer {
       background: none;
       border: none;
       color: black;
+      font-family: 'Arial Narrow';
+      font-size: 1.5em;
       &:focus {
         border: none;
         outline: none;
