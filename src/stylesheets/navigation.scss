@@ -1,0 +1,16 @@
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em 2em;
+  background-color: var(--greyTitle);
+  div {
+    width: 40%;
+    font-family: 'Arial Narrow';
+    font-size: 2em;
+    border: solid black 1px;
+    padding: 0.25em 0.5em;
+    background-color: white;
+  }
+}

@@ -151,16 +151,6 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      template: './src/history/MIT.html',
-      filename: './history/MIT.html'
-    }),
-
-    new HtmlWebpackPlugin({
-      template: './src/history.html',
-      filename: './history.html'
-    }),
-
-    new HtmlWebpackPlugin({
       template: './src/about-us.html',
       filename: './about-us.html'
     }),
