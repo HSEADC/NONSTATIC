@@ -6,6 +6,20 @@ function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 
 var form = document.getElementById('my-form');
+function runCode() {
+  var htmlCode = document.getElementById('htmlCode').value;
+  var cssCode = document.getElementById('cssCode').value;
+  var jsCode = document.getElementById('jsCode').value;
+  var sandbox = document.getElementById('sandbox');
+  var content = "\n    <!DOCTYPE html>\n    <html>\n    <head>\n      <style>".concat(cssCode, "</style>\n    </head>\n    <body>\n      ").concat(htmlCode, "\n      <script>").concat(jsCode, "</script>\n    </body>\n    </html>\n  ");
+  sandbox.srcdoc = content;
+}
+if (document.querySelector('.runCode')) {
+  var button = document.querySelector('.runCode');
+  button.addEventListener('click', function () {
+    runCode();
+  });
+}
 function handleSubmit(_x) {
   return _handleSubmit.apply(this, arguments);
 }
@@ -81,53 +95,113 @@ window.addEventListener('scroll', function () {
       path.style.strokeDasharray = "".concat(pathLength, " ").concat(pathLength);
     }
   });
-  if (scrollContainer) {
-    var scrollPosition = window.scrollY + window.innerHeight;
-    var containerHeight = scrollContainer.offsetHeight;
-    var messages = ['подписывайся на телегу', 'ты уже подписался?', 'а сейчас?', 'ты будешь скроллить пока не подпишешься'];
-    if (scrollPosition >= containerHeight - 100) {
-      var newText = document.createElement('div');
-      newText.classList.add('text');
-      if (currentTextIndex === 0 || currentTextIndex === 1) {
-        var parts = messages[currentTextIndex].split(' ');
-        var span1 = document.createElement('span');
-        span1.textContent = parts.slice(0, 1).join(' ');
-        var span2 = document.createElement('span');
-        span2.textContent = parts.slice(1, 3).join(' ');
-        newText.appendChild(span1);
-        newText.appendChild(span2);
-        if (currentTextIndex === 0) {
-          var qrCode = document.createElement('div');
-          qrCode.classList.add('qrCode');
-          var qrCodeLink = document.createElement('a');
-          qrCodeLink.classList.add('qrCodeLink');
-          qrCodeLink.href = 'https://t.me/nonstatic_generativ';
-          qrCode.appendChild(qrCodeLink);
-          newText.appendChild(qrCode);
-        }
-      } else if (currentTextIndex == 3) {
-        var _parts = messages[currentTextIndex].split(' ');
-        var _span = document.createElement('span');
-        _span.textContent = _parts.slice(0, 2).join(' ');
-        var _span2 = document.createElement('span');
-        _span2.textContent = _parts.slice(2, 4).join(' ');
-        var span3 = document.createElement('span');
-        span3.textContent = _parts.slice(4, 6).join(' ');
-        newText.appendChild(_span);
-        newText.appendChild(_span2);
-        newText.appendChild(span3);
-      } else {
-        var span = document.createElement('span');
-        span.textContent = messages[currentTextIndex];
-        newText.appendChild(span);
-      }
-      scrollContainer.appendChild(newText);
-      var newLine = document.createElement('div');
-      newLine.classList.add('line');
-      scrollContainer.appendChild(newLine);
-      currentTextIndex = (currentTextIndex + 1) % messages.length;
-    }
-  }
 });
+if (document.querySelector('#myCanvas')) {
+  // Function to resize canvas and recalculate variables
+  var resizeCanvas = function resizeCanvas() {
+    canvas.width = window.innerWidth * 50 / 100; // 50% of the viewport width
+    canvas.height = canvas.width * 150 / 300; // Maintain aspect ratio 300x150
+    lineHeight = canvas.height / lines;
+    maxWidth = maxWidthFactor * window.innerWidth / 100;
+
+    // Reset widths based on new maxWidth
+    currentWidths = Array(lines).fill(maxWidth);
+    targetWidths = Array(lines).fill(maxWidth);
+    drawTriangles();
+  };
+  var drawTriangles = function drawTriangles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (var i = 0; i < lines; i++) {
+      var centerY = i * lineHeight + lineHeight / 2;
+      var width = currentWidths[i];
+
+      // Set up the gradient
+      var gradient = ctx.createRadialGradient(0, centerY, 0, 0, centerY, width);
+      gradient.addColorStop(0, 'rgba(177, 180, 185, 0)');
+      gradient.addColorStop(0.5, '#CEFD63');
+      gradient.addColorStop(1, 'rgba(177, 180, 185, 0)');
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.moveTo(0, centerY - lineHeight / 2); // Top right corner
+      ctx.lineTo(width, centerY); // Tip of the triangle (to the right)
+      ctx.lineTo(0, centerY + lineHeight / 2); // Bottom right corner
+      ctx.closePath();
+      ctx.fill();
+      ctx.strokeStyle = '#bcc9eb'; // Stroke color (black)
+      ctx.lineWidth = 2; // Stroke width
+      ctx.stroke();
+    }
+  }; // Animate the transition of widths
+  var _animate = function animate() {
+    var animationInProgress = false;
+    for (var i = 0; i < lines; i++) {
+      if (Math.abs(currentWidths[i] - targetWidths[i]) > 0.1) {
+        animationInProgress = true;
+        currentWidths[i] += (targetWidths[i] - currentWidths[i]) * animationSpeed;
+      }
+    }
+    drawTriangles();
+    if (animationInProgress) {
+      requestAnimationFrame(_animate);
+    }
+  }; // Update the target widths based on hover
+  var updateTargetWidths = function updateTargetWidths() {
+    for (var i = 0; i < lines; i++) {
+      var distanceFromHover = Math.abs(i - hoverIndex);
+      if (hoverIndex !== -1 && distanceFromHover <= hoverRange) {
+        targetWidths[i] = maxWidth * (hoverRange - distanceFromHover) / hoverRange;
+      } else if (hoverIndex !== -1 && distanceFromHover > hoverRange) {
+        targetWidths[i] = 0;
+      } else {
+        targetWidths[i] = maxWidth;
+      }
+    }
+    _animate();
+  }; // Event listeners for hover effect
+  var canvas = document.getElementById('myCanvas');
+  var ctx = canvas.getContext('2d');
+  var lines = 7;
+  var maxWidthFactor = 50; // Max width is 5% of the viewport
+  var hoverRange = 4; // Number of lines affected by the hover
+  var animationSpeed = 0.05; // Speed of transition
+
+  var hoverIndex = -1;
+  var lineHeight;
+  var maxWidth;
+  var currentWidths = [];
+  var targetWidths = [];
+  canvas.addEventListener('mousemove', function (event) {
+    var rect = canvas.getBoundingClientRect();
+    var y = event.clientY - rect.top;
+    hoverIndex = Math.floor(y / lineHeight);
+    updateTargetWidths();
+  });
+  canvas.addEventListener('mouseleave', function () {
+    hoverIndex = -1;
+    updateTargetWidths();
+  });
+
+  // Attach resize event listener
+  window.addEventListener('resize', resizeCanvas);
+
+  // Initialize canvas
+  resizeCanvas();
+
+  // Handle mouse movement
+  canvas.addEventListener('mousemove', function (e) {
+    var mouseY = e.offsetY;
+    hoverIndex = Math.floor(mouseY / lineHeight);
+    updateTargetWidths();
+  });
+
+  // Handle mouse leave
+  canvas.addEventListener('mouseleave', function () {
+    hoverIndex = -1;
+    updateTargetWidths();
+  });
+
+  // Initialize
+  drawTriangles();
+}
 /******/ })()
 ;
