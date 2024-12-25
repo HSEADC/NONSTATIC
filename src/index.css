@@ -1,5 +1,7 @@
 @import 'stylesheets/reset.scss';
 @import 'stylesheets/fonts.scss';
+@import 'stylesheets/vars.scss';
+@import 'stylesheets/animation.scss';
 @import 'stylesheets/about-us.scss';
 @import 'stylesheets/basics.scss';
 @import 'stylesheets/navigation.scss';
@@ -7,4 +9,4 @@
 @import 'stylesheets/sandbox.scss';
 @import 'stylesheets/styleguide.scss';
 @import 'stylesheets/main.scss';
-@import 'stylesheets/vars.scss';
+@import 'stylesheets/adaptive.scss';
