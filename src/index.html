@@ -25,119 +25,146 @@
 
   </head>
   <body class="previewBody">
-    <nav class="mainMenu">
-      <h6><a href="index.html">NONSTATIC</a></h6>
-      <h6><a href="art-projects.html">Арт-галерея</a></h6>
-      <h6><a href="sandbox.html">Песочница</a></h6>
-      <h6><a href="practice.html">Статьи</a></h6>
-      <div class="searchLine">Поиск</div>
-    </nav>
     <section class="intro">
-      <div class="laserLines">
-        <div class="upperLines">
-          <svg width="100%" height="100%" viewBox="0 0 1364 446" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path class="scrollLine" d="M681.801 442L882.001 2" stroke="#BCC9EB" stroke-width="3"/>
-            <path class="scrollLine"d="M923.237 207.789L682 442M682 442L1147.32 162M682 442L1362 207.789" stroke="#BCC9EB" stroke-width="3"/>
-            <path class="scrollLine"d="M440.763 207.789L682 442M682 442L216.684 162M682 442L2 207.789" stroke="#BCC9EB" stroke-width="3"/>
-            <path class="scrollLine" d="M682.199 442L481.999 2" stroke="#BCC9EB" stroke-width="3"/>
-          </svg>
+      <div class="laser" style="--i: -5;"></div>
+      <div class="laser" style="--i: 12"></div>
+      <div class="laser" style="--i: 5"></div>
+      <nav>
+        <div class="upperLine">
+          <h3><a href="art-projects.html">галерея</a></h3>
+          <a href="index.html"><div class="logo"></div></a>
+          <h3><a href="sandbox.html">песочница</a>
+          </h3>
         </div>
-        <div class="lowerLines">
-          <svg width="100%" height="100%" viewBox="0 0 1364 446" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path class="scrollLine" d="M923.237 238.211L682 4M682 4L1147.32 284M682 4L1362 238.211" stroke="#BCC9EB" stroke-width="3"/>
-            <path class="scrollLine" d="M440.763 238.211L682 3.99999M682 3.99999L216.684 284M682 3.99999L2 238.211" stroke="#BCC9EB" stroke-width="3"/>
-            <path class="scrollLine" d="M681.801 4L882.001 717" stroke="#BCC9EB" stroke-width="3"/>
-            <path class="scrollLine" d="M682 11V939" stroke="#BCC9EB" stroke-width="3"/>
-            <path class="scrollLine" d="M682.199 4L481.999 717" stroke="#BCC9EB" stroke-width="3"/>
-            </svg>  
-          </div>
-      </div>
-      <div class="infoAboutMedia">
-        <h1>NONSTATIC</h1>
-     
-        <p>
-          медиа за новый и френдли опыт в создании визуала с помощью скриптов
-        </p>
-        <img src="images/index/abstraction_index.webp" alt="smaller piece of abstraction of nature colours floating around">
-        <div class="learnAboutUs">
-          <p>а</p>
-          <p><a href="about-us.html">тут</a></p>
-          <p>больше о нас</p>
-        </div>
-      </div>
-      <div class="lead">
-        <img src="images/index/main_abstraction.webp" alt="abstraction of nature colours floating around">
-        <h3>
-          любите генерить необычную и интересную графику? 
+      <div class="searchBar">
+        <div></div><span>Я ищу...</span></div>
+
+        <h3 class="articlesMenu">
+          <a href="practice.html">статьи</a>
         </h3>
-        <p>
-          как с этим может помочь программирование? 
-        </p>
-        <p>
-          неожиданные находки 
-          и удачные эксперименты: 
-        </p>
+      </nav>
+      <div class="introCommon">
+      <h1>
+        Хочешь начать эксперименты?
+      </h1>
+      <div class="descriptionCloud">
+        <div class="line"></div>
+        <div>
+        <small> <span>любишь</span> <span>необычную графику?</span><span>как с этим может помочь</span> <span>программирование?</span></small>
+        <small><span>мы</span> <span>расскажем</span></small>
       </div>
-      <div class="leadCommentary"></div>
+      </div>
+    </div>
     </section>
-    <section class="categories">
-      <div class="mainCategory"><a href="practice.html">
-        <h2>НЕ ЗНАЕШЬ, С ЧЕГО НАЧАТЬ?</h2>
-        <img src="images/index/practice_abstraction.webp" alt="abstraction of fluid form and blueish-whiteish hues">
-        <div class="button">-></div>
-        <p>
-          раздел, посвященный туториалам на самые разные тематики: от навигаций
-          по программам до туториалов науникальную генеративную графикув коде,
-          графических редакторах и визуальных редакторах кода
-        </p>
-      </a>
+    <section class="articlesPreview">
+      </h2>
+      <h2><span>Знакомство с прогой</span><span> и туториалы</span>
+      <small>для тех, кто не знает</small>
+    <small>с чего начать</small></h2>
+      <div class="line"></div>
+      <p>Дадим фильтрацию по типу контента, инструмента и уровню сложности, чтобы сэкономить твое время и не запутать в новом материале</p>
+      <button><a href="practice.html">Изучить новое</a> <div class="buttonArrow"></div></button>
+      <div class="articleCardsPreview">
+        <div class="card" style="--i: 1"><img src="images/index/voronoiTexture.webp" alt=""><small>Voronoi Texture</small></div>
+        <div class="card" style="--i: 2"><img src="images/index/liquidDisplace.webp" alt=""><small>Liguid Displace</small></div>
+        <div class="card" style="--i: 3"><img src="images/index/recursiveDisplace.webp" alt=""><small>Recursive Displacement</small></div>
+        <div class="card" style="--i: 4"><img src="images/index/displacementMap.webp" alt=""><small>Displacement Map</small></div>
+        <div class="card" style="--i: 4"><img src="images/index/pixelSorting.webp" alt=""><small>Pixel Sorting</small></div>
+        <div class="card" style="--i: 3"><img src="images/index/gradientLevels.webp" alt=""><small>Gradient Levels</small></div>
+        <div class="card" style="--i: 2"><img src="images/index/glitch.webp" alt=""><small>Glitch</small></div>
+        <div class="card" style="--i: 1"><img src="images/index/echo.webp" alt=""><small>Echo</small></div>
       </div>
-      <div class="mainCategory"><a href="sandbox.html">
-        <h2>ХОЧЕШЬ ПРАКТИКИ?</h2>
-        <img src="images/index/sandbox_abstraction.webp" alt="circular abstraction with rectangular forms being cut out from it">
-        <div class="button">-></div>
-        <p>
-          песочница, в которой ты можешь тестировать код онлайн прямо на сайте
-        </p>
-        </a>
+    </section>
+    <section class="galleryPreview">
+      <h2><span>Вдохновение</span><span>в галерее</span>
+        <small>для тех, кому</small>
+        <small>нужны референсы</small></h2>
+      <div class="line"></div>
+      <div class="tickerContainer">
+        <div class="ticker">
+          <img src="images/index/flowersProject.webp" alt="">
+          <img src="images/index/fashionProject.webp" alt="">
+          <img src="images/index/orbitProject.webp" alt="">
+          <img src="images/index/mushroomsProject.webp" alt="">
+          <img src="images/index/spaceProject.webp" alt="">
+          <img src="images/index/seaWeed.webp" alt="">
+          <img src="images/index/flowersProject.webp" alt="">
+          <img src="images/index/fashionProject.webp" alt="">
+          <img src="images/index/orbitProject.webp" alt="">
+          <img src="images/index/mushroomsProject.webp" alt="">
+          <img src="images/index/spaceProject.webp" alt="">
+          <img src="images/index/seaWeed.webp" alt="">
+          <img src="images/index/flowersProject.webp" alt="">
+          <img src="images/index/fashionProject.webp" alt="">
+          <img src="images/index/orbitProject.webp" alt="">
+          <img src="images/index/mushroomsProject.webp" alt="">
+          <img src="images/index/spaceProject.webp" alt="">
+          <img src="images/index/seaWeed.webp" alt="">
+        </div>
+        
       </div>
-      <div class="mainCategory">
-        <div class="button">-></div><a href="art-projects.html">
-        <h2>ИЩЕШЬ ВДОХНОВЕНИЕ</h2>
-        <img src="images/index/art_projects_abstraction.webp" alt="abstraction construction of several rectangles of cloudy colours">
-        <p>
-          раздел, в котором собраны референсы на проекты с использованием
-          генератива, которые можно отсортировать на любой инструмент
-        </p></a>
-      </div>
+      <p>Примеры работ для вдохновения с фильтрацией по типу инструмента</p>
+      <button><a href="art-projects.html">Вдохновляться</a><div class="buttonArrow"></div></button>
+    </section>
+    <section class="sandboxPreview">
+      <h2>Песочница
+        <small>для тех, у кого</small>
+        <small>нет локальной среды</small>
+      </h2>
+      <div class="line"></div>
+      <div class="sandboxVideo"></div>
+      <p>Возможность практиковаться прямо на сайте</p>
+      <button><a href="sandbox.html">Покодить</a><div class="buttonArrow"></div></button>
     </section>
     <section class="gatherEmails">
-      <h3>
-        хочешь начать эксперименты?
-      </h3>
-      <div class="text formCollector">
-        <span>
-          тогда оставь почту
-        </span>
-        <span>
-          пж
-        </span>
-        <form id="my-form" action="https://formspree.io/f/xnnqjzzd" method="POST">
-        <input type="email" name="email" class="collectEmails" placeholder="(вот тут)">
-        </span>
-        <button id="my-form-button">подписаться</button>
-        <span id="my-form-status"></span>
-      </form>
-      </div>
-    </section>
-    <footer>
-      <div class="naming"><a href="index.html">NONSTATIC</a></div>
-      <div class="socialNetworks">
-        <div><a href="https://t.me/nonstatic_generativ">Telegram</a></div>
-        <div>
-          <a href="https://vk.com/nonstatic_generativ?from=search">VK</a>
+      <div class="gradientBottom">
+        <div class="svg-container">
+          <svg xmlns="http://www.w3.org/2000/svg" width="100vw" height="auto" viewBox="0 0 1920 994" fill="none">
+            <path d="M-430 0L2370 0V2000H-430L-430 0Z" fill="url(#animatedGradient)" />
+            <defs>
+              <radialGradient id="animatedGradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(970.817 1000) rotate(90.0468) scale(1000 1400)">
+                <stop offset="0" stop-color="#F0F0F0" stop-opacity="0" />
+                <stop offset="0.5" stop-color="#D2FF69" />
+                <stop offset="0.75" stop-color="#9CF8F8" />
+                <stop offset="1" stop-color="#F0F0F0" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+          </svg>
         </div>
       </div>
-    </footer>
+      <h2>
+        <span>Хочешь ранний доступ?</span>
+        <div class="left">
+          <small>Рассылка о новостях </small>
+          <small>в генеративе</small>
+        </div>
+        <div class="right">
+          <small>Уведомления о новых</small>
+          <small>туториалах</small>
+        </div>
+      </h2>
+        <form id="my-form" action="https://formspree.io/f/xnnqjzzd" method="POST">
+          <input type="email" name="email" class="collectEmails" placeholder="youremail@mail.com">
+          </span>
+          <button id="my-form-button">Подписаться</button>
+          <p id="my-form-status"></p>
+        </form>
+      <footer>
+        <div class="footerDescription">
+          <small>Гайд по программам</small>
+          <small>Гайд по программам</small>
+        </div>
+        <div class="footerLogo"></div>
+        <div class="footerDescription">
+          <small>Туториалы по генеративу</small>
+          <small>Интересные факты</small>
+        </div>
+        <div class="socialMedia">
+          <small>VK</small>
+          <small>TG</small>
+        </div>
+      </footer>
+  
+    </section>
   </body>
 </html>
