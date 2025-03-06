@@ -1,0 +1,14 @@
+.W_MenuWithLogo {
+  display: flex;
+  gap: 37px;
+  padding: 20px 0;
+  align-items: center;
+}
+
+.W_Filter {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: fixed;
+  left: 119px;
+}

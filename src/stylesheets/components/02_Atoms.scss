@@ -1,0 +1,107 @@
+.A_MiniLogo {
+  width: 40px;
+  opacity: 40%;
+  height: 40px;
+}
+
+.A_MiniLogo.Light {
+  background-image: url('../../images/index/mainLogoLight.gif');
+}
+
+.A_MiniLogo.Dark {
+  background-image: url('../../images/index/mainLogoDark.gif');
+}
+
+.A_Description {
+  font: var(--font-dscpt);
+  color: var(--color-black-40);
+}
+
+.A_Label {
+  color: var(--color-black-40);
+}
+
+.A_GalleryCardIMG {
+  width: 78%;
+  aspect-ratio: 1.88;
+}
+
+.M_GalleryCard > .A_GalleryCardIMG {
+  align-self: flex-end;
+}
+
+.A_Input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: none;
+  font: var(--font-dscpt);
+  color: var(--black);
+  outline: none;
+  border: none;
+  background-color: var(--bgColor);
+}
+
+.A_Button {
+  display: flex;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font: var(--font-dscpt);
+  border-radius: var(--radius-small);
+  background: var(--color-black-20);
+  color: var(--black);
+  backdrop-filter: blur(18px);
+  box-shadow: 0px 0px 0px 0px var(--green) inset;
+  transition: all 0.15s ease-in-out;
+  width: max-content;
+  border: none;
+  outline: none;
+  text-decoration: none;
+}
+
+.A_Button:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 0px 4px 0px var(--green);
+}
+
+.A_Button:hover {
+  box-shadow: 0px 0px 12px 0px var(--green) inset,
+    0px 0px 30px 0px var(--green) inset;
+  transition: all 0.15s ease-in-out;
+}
+.A_Button:hover:after {
+  opacity: 0;
+}
+
+.A_Button:active,
+.A_Button.clicked {
+  background: var(--green);
+}
+
+.A_MenuButton {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-black-40);
+  font: var(--font-dscpt);
+  border-radius: var(--radius-small);
+  width: max-content;
+  text-decoration: none;
+  height: max-content;
+}
+.A_MenuButton:active,
+.A_MenuButton.Selected {
+  background-color: var(--green);
+  color: var(--black);
+}
+
+.M_GalleryCard > .A_Label + .A_Label {
+  margin-bottom: 12px;
+  padding-left: 80px;
+}

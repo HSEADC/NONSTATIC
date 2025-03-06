@@ -1,7 +1,43 @@
 :root {
   --bgColor: #efefef;
-  --mainGreen: #d1ff8c;
-  --mainBlue: #9cf8f8;
-  --mainWhite: white;
-  --mainBlack: #272727;
+  --green: #d1ff8c;
+  --blue: #9cf8f8;
+  --white: white;
+  --black: #272727;
+  --color-black-08: rgb(39 39 39/ 8%);
+  --color-black-20: rgb(39 39 39 / 20%);
+  --color-black-40: rgb(39 39 39 / 40%);
+
+  --font-h1: 700 180px/140px 'Arial Narrow', sans-serif;
+  --font-h2: 700 100px/100px 'Arial Narrow', sans-serif;
+  --font-h3: 700 40px/40px 'Arial Narrow', sans-serif;
+  --font-h4: 700 24px/24px 'Arial Narrow', sans-serif;
+  --font-p: 400 32px/37px 'Arial', sans-serif;
+  --font-dscpt: 400 16px/18px 'Arial', sans-serif;
+
+  --radius-big: 4px;
+  --radius-small: 2px;
+}
+@media (max-width: 414px) {
+  :root {
+    --font-h2: 700 38px/38px 'Arial Narrow', sans-serif;
+    --font-p: 400 18px/21px 'Arial', sans-serif;
+    --font-dscpt: 400 10px/11px 'Arial', sans-serif;
+  }
+}
+
+h1 {
+  font: var(--font-h1);
+}
+
+h2 {
+  font: var(--font-h2);
+}
+
+h3 {
+  font: var(--font-h3);
+}
+
+h4 {
+  font: var(--font-h4);
 }

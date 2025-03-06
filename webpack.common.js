@@ -1,6 +1,8 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+
 const HtmlWebpackPartialsPlugin = require('html-webpack-partials-plugin')
 
 const webpack = require('webpack')
@@ -8,7 +10,8 @@ const path = require('path')
 
 module.exports = {
   entry: {
-    index: './src/index.js'
+    index: './src/index.js',
+    gallery: './src/gallery.js'
   },
   output: {
     filename: '[name].[contenthash].js',
@@ -98,36 +101,43 @@ module.exports = {
     // Index
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      filename: './index.html'
+      filename: './index.html',
+      chunks: ['index']
     }),
 
     new HtmlWebpackPlugin({
       template: './src/sandbox.html',
-      filename: './sandbox.html'
+      filename: './sandbox.html',
+      chunks: []
     }),
 
     new HtmlWebpackPlugin({
       template: './src/styleguide.html',
-      filename: './styleguide.html'
+      filename: './styleguide.html',
+      chunks: []
     }),
 
     new HtmlWebpackPlugin({
       template: './src/art-projects.html',
-      filename: './art-projects.html'
+      filename: './art-projects.html',
+      chunks: ['gallery']
     }),
     new HtmlWebpackPlugin({
       template: './src/about-us.html',
-      filename: './about-us.html'
+      filename: './about-us.html',
+      chunks: []
     }),
 
     new HtmlWebpackPlugin({
       template: './src/practice.html',
-      filename: './practice.html'
+      filename: './practice.html',
+      chunks: []
     }),
 
     new HtmlWebpackPlugin({
       template: './src/practice/feedback_loop.html',
-      filename: './practice/feedback_loop.html'
+      filename: './practice/feedback_loop.html',
+      chunks: []
     })
 
     // Article

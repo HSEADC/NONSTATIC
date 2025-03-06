@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "author": "John Doe",
+    "title": "Sunset Over the Hills",
+    "imgSrc": "images/art-gallery/image1.webp",
+    "altText": "A beautiful sunset over rolling hills"
+  },
+  {
+    "id": 2,
+    "author": "Jane Smith",
+    "title": "City Lights",
+    "imgSrc": "images/art-gallery/image2.webp",
+    "altText": "A stunning view of city lights at night"
+  },
+  {
+    "id": 3,
+    "author": "Alice Johnson",
+    "title": "Forest Adventure",
+    "imgSrc": "images/art-gallery/image3.webp",
+    "altText": "A misty forest with a hidden path"
+  }
+]
