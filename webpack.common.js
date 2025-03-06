@@ -1,6 +1,8 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+
 const HtmlWebpackPartialsPlugin = require('html-webpack-partials-plugin')
 
 const webpack = require('webpack')
@@ -11,7 +13,8 @@ module.exports = {
     children: true
   },
   entry: {
-    index: './src/index.js'
+    index: './src/index.js',
+    gallery: './src/gallery.js'
   },
   output: {
     filename: '[name].[contenthash].js',
@@ -70,17 +73,10 @@ module.exports = {
         type: 'asset/source'
       },
       {
-        test: /\.png/,
+        test: /\.(png|jpe?g|gif|svg|webp)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'images/[hash][ext][query]'
-        }
-      },
-      {
-        test: /\.svg/,
-        type: 'asset/resource',
-        generator: {
-          filename: 'images/[hash][ext][query]'
+          filename: 'images/[name].[hash][ext][query]'
         }
       },
       {
@@ -97,40 +93,55 @@ module.exports = {
       filename: '[name].[contenthash].css',
       chunkFilename: '[id].[contenthash].css'
     }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'src/images',
+          to: 'images'
+        }
+      ]
+    }),
 
     // Index
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      filename: './index.html'
+      filename: './index.html',
+      chunks: ['index']
     }),
 
     new HtmlWebpackPlugin({
       template: './src/sandbox.html',
-      filename: './sandbox.html'
+      filename: './sandbox.html',
+      chunks: []
     }),
 
     new HtmlWebpackPlugin({
       template: './src/styleguide.html',
-      filename: './styleguide.html'
+      filename: './styleguide.html',
+      chunks: []
     }),
 
     new HtmlWebpackPlugin({
       template: './src/art-projects.html',
-      filename: './art-projects.html'
+      filename: './art-projects.html',
+      chunks: ['gallery']
     }),
     new HtmlWebpackPlugin({
       template: './src/about-us.html',
-      filename: './about-us.html'
+      filename: './about-us.html',
+      chunks: []
     }),
 
     new HtmlWebpackPlugin({
       template: './src/practice.html',
-      filename: './practice.html'
+      filename: './practice.html',
+      chunks: []
     }),
 
     new HtmlWebpackPlugin({
       template: './src/practice/feedback_loop.html',
-      filename: './practice/feedback_loop.html'
+      filename: './practice/feedback_loop.html',
+      chunks: []
     })
 
     // Article

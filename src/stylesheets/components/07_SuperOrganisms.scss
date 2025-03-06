@@ -1,0 +1,7 @@
+.SO_GalleryContent {
+  padding: 0 42px;
+  display: flex;
+  justify-content: flex-end;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 12px;
+}
