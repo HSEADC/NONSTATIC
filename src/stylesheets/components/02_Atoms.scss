@@ -4,6 +4,24 @@
   height: 40px;
 }
 
+.A_Logo {
+  width: 142px;
+  height: 132px;
+  position: absolute;
+  left: 462px;
+  top: -50%;
+  background-image: url('../../images/A_Logo.svg');
+}
+
+.A_ElectricCanvas {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 78%;
+  aspect-ratio: 1.88;
+  pointer-events: none;
+}
+
 .A_MiniLogo.Light {
   background-image: url('../../images/index/mainLogoLight.gif');
 }
@@ -21,9 +39,23 @@
   color: var(--color-black-40);
 }
 
+.A_Label.Accent {
+  color: var(--black);
+}
+
 .A_GalleryCardIMG {
   width: 78%;
   aspect-ratio: 1.88;
+  mask-image: url('../../images/art-gallery/mask.png');
+  mask-size: contain;
+  mask-position: center;
+  display: block;
+  mask-repeat: no-repeat;
+}
+
+.M_GalleryCard > .A_GalleryCardIMG:hover {
+  border: 4px solid var(--mainGreen);
+  box-shadow: 0px 0px 112.2px 0px var(--mainGreen, #d1ff8c) inset;
 }
 
 .M_GalleryCard > .A_GalleryCardIMG {

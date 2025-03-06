@@ -2,4 +2,15 @@
   width: calc(50% - 6px);
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.M_FooterSlogan {
+  width: 603px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+  position: relative;
 }
