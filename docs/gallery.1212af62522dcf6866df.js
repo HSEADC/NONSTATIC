@@ -489,10 +489,9 @@ function generateGalleryCards() {
     var titleLabel = document.createElement('h4');
     titleLabel.classList.add('A_Label');
     titleLabel.textContent = item.title;
-    var imgElement = document.createElement('img');
+    var imgElement = document.createElement('div');
     imgElement.classList.add('A_GalleryCardIMG');
-    imgElement.src = item.imgSrc;
-    imgElement.alt = item.altText;
+    imgElement.style.backgroundImage = "url('../".concat(item.imgSrc, "')");
     card.appendChild(authorLabel);
     card.appendChild(titleLabel);
     card.appendChild(imgElement);
