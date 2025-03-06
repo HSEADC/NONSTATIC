@@ -2,6 +2,8 @@
   width: 40px;
   opacity: 40%;
   height: 40px;
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 
 .A_Logo {
@@ -45,6 +47,7 @@
 
 .A_GalleryCardIMG {
   width: 78%;
+  background-size: cover;
   aspect-ratio: 1.88;
   mask-image: url('../../images/art-gallery/mask.png');
   mask-size: contain;
@@ -76,7 +79,7 @@
 
 .A_Button {
   display: flex;
-  padding: 16px 24px;
+  padding: 1em 1.5em;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -136,4 +139,15 @@
 .M_GalleryCard > .A_Label + .A_Label {
   margin-bottom: 12px;
   padding-left: 80px;
+}
+
+@media (max-width: 414px) {
+  .M_GalleryCard > .A_Label + .A_Label {
+    padding-left: 20px;
+  }
+  .A_Logo {
+    left: 50%;
+    transform: translate(-45%);
+    top: 10%;
+  }
 }

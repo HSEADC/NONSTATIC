@@ -2,6 +2,12 @@
   padding: 0 42px;
   display: flex;
   justify-content: flex-end;
-  grid-template-columns: repeat(24, 1fr);
   gap: 12px;
+}
+
+@media (max-width: 414px) {
+  .SO_GalleryContent {
+    flex-direction: column;
+    padding: 0 16px;
+  }
 }
