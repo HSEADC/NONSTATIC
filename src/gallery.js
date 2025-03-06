@@ -24,7 +24,7 @@ function generateGalleryCards() {
 
     const imgElement = document.createElement('div')
     imgElement.classList.add('A_GalleryCardIMG')
-    imgElement.style.backgroundImage = `url('../${item.imgSrc}')`
+    imgElement.style.backgroundImage = `url('./${item.imgSrc}')`
 
     card.appendChild(authorLabel)
     card.appendChild(titleLabel)
