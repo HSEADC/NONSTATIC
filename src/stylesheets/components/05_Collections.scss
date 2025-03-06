@@ -25,3 +25,24 @@
   align-items: flex-start;
   align-self: stretch;
 }
+
+.C_FilterButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+@media (max-width: 414px) {
+  .C_GalleryCards {
+    padding: 0;
+    row-gap: 12px;
+  }
+  .C_FilterButtons {
+    flex-direction: row;
+  }
+  .C_FooterMenu {
+    padding-right: 0px;
+    width: 100%;
+    gap: 0;
+    justify-content: space-around;
+  }
+}

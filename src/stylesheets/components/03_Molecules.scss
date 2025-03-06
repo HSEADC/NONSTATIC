@@ -14,3 +14,14 @@
   gap: 12px;
   position: relative;
 }
+
+@media (max-width: 414px) {
+  .M_GalleryCard {
+    width: 100%;
+  }
+  .M_FooterSlogan {
+    width: 100%;
+    padding-top: 184px;
+    align-items: center;
+  }
+}

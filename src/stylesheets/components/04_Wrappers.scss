@@ -19,3 +19,16 @@
   align-items: flex-start;
   gap: 8px;
 }
+
+@media (max-width: 414px) {
+  .W_MenuWithLogo {
+    padding: 0;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+  }
+  .W_Filter {
+    position: static;
+    margin-bottom: 24px;
+  }
+}

@@ -24,7 +24,7 @@
 .O_Footer.Light {
   display: flex;
   width: 100%;
-  height: 397px;
+  height: 394px;
   padding: 0px 42px 64px 42px;
   justify-content: space-between;
   align-items: flex-end;
@@ -32,4 +32,21 @@
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: 100% 100%;
+}
+
+@media (max-width: 414px) {
+  .O_Search.Base:before {
+    top: 28px;
+  }
+  .O_NavBar {
+    gap: 16px;
+    padding: 16px;
+    flex-direction: column;
+  }
+  .O_Footer.Light {
+    height: 444px;
+    padding: 24px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
