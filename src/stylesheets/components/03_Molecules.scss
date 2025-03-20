@@ -3,6 +3,10 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  cursor: pointer;
+  &.Hidden {
+    display: none;
+  }
 }
 
 .M_FooterSlogan {

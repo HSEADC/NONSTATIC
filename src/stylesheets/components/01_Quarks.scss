@@ -1,0 +1,16 @@
+.Q_ButtonIcon {
+  width: 20px;
+  height: 20px;
+  background-position: center;
+  background-size: contain;
+  transition: all 0.2s;
+  &.Cross {
+    background-image: url('../../icons/CrossBlackDesktop.svg');
+    opacity: 40%;
+  }
+}
+
+.A_Back:hover > .Q_ButtonIcon {
+  transform: rotate(180deg);
+  transition: all 0.2s;
+}

@@ -10,6 +10,7 @@ function generateGalleryCards() {
     const card = document.createElement('div')
     card.classList.add('M_GalleryCard')
     card.setAttribute('id', `gallery-card-${item.id}`)
+    card.setAttribute('data-category', item.programTag)
 
     const canvas = document.createElement('canvas')
     canvas.classList.add('A_ElectricCanvas')
@@ -22,9 +23,10 @@ function generateGalleryCards() {
     titleLabel.classList.add('A_Label')
     titleLabel.textContent = item.title
 
-    const imgElement = document.createElement('div')
+    const imgElement = document.createElement('a')
     imgElement.classList.add('A_GalleryCardIMG')
     imgElement.style.backgroundImage = `url('./${item.imgSrc}')`
+    imgElement.href = item.link
 
     card.appendChild(authorLabel)
     card.appendChild(titleLabel)
@@ -33,6 +35,7 @@ function generateGalleryCards() {
     galleryContainer.appendChild(card)
   })
 }
+
 function generativeSelection() {
   document.querySelectorAll('.M_GalleryCard').forEach((card) => {
     const canvas = card.querySelector('.A_ElectricCanvas')

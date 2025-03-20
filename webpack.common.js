@@ -14,7 +14,8 @@ module.exports = {
   },
   entry: {
     index: './src/index.js',
-    gallery: './src/gallery.js'
+    gallery: './src/gallery.js',
+    galleryFilter: './src/galleryfilters.js'
   },
   output: {
     filename: '[name].[contenthash].js',
@@ -124,7 +125,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/art-projects.html',
       filename: './art-projects.html',
-      chunks: ['gallery']
+      chunks: ['gallery', 'galleryFilter']
     }),
     new HtmlWebpackPlugin({
       template: './src/about-us.html',
@@ -139,8 +140,29 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      template: './src/practice/feedback_loop.html',
-      filename: './practice/feedback_loop.html',
+      template: './src/gallery/LiliPolacsek_VeraMolnarLevelei.html',
+      filename: './gallery/LiliPolacsek_VeraMolnarLevelei.html',
+      chunks: []
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/gallery/DanHoopert_AudioSynthesisThroughTheForest.html',
+      filename: './gallery/DanHoopert_AudioSynthesisThroughTheForest.html',
+      chunks: []
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/gallery/Glitchdo_GenerativeLandscape.html',
+      filename: './gallery/Glitchdo_GenerativeLandscape.html',
+      chunks: []
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/gallery/AmyKarle_EchoesFromTheValleyOfExistence.html',
+      filename: './gallery/AmyKarle_EchoesFromTheValleyOfExistence.html',
+      chunks: []
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/article.html',
+      filename: './article.html',
       chunks: []
     })
 
