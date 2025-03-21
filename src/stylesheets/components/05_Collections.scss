@@ -1,14 +1,16 @@
 .C_MenuButtons {
   display: flex;
   gap: 8px;
+  grid-column-start: 2;
+  grid-column-end: span 6;
 }
 
 .C_GalleryCards {
   width: 100%;
-  padding-left: 462px;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  grid-column: 7 / 25;
   row-gap: 32px;
 }
 
@@ -30,7 +32,33 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  align-items: flex-start;
 }
+
+.C_LabelCollections {
+  flex-direction: column;
+  display: flex;
+  gap: 4px;
+}
+
+.C_Tags {
+  display: flex;
+  gap: 4px;
+}
+
+.W_Article > .C_Tags {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+
+.C_RedactionPreview {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  grid-column: 15 / 19;
+}
+
 @media (max-width: 414px) {
   .C_GalleryCards {
     padding: 0;

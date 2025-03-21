@@ -1,11 +1,20 @@
+.SO_GalleryCard,
 .SO_GalleryContent {
-  padding: 0 42px;
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  position: relative;
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 12px; /* Gutter */
+  grid-column: 1 / -1;
+  padding: 0 42px; /* Left and right padding */
 }
 
+.SO_Article {
+  width: 100%;
+  width: 100%;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  grid-column: 7 / 25;
+}
 @media (max-width: 414px) {
   .SO_GalleryContent {
     flex-direction: column;

@@ -19,6 +19,37 @@
   position: relative;
 }
 
+.M_GalleryItem {
+  grid-column-start: 5;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-end: span 11;
+}
+
+.M_Label {
+  display: flex;
+}
+
+.M_Paragraph {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(18, 1fr);
+}
+
+.M_PopUp {
+  width: 100%;
+  background-color: var(--color-black-08);
+}
+
+.M_ArticleStats {
+  grid-column: 16 / 19;
+  position: relative;
+  display: flex;
+  padding-left: 60px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 @media (max-width: 414px) {
   .M_GalleryCard {
     width: 100%;

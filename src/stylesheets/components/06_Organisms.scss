@@ -1,24 +1,29 @@
 .O_Search.Base {
-  padding-top: 10px;
+  display: flex;
   height: 38px;
   position: relative;
   width: 100%;
+  grid-column-start: 7;
+  grid-column-end: span 18;
 }
 .O_Search::before {
   content: '';
   position: absolute;
   width: 100%;
   height: 2px;
-  top: 36px;
+  top: 32px;
   left: 0;
   background-color: var(--color-black-40);
 }
 
 .O_NavBar {
-  display: flex;
-  padding: 0px 42px 20px 42px;
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  padding: 0px 42px 20px;
+  gap: 12px;
+  width: 100%;
   align-items: center;
-  gap: 167px;
+  grid-column: 1 / -1;
 }
 
 .O_Footer.Light {
@@ -31,7 +36,22 @@
   background-image: url('../../images/Q_FooterBack.png');
   background-repeat: no-repeat;
   background-position: bottom;
+  grid-column: 1 / -1;
   background-size: 100% 100%;
+}
+
+.O_GalleryItemDescription {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  grid-column: 17 / 25;
+  top: 60px;
+  height: max-content;
+  gap: 40px;
+}
+
+.O_ArticleDemo {
+  position: relative;
 }
 
 @media (max-width: 414px) {

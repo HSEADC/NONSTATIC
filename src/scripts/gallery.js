@@ -1,5 +1,5 @@
-import './index.css'
-import galleryData from './gallery.json'
+import '../index.css'
+import galleryData from '../gallery.json'
 import { createNoise2D } from 'simplex-noise'
 
 function generateGalleryCards() {
@@ -17,10 +17,12 @@ function generateGalleryCards() {
 
     const authorLabel = document.createElement('h4')
     authorLabel.classList.add('A_Label')
+    authorLabel.classList.add('Important')
     authorLabel.textContent = item.author
 
     const titleLabel = document.createElement('h4')
     titleLabel.classList.add('A_Label')
+    titleLabel.classList.add('Important')
     titleLabel.textContent = item.title
 
     const imgElement = document.createElement('a')

@@ -1,0 +1,12 @@
+.MO_GalleryCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.MO_Article {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 12px; /* Gutter */
+  grid-column: 1 / -1;
+  padding: 0 42px; /* Left and right padding */
+}

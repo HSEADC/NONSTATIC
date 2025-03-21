@@ -14,3 +14,13 @@
   transform: rotate(180deg);
   transition: all 0.2s;
 }
+
+.Q_AvatarIMG {
+  width: 40px;
+  top: 0;
+  left: 0;
+  aspect-ratio: 1;
+  background-color: gray;
+  border-radius: 100%;
+  position: absolute;
+}

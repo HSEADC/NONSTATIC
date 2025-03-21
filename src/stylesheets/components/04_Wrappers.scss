@@ -1,8 +1,12 @@
 .W_MenuWithLogo {
-  display: flex;
-  gap: 37px;
+  display: grid;
+  min-width: 280px;
+  grid-column-start: 1;
+  grid-column-end: span 6;
+  column-gap: 12px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: none;
   padding: 20px 0;
-  align-items: center;
 }
 
 .W_Filter {
@@ -10,10 +14,16 @@
   flex-direction: column;
   gap: 12px;
   position: fixed;
-  left: 119px;
+  left: calc(42px + 4%);
   &.Gallery {
     top: 138px;
   }
+}
+
+.W_GalleryText {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .W_FooterMenuTable {
@@ -21,6 +31,51 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
+}
+
+.W_GalleryButton {
+  display: flex;
+  flex-direction: column;
+  padding: 0 12%;
+  gap: 20px;
+}
+
+.W_GalleryPreview {
+  position: sticky;
+  grid-column: 2 / 4;
+  top: 60px;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.W_Article {
+  aspect-ratio: 18 / 9;
+  background-color: grey;
+}
+
+.W_ArticleDemoText {
+  padding: 40px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.W_ParagraphWithTitle {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(18, 1fr);
+}
+
+.W_VideoPreview {
+  position: sticky;
+  grid-column: 2 / 6;
+  top: 24px;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 @media (max-width: 414px) {
