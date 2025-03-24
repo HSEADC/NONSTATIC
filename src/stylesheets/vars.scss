@@ -8,24 +8,31 @@
   --color-black-20: rgb(39 39 39 / 20%);
   --color-black-40: rgb(39 39 39 / 40%);
 
-  --font-h1: 700 180px/140px 'Arial Narrow', sans-serif;
-  --font-h2: 700 100px/100px 'Arial Narrow', sans-serif;
-  --font-h3: 700 40px/40px 'Arial Narrow', sans-serif;
-  --font-h4: 700 32px/37px 'Arial Narrow', sans-serif;
-  --font-p: 400 32px/37px 'Arial', sans-serif;
-  --font-dscpt: 400 16px/18px 'Arial', sans-serif;
+  --font-h1: 700 clamp(2.5rem, 0.0946rem + 9.2961vw, 11.25rem) /
+      clamp(2rem, 0.1444rem + 7.1713vw, 8.75rem) 'Arial Narrow',
+    sans-serif;
+  --font-h2: 700 clamp(2rem, 0.8317rem + 4.5153vw, 6.25rem) /
+      clamp(2rem, 0.8317rem + 4.5153vw, 6.25rem) 'Arial Narrow',
+    sans-serif;
+  --font-h3: 700 clamp(1.5rem, 1.2251rem + 1.0624vw, 2.5rem) /
+      clamp(1.5rem, 1.2251rem + 1.0624vw, 2.5rem) 'Arial Narrow',
+    sans-serif;
+  --font-h4: 700 clamp(1.125rem, 0.8845rem + 0.9296vw, 2rem) /
+      clamp(1.125rem, 0.8845rem + 0.9296vw, 2rem) 'Arial Narrow',
+    sans-serif;
+  --font-p: 400 clamp(1.125rem, 0.8845rem + 0.9296vw, 2rem) /
+      clamp(1.3125rem, 1.0376rem + 1.0624vw, 2.3125rem) 'Arial',
+    sans-serif;
+  --font-dscpt: 400 clamp(0.625rem, 0.5219rem + 0.3984vw, 1rem) /
+      clamp(0.6875rem, 0.5672rem + 0.4648vw, 1.125rem) 'Arial',
+    sans-serif;
 
   --radius-big: 4px;
   --radius-small: 2px;
 }
 @media (max-width: 414px) {
   :root {
-    --font-h2: 700 40px/40px 'Arial Narrow', sans-serif;
-    --font-h2: 700 32px/32px 'Arial Narrow', sans-serif;
-    --font-h3: 700 24px/24px 'Arial Narrow', sans-serif;
-    --font-h4: 700 18px/18px 'Arial Narrow', sans-serif;
-    --font-p: 400 18px/21px 'Arial', sans-serif;
-    --font-dscpt: 400 10px/11px 'Arial', sans-serif;
+    --font-h1: 700 40px/40px 'Arial Narrow', sans-serif;
   }
 }
 

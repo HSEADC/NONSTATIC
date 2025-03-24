@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "Симуляция плесени",
+    "imgSrc": "images/articles/slimeMoldPreview.png",
+    "altText": "slime mold simulation on black background",
+    "programTag": "codeProgramme intermediate tutorial",
+    "link": "articles/slimeMold.html"
+  },
+  {
+    "id": 2,
+    "title": "Облако точек",
+    "imgSrc": "images/articles/pointCloudPreview.png",
+    "altText": "point cloud of tree particles flying around",
+    "programTag": "nodeProgramme beginner tutorial",
+    "link": "articles/pointCloud.html"
+  },
+  {
+    "id": 3,
+    "title": "Хладни узоры",
+    "imgSrc": "images/articles/chladniPatternsPreview.png",
+    "altText": "chladni patters on black bacground",
+    "programTag": "codeProgramme beginner tutorial",
+    "link": "articles/chladniPatterns.html"
+  },
+  {
+    "id": 4,
+    "title": "Кинетическая типографика",
+    "imgSrc": "images/articles/kineticTypographyPreview.png",
+    "altText": "green glitch typography on background with fashion",
+    "programTag": "codeProgramme beginner tutorial",
+    "link": "articles/kineticTypograhy.html"
+  },
+  {
+    "id": 5,
+    "title": "Цветное стекло",
+    "imgSrc": "images/articles/colourfulGlassPreview.png",
+    "altText": "colourful glass refractions",
+    "programTag": "nodeProgramme beginner tutorial",
+    "link": "articles/colourfulGlass.html"
+  },
+  {
+    "id": 6,
+    "title": "Крипи глаза",
+    "imgSrc": "images/articles/creepyEyesPreview.mp4",
+    "altText": "creepy 3d eyes on black background",
+    "programTag": "codeProgramme intermediate tutorial",
+    "link": "articles/creepyEyes.html"
+  },
+  {
+    "id": 7,
+    "title": "Пиксельные сдвиги",
+    "imgSrc": "images/articles/pixelSlicePreview.png",
+    "altText": "landscape pixel slice",
+    "programTag": "nodeProgramme intermediate tutorial",
+    "link": "articles/pixelSlice.html"
+  },
+  {
+    "id": 8,
+    "title": "Блобы",
+    "imgSrc": "images/articles/blobsPreview.png",
+    "altText": "white gradient blobs on black background",
+    "programTag": "graphProgramme beginner tutorial",
+    "link": "articles/blobs.html"
+  },
+  {
+    "id": 9,
+    "title": "Пушистый шум",
+    "imgSrc": "images/articles/fluffyTheNoisePreview.png",
+    "altText": "fluffy cloud of particles on black background",
+    "programTag": "nodeProgramme beginner tutorial",
+    "link": "articles/FluffyTheNoise.html"
+  }
+]

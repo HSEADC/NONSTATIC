@@ -10,13 +10,11 @@
 }
 
 .M_FooterSlogan {
-  width: 603px;
+  grid-column: span 6;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: flex-end;
   gap: 12px;
-  position: relative;
 }
 
 .M_GalleryItem {
@@ -33,6 +31,7 @@
 .M_Paragraph {
   display: grid;
   grid-column: 1 / -1;
+  gap: 12px;
   grid-template-columns: repeat(18, 1fr);
 }
 
@@ -50,13 +49,26 @@
   align-items: flex-start;
 }
 
+.M_ArticlePreviewLink {
+  position: relative;
+}
+
+@media (max-width: 1280px) {
+  .M_FooterSlogan {
+    grid-column: span 10;
+  }
+}
+
 @media (max-width: 414px) {
   .M_GalleryCard {
     width: 100%;
   }
   .M_FooterSlogan {
-    width: 100%;
-    padding-top: 184px;
-    align-items: center;
+    grid-column: span 8;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 4px;
   }
 }

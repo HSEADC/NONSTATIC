@@ -1,5 +1,6 @@
 .SO_GalleryCard,
-.SO_GalleryContent {
+.SO_GalleryContent,
+.SO_ArticlesContent {
   display: grid;
   grid-template-columns: repeat(24, 1fr);
   gap: 12px; /* Gutter */
@@ -9,15 +10,22 @@
 
 .SO_Article {
   width: 100%;
-  width: 100%;
   gap: 20px;
   display: flex;
   flex-direction: column;
   grid-column: 7 / 25;
+  grid-row-start: 1;
 }
-@media (max-width: 414px) {
+
+@media (max-width: 1280px) {
   .SO_GalleryContent {
     flex-direction: column;
+    display: flex;
+  }
+}
+@media (max-width: 414px) {
+  .SO_GalleryContent,
+  .SO_ArticlesContent {
     padding: 0 16px;
   }
 }

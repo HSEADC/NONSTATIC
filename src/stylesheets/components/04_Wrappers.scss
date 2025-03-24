@@ -1,6 +1,5 @@
 .W_MenuWithLogo {
   display: grid;
-  min-width: 280px;
   grid-column-start: 1;
   grid-column-end: span 6;
   column-gap: 12px;
@@ -13,11 +12,6 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  position: fixed;
-  left: calc(42px + 4%);
-  &.Gallery {
-    top: 138px;
-  }
 }
 
 .W_GalleryText {
@@ -26,8 +20,19 @@
   gap: 20px;
 }
 
+.W_FooterSlogan {
+  height: 100%;
+  grid-column: span 10;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  align-items: end;
+  gap: 12px;
+  position: relative;
+}
+
 .W_FooterMenuTable {
   display: flex;
+  grid-column: span 4;
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
@@ -36,7 +41,7 @@
 .W_GalleryButton {
   display: flex;
   flex-direction: column;
-  padding: 0 12%;
+  padding: 0 6%;
   gap: 20px;
 }
 
@@ -71,11 +76,27 @@
 .W_VideoPreview {
   position: sticky;
   grid-column: 2 / 6;
-  top: 24px;
+  grid-row-start: 1;
+  top: 44px;
+  margin-top: 44px;
   height: max-content;
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+@media (max-width: 1280px) {
+  .W_GalleryButton {
+    padding: 0;
+  }
+  .W_FooterSlogan {
+    height: unset;
+    align-content: center;
+    grid-column: span 10;
+  }
+  .W_FooterMenuTable {
+    grid-column: span 7;
+  }
 }
 
 @media (max-width: 414px) {
@@ -85,8 +106,15 @@
     justify-content: space-between;
     flex-direction: row-reverse;
   }
-  .W_Filter {
-    position: static;
-    margin-bottom: 24px;
+  .W_FooterSlogan {
+    grid-column: span 8;
+    grid-template-columns: repeat(8, 1fr);
+    align-items: center;
+  }
+  .W_FooterMenuTable {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
 }
