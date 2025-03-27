@@ -5,7 +5,7 @@
     "title": "Vera Molnar Levelei",
     "imgSrc": "images/art-gallery/VeraMolnarLevelei_LiliPolacsek.webp",
     "altText": "Vera Molnar voice transformation in generative art",
-    "programTag": "nodeProgramme",
+    "programTag": "installation",
     "link": "gallery/LiliPolacsek_VeraMolnarLevelei.html"
   },
   {
@@ -14,8 +14,8 @@
     "title": "Generative Landscape",
     "imgSrc": "images/art-gallery/GenerativeLandscape_Glitchdo.webp",
     "altText": "Glitch art resembling animated landscapes",
-    "programTag": "codeProgramme",
-    "link": "gallery/Glitchdo_GenerativeLandscape .html"
+    "programTag": "web",
+    "link": "gallery/Glitchdo_GenerativeLandscape.html"
   },
   {
     "id": 3,
@@ -23,7 +23,7 @@
     "title": "Echoes From the Valley of Existence",
     "imgSrc": "images/art-gallery/EchoesFromTheValleyOfExistence_AmyKarle.webp",
     "altText": "Installation dedicated to bio-digital postmortal life",
-    "programTag": "codeProgramme",
+    "programTag": "installation",
     "link": "gallery/AmyKarle_EchoesFromTheValleyOfExistence.html"
   },
   {
@@ -32,7 +32,196 @@
     "title": "Audio Synthesis: Through the Forst",
     "imgSrc": "images/art-gallery/AudioSynthesisThroughTheForst_DanHoopert.webp",
     "altText": "Audiovisual experiment with LiDAR-scans of the forest",
-    "programTag": "nodeProgramme",
+    "programTag": "installation",
     "link": "gallery/DanHoopert_AudioSynthesisThroughTheForest.html"
+  },
+  {
+    "id": 5,
+    "author": "Майкл Хансмайер",
+    "title": "Гроты для оперы Моцарта",
+    "imgSrc": "images/art-gallery/MozartGrots/1.png",
+    "altText": "Mozart Grots",
+    "programTag": "installation",
+    "link": "gallery/MozartGrots.html"
+  },
+  {
+    "id": 6,
+    "author": "Kuflex",
+    "title": "Interactive Solutions for Any Space",
+    "imgSrc": "images/art-gallery/Kuflex/1.png",
+    "altText": "Kuflex",
+    "programTag": "installation",
+    "link": "gallery/Kuflex.html"
+  },
+  {
+    "id": 7,
+    "author": "Radugadesign",
+    "title": "Portal #00FF00",
+    "imgSrc": "images/art-gallery/Radugadesign/1.png",
+    "altText": "Radugadesign",
+    "programTag": "installation",
+    "link": "gallery/Radugadesign.html"
+  },
+  {
+    "id": 8,
+    "author": "Цао Юйси",
+    "title": "SEASONAL PROXIMITIES",
+    "imgSrc": "images/art-gallery/SeasonalProximities/1.gif",
+    "altText": "SEASONAL PROXIMITIES",
+    "programTag": "installation",
+    "link": "gallery/SeasonalProximities.html"
+  },
+  {
+    "id": 9,
+    "author": "TeamLab",
+    "title": "Sculptures of Dissipative Birds in the Wind",
+    "imgSrc": "images/art-gallery/DissipativeBird/1.png",
+    "altText": "Sculptures of Dissipative Birds in the WindS",
+    "programTag": "installation",
+    "link": "gallery/DissipativeBird.html"
+  },
+  {
+    "id": 10,
+    "author": "Working Knowledge",
+    "title": "Камень на распутье",
+    "imgSrc": "images/art-gallery/WorkingKnowledge/1.png",
+    "altText": "Working Knowledge",
+    "programTag": "installation",
+    "link": "gallery/WorkingKnowledge.html"
+  },
+  {
+    "id": 11,
+    "author": "Team böõnt",
+    "title": "Will-o’-the-wisps",
+    "imgSrc": "images/art-gallery/WillOTheWisps/1.png",
+    "altText": "WillOTheWisps",
+    "programTag": "installation",
+    "link": "gallery/WillOTheWisps.html"
+  },
+  {
+    "id": 12,
+    "author": "Item Author",
+    "title": "MYCELIUM",
+    "imgSrc": "images/art-gallery/Mycelium/1.png",
+    "altText": "Mycelium",
+    "programTag": "installation",
+    "link": "gallery/Mycelium.html"
+  },
+  {
+    "id": 13,
+    "author": "Софья Борискевич",
+    "title": "Календарь квантовых частиц",
+    "imgSrc": "images/art-gallery/QuantParticles/1.png",
+    "altText": "QuantParticles",
+    "programTag": "branding",
+    "link": "gallery/QuantParticles.html"
+  },
+  {
+    "id": 14,
+    "author": "Glitchdo",
+    "title": "POX & POL",
+    "imgSrc": "images/art-gallery/PoxAndPol/1.png",
+    "altText": "PoxAndPol",
+    "programTag": "branding",
+    "link": "gallery/PoxAndPol.html"
+  },
+  {
+    "id": 15,
+    "author": "Рома Ерохнович",
+    "title": "G8 identity",
+    "imgSrc": "images/art-gallery/G8Identity/1.png",
+    "altText": "G8Identity",
+    "programTag": "branding",
+    "link": "gallery/G8Identity.html"
+  },
+  {
+    "id": 16,
+    "author": "Absurdo",
+    "title": "Generative visual identity",
+    "imgSrc": "images/art-gallery/Absurdo/1.gif",
+    "altText": "Absurdo",
+    "programTag": "branding",
+    "link": "gallery/Absurdo.html"
+  },
+  {
+    "id": 17,
+    "author": "ВЭЙ-ГУАН У и др.",
+    "title": "Design Punk 2020",
+    "imgSrc": "images/art-gallery/DesignPunk2020/1.gif",
+    "altText": "DesignPunk2020",
+    "programTag": "branding",
+    "link": "gallery/DesignPunk2020.html"
+  },
+  {
+    "id": 18,
+    "author": "Kuflex",
+    "title": "Another land",
+    "imgSrc": "images/art-gallery/AnotherLandKuflex/1.png",
+    "altText": "AnotherLandKuflex",
+    "programTag": "installation",
+    "link": "gallery/AnotherLandKuflex.html"
+  },
+  {
+    "id": 19,
+    "author": "VISUAL SCIENTIST",
+    "title": "MELTING BEACH",
+    "imgSrc": "images/art-gallery/MeltingBeach/1.gif",
+    "altText": "MeltingBeach",
+    "programTag": "web",
+    "link": "gallery/MeltingBeach.html"
+  },
+  {
+    "id": 20,
+    "author": "Андреион де Кастро",
+    "title": "CREATIVE CODING EXPLORATIONS III",
+    "imgSrc": "images/art-gallery/AndreonDeCastro/1.png",
+    "altText": "AndreonDeCastro",
+    "programTag": "web",
+    "link": "gallery/AndreonDeCastro.html"
+  },
+  {
+    "id": 21,
+    "author": "Тим Зарки",
+    "title": "Edge of Chaos",
+    "imgSrc": "images/art-gallery/EdgeOfChaous/1.png",
+    "altText": "EdgeOfChaous",
+    "programTag": "web",
+    "link": "gallery/EdgeOfChaous.html"
+  },
+  {
+    "id": 22,
+    "author": "Item Author",
+    "title": "Fluffy Chaos",
+    "imgSrc": "images/art-gallery/FluffyChaous/1.png",
+    "altText": "FluffyChaous",
+    "programTag": "web",
+    "link": "gallery/FluffyChaous.html"
+  },
+  {
+    "id": 23,
+    "author": "Анастасия Медведева",
+    "title": "Ghost City",
+    "imgSrc": "images/art-gallery/GhostCity/1.gif",
+    "altText": "GhostCity",
+    "programTag": "insllation",
+    "link": "gallery/GhostCity.html"
+  },
+  {
+    "id": 23,
+    "author": "Харман Бхатия",
+    "title": "Aadatein",
+    "imgSrc": "images/art-gallery/Aadatein/1.webp",
+    "altText": "Aadatein",
+    "programTag": "clips",
+    "link": "gallery/Aadatein.html"
+  },
+  {
+    "id": 24,
+    "author": "Aphex Twin",
+    "title": "T69 Collapse",
+    "imgSrc": "images/art-gallery/T69Collapse/1.gif",
+    "altText": "T69Collapse",
+    "programTag": "clips",
+    "link": "gallery/T69Collapse.html"
   }
 ]

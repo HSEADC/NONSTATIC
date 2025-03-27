@@ -1,5 +1,6 @@
 import '../index.css'
 import articleData from '../articles.json'
+import { generativeSelection } from './generativeSelection.js'
 
 function generateArticleCards() {
   const articleContainer = document.querySelector('.C_ArticleCards')
@@ -9,29 +10,42 @@ function generateArticleCards() {
     const card = document.createElement('div')
     card.classList.add('O_Card')
     card.setAttribute('id', `article-card-${item.id}`)
-    card.setAttribute('data-category', item.sphereTag)
+    card.setAttribute('data-category', item.programTag)
 
     const canvas = document.createElement('canvas')
     canvas.classList.add('A_ElectricCanvas')
 
     const title = document.createElement('h4')
-    title.classList.add('A_Label')
-    title.classList.add('Important')
+    title.classList.add('A_Label', 'Important')
     title.textContent = item.title
 
     const imgLink = document.createElement('a')
     imgLink.classList.add('M_ArticlePreviewLink')
     imgLink.href = item.link
 
-    const imgElement = document.createElement('img')
-    imgElement.classList.add('A_ArticlePreviewIMG')
-    imgElement.src = `./${item.imgSrc}`
+    const mediaElement =
+      item.type === 'video'
+        ? (() => {
+            const video = document.createElement('video')
+            video.classList.add('A_ArticlePreviewIMG')
+            video.src = `./${item.imgSrc}`
+            video.autoplay = true
+            video.muted = true
+            video.loop = true
+            video.playsInline = true
+            return video
+          })()
+        : (() => {
+            const img = document.createElement('img')
+            img.classList.add('A_ArticlePreviewIMG')
+            img.src = `./${item.imgSrc}`
+            return img
+          })()
 
     const tags = document.createElement('div')
-    tags.classList.add('C_Tags')
-    tags.classList.add('Preview')
+    tags.classList.add('C_Tags', 'Preview')
 
-    const tagStrings = item.programTag.split(' ') // ['nodeProgramme', 'beginner', 'tutorial']
+    const tagStrings = item.programTag.split(' ')
 
     const tagTranslations = {
       nodeProgramme: 'Нодовые',
@@ -53,7 +67,7 @@ function generateArticleCards() {
 
     card.appendChild(imgLink)
     imgLink.appendChild(tags)
-    imgLink.appendChild(imgElement)
+    imgLink.appendChild(mediaElement)
     card.appendChild(title)
     card.appendChild(canvas)
     articleContainer.appendChild(card)
@@ -62,4 +76,5 @@ function generateArticleCards() {
 
 document.addEventListener('DOMContentLoaded', () => {
   generateArticleCards()
+  generativeSelection('.O_Card')
 })

@@ -8,10 +8,18 @@
     background-image: url('../../icons/CrossBlackDesktop.svg');
     opacity: 40%;
   }
+  &.Arrow {
+    background-image: url('../../icons/BackBlackDesktop.svg');
+    opacity: 40%;
+  }
 }
 
-.A_Back:hover > .Q_ButtonIcon {
+.A_Back:hover > .Q_ButtonIcon.Cross {
   transform: rotate(180deg);
+  transition: all 0.2s;
+}
+.A_Back:hover > .Q_ButtonIcon.Arrow {
+  transform: rotate(-90deg);
   transition: all 0.2s;
 }
 
@@ -23,4 +31,116 @@
   background-color: gray;
   border-radius: 100%;
   position: absolute;
+  &.Nastya {
+    background-image: url('../../images/nastyaPFP.png');
+  }
+  &.Lisa {
+    background-image: url('../../images/lisaPFP.png');
+  }
+  &.Dasha {
+    background-image: url('../../images/dashaPFP.png');
+  }
+  background-size: cover;
+  background-position: center;
+}
+
+.Q_PopUpIcon {
+  width: 12px;
+  height: 1.5px;
+  background-color: var(--black);
+  border-radius: 100px;
+  position: relative;
+}
+
+.Q_PopUpIcon:after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 1.5px;
+  left: 0.2px;
+  transform-origin: center;
+  background-color: var(--black);
+  border-radius: 100px;
+  transform: rotate(0deg);
+  transition-delay: 0s, 0.1s;
+  transition-property: center, transform;
+  transition-duration: 0.1s, 0.1s;
+}
+
+.Q_PopUpIcon.Closed:after {
+  transform: rotate(90deg);
+  left: 0.2px;
+  transition-property: center, transform;
+  transition-delay: 0s, 0.1s;
+  transition-duration: 0.1s, 0.1s;
+}
+
+.Q_Burger {
+  height: 3px;
+  width: 24px;
+  border-radius: 1000px;
+  background-color: var(--white04);
+  position: relative;
+}
+
+.Q_Burger:after,
+.Q_Burger:before {
+  left: 0;
+  position: absolute;
+  border-radius: 1000px;
+  width: 24px;
+  content: '';
+  background-color: var(--color-black-04);
+  height: 1.5px;
+  transition: 1s;
+}
+
+.Q_Burger:after {
+  top: -300%;
+  transition-delay: 0s, 0.3s;
+  transition-property: top, transform;
+  transition-duration: 0.5s, 0.5s;
+}
+.Q_Burger:before {
+  top: 300%;
+  transition-delay: 0s, 0.3s;
+  transition-property: top, transform;
+  transition-duration: 0.5s, 0.5s;
+}
+
+.Q_ScrollBlur {
+  position: absolute;
+  inset: 0;
+  transform: rotate(180deg);
+  height: 120px;
+  width: 100%;
+  pointer-events: none;
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 414px) {
+  .Q_ScrollBlur {
+    height: 120px;
+  }
+}
+
+.Q_Burger.Active {
+  background: none;
+}
+.Q_Burger.Active:before,
+.Q_Burger.Active:after {
+  background-color: var(--color-black-04);
+  transition-delay: 0s, 0.3s;
+  transition-property: top, rotate;
+  transition-duration: 0.3s, 0.3s;
+  top: 0;
+}
+.Q_Burger.Active:before {
+  rotate: 45deg;
+}
+.Q_Burger.Active:after {
+  rotate: -45deg;
 }

@@ -1,42 +1,25 @@
 import './index.css'
 
-var form = document.getElementById('my-form')
+import { glitchText } from './scripts/glitchText.js'
 
-async function handleSubmit(event) {
-  event.preventDefault()
-  var status = document.getElementById('my-form-status')
-  var button = document.getElementById('my-form-button')
-  var collectEmails = document.querySelector('.collectEmails')
-  var data = new FormData(event.target)
-  fetch(event.target.action, {
-    method: form.method,
-    body: data,
-    headers: {
-      Accept: 'application/json'
-    }
-  })
-    .then((response) => {
-      status.style.display = 'block'
-      if (response.ok) {
-        status.innerHTML =
-          'cпасибо <3 После запуска мы добавим вас в наш список рассылки'
-        button.remove()
-        collectEmails.remove()
-        form.reset()
-      } else {
-        response.json().then((data) => {
-          if (Object.hasOwn(data, 'errors')) {
-            status.innerHTML = 'чет не сработало('
-          } else {
-            status.innerHTML = 'чет не сработало('
-          }
-        })
-      }
+document.addEventListener('DOMContentLoaded', () => {
+  document
+    .querySelectorAll('.A_Back, .A_MenuButton, .A_Button')
+    .forEach((el) => {
+      el.addEventListener('mouseenter', () => glitchText(el))
     })
-    .catch((error) => {
-      status.innerHTML = 'чет не сработало('
-    })
-}
-if (form) {
-  form.addEventListener('submit', handleSubmit)
-}
+})
+
+const burgerButton = document.querySelector('.A_Burger')
+const menuButtons = document.querySelectorAll('.C_MenuButtons')[1]
+const searchBase = document.querySelector('.O_Search.Base')
+const burgerIcon = document.querySelector('.Q_Burger')
+const nav = document.querySelector('.O_NavBar')
+
+burgerButton.addEventListener('click', function () {
+  menuButtons.classList.toggle('Active')
+  searchBase.classList.toggle('Active')
+  burgerIcon.classList.toggle('Active')
+  burgerButton.classList.toggle('Active')
+  nav.classList.toggle('Active')
+})

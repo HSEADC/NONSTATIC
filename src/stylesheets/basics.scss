@@ -1,6 +1,47 @@
 body {
   background-color: #efefef;
+  padding-top: 72px;
 }
 a {
   text-decoration: none;
+}
+
+/* Переопределяем стили для Prism.js */
+pre[class*='language-'],
+code[class*='language-'] {
+  background: var(--color-black-08) !important;
+  color: inherit !important;
+  padding: 1.8rem !important;
+  margin: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: auto !important;
+}
+
+code[class*='language-'] {
+  padding: 0px !important;
+  font-size: clamp(0.625rem, 0.425rem + 1vw, 1.625rem) !important;
+}
+pre.darktheme[class*='language-'] {
+  padding: 0px !important;
+  background: var(--black) !important; /* Пример другого фона */
+  color: var(--white) !important; /* Пример светлого текста */
+}
+
+code.darktheme[class*='language-'] {
+  padding: 8px !important;
+  background: var(--black) !important; /* Пример другого фона */
+  color: var(--white) !important; /* Пример светлого текста */
+
+  text-shadow: none;
+}
+
+@media (max-width: 414px) {
+  code[class*='language-'] {
+    font-size: clamp(0.625rem, 0.425rem + 1vw, 1.625rem) !important;
+    padding: 8px !important;
+  }
+  pre[class*='language-'] {
+    padding: 8px !important;
+  }
 }

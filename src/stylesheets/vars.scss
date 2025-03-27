@@ -4,7 +4,8 @@
   --blue: #9cf8f8;
   --white: white;
   --black: #272727;
-  --color-black-08: rgb(39 39 39/ 8%);
+  --color-black-08: #dfdfdf;
+  --color-black-04: #9f9f9f;
   --color-black-20: rgb(39 39 39 / 20%);
   --color-black-40: rgb(39 39 39 / 40%);
 
@@ -26,7 +27,8 @@
   --font-dscpt: 400 clamp(0.625rem, 0.5219rem + 0.3984vw, 1rem) /
       clamp(0.6875rem, 0.5672rem + 0.4648vw, 1.125rem) 'Arial',
     sans-serif;
-
+  --error-font: 400 clamp(12.5rem, 6.25rem + 31.25vw, 43.75rem) / clamp(12.5rem, 6.25rem + 31.25vw, 43.75rem) 'Arial Narrow', sans-serif;
+    --font-code: 400 clamp(0.625rem, 0.425rem + 1vw, 1.625rem) / clamp(0.625rem, 0.45rem + 0.875vw, 1.5rem) 'Courier New', sans-serif
   --radius-big: 4px;
   --radius-small: 2px;
 }

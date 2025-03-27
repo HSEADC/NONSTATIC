@@ -1,4 +1,4 @@
-.MG {
-  display: flex;
-  flex-direction: column;
+.MG_Article {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
 }

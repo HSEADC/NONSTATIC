@@ -10,4 +10,17 @@
   gap: 12px; /* Gutter */
   grid-column: 1 / -1;
   padding: 0 42px; /* Left and right padding */
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 900px) {
+  .MO_Article {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 414px) {
+  .MO_Article {
+    grid-template-columns: repeat(8, 1fr);
+  }
 }

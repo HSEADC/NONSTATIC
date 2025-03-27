@@ -6,6 +6,7 @@
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: none;
   padding: 20px 0;
+  align-items: center;
 }
 
 .W_Filter {
@@ -30,6 +31,41 @@
   position: relative;
 }
 
+.W_IndexLabelColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &.Videos {
+    grid-column: 1 / 11;
+  }
+  &.Articles {
+    grid-column: 11 / -1;
+  }
+}
+
+.W_CollectEmails {
+  grid-column: 10 / -1;
+}
+
+.A_IndexTutorialIMG {
+  width: 100%;
+  object-fit: cover;
+  &.Video {
+    aspect-ratio: 16 / 9;
+  }
+  &.Article {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.W_CategoryDescription {
+  grid-column: 1 / 8;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
 .W_FooterMenuTable {
   display: flex;
   grid-column: span 4;
@@ -48,8 +84,25 @@
 .W_GalleryPreview {
   position: sticky;
   grid-column: 2 / 4;
-  top: 60px;
   height: max-content;
+  grid-row-start: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  top: 72px;
+  margin-top: 64px;
+}
+
+.W_CollectEmails {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.W_ArticleRecommendation {
+  grid-column: 7 / -1;
+  margin-top: 40px;
+  padding-right: 40px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -73,16 +126,21 @@
   grid-template-columns: repeat(18, 1fr);
 }
 
-.W_VideoPreview {
-  position: sticky;
-  grid-column: 2 / 6;
-  grid-row-start: 1;
-  top: 44px;
-  margin-top: 44px;
-  height: max-content;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+@media (max-width: 1000px) {
+  .W_CategoryDescription {
+    grid-column: 1 / -1;
+  }
+  .W_CollectEmails {
+    grid-column: 2 / -1;
+  }
+  .W_IndexLabelColumn {
+    &.Videos {
+      grid-column: 1 / 5;
+    }
+    &.Articles {
+      grid-column: 5 / -1;
+    }
+  }
 }
 
 @media (max-width: 1280px) {
@@ -99,7 +157,67 @@
   }
 }
 
+@media (max-width: 900px) {
+  .W_GalleryPreview {
+    position: relative;
+    grid-row-start: 4;
+    margin-top: 0;
+    grid-column: 2 / -2;
+  }
+  .W_ArticleRecommendation {
+    grid-column: 1 / -1;
+    padding-left: 16px;
+    margin-top: 40px;
+    padding-right: 16px;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 414px) {
+  .W_ParagraphWithTitle {
+    grid-column: 5 / -1;
+    grid-template-columns: repeat(19, 1fr);
+  }
+  .W_ArticleDemoText {
+    gap: 20px;
+    padding: 20px 0px 0px;
+  }
+}
+
+@media (max-width: 1000px) and (min-width: 900px) {
+  .W_ArticleRecommendation {
+    overflow-x: scroll;
+  }
+}
+
+@media (max-width: 784px) {
+  .W_ArticleRecommendation {
+    overflow-x: scroll;
+  }
+}
+
 @media (max-width: 414px) {
+  .W_IndexLabelColumn {
+    &.Videos {
+      grid-column: 1 / -1;
+    }
+    &.Articles {
+      grid-column: 1 / -1;
+    }
+  }
+  .W_ArticleRecommendation {
+    gap: 12px;
+  }
+  .W_ParagraphWithTitle {
+    grid-template-columns: repeat(8, 1fr);
+    row-gap: 12px;
+    column-gap: 8px;
+  }
+  .W_Article {
+    aspect-ratio: 1 / 1;
+  }
+  .W_ArticleDemoText {
+    padding: 20px 0 0;
+  }
   .W_MenuWithLogo {
     padding: 0;
     width: 100%;
@@ -109,6 +227,7 @@
   .W_FooterSlogan {
     grid-column: span 8;
     grid-template-columns: repeat(8, 1fr);
+    gap: 8px;
     align-items: center;
   }
   .W_FooterMenuTable {
