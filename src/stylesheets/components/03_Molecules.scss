@@ -142,6 +142,7 @@
 }
 
 .M_ArticlePreviewLink {
+  height: 100%;
   position: relative;
 }
 
@@ -190,12 +191,8 @@
 }
 
 @media (max-width: 900px) and (min-width: 414px) {
-  .Q_AvatarIMG {
-    width: 35px;
-    top: -30%;
-  }
   .M_ArticleStats {
-    padding-top: 20px;
+    padding-top: 50px;
     padding-left: 0px;
   }
   .W_ParagraphWithTitle > .M_Paragraph {

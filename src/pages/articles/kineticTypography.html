@@ -80,140 +80,176 @@
         <div class="M_Paragraph">
           <div class="A_Paragraph ArticleMain">Кинетическая типографика — это искусство и техника анимации текста. В среде программирования Processing она становится доступной и позволяет создавать уникальные визуальные эффекты, используя текстовые анимации. Такие анимации можно использовать в различных проектах, например, в постерах.</div>
           <div class="M_ArticleStats">
-            <div class="A_Description">Даша Бушенева</div>
+            <div class="A_Description">Настя Абазина</div>
             <div class="A_Description">16/02/20025</div>
-            <div class="Q_AvatarIMG Dasha"></div>
+            <div class="Q_AvatarIMG Nastya"></div>
           </div>
         </div>
       </div>
     </div>
     <img class="A_VideoPreview Tablet" src="../../images/articles/CreepyEyes/creepyEyesPreview.mp4"></img>
+
     <div class="W_ParagraphWithTitle">
       <h3 class="A_H3">Алгоритм</h3>
       <div class="M_Paragraph">
-        <div class="A_Description">Шаг  1</div>
-        <div class="A_Paragraph">Сначала объявляются глобальные переменные. Эти переменные нужны, чтобы разные части кода могли к ним обращаться.</div>
-      </div>
-    </div>
-    <div class="M_Paragraph">
-      <div class="A_Description">Шаг 2</div>
-      <div class="A_Paragraph">Particles – массив для хранения всех частиц (песчинок) на пластине. По сути, это список объектов или координат, представляющих каждую песчинку, которая будет двигаться по холсту. Параметры узора Хладни, например n и m – числа, определяющие форму узора. Они соответствуют различным режимам колебаний пластины. Изменяя эти числа, мы получаем разные фигуры (разное количество узлов и петель в узоре). Изначально им могут быть присвоены какие-то стартовые значения по умолчанию. </div>
-        <div class="A_Description Right">Возможны вспомогательные переменные, например, numParticles, если мы хотим легко менять, сколько песчинок используется в симуляции или threshold для определения, сильно или слабо вибрирует точка</div>
-      </div>
-    <div class="M_Paragraph">
-      <div class="A_Description">Скопируй</div>
-      <div class="A_NodeBox"><pre><code class="language-javascript">let particles = []; let num = 5000;
-        let m = 5; let n = 4; let threshold = 0.05;
-        let minMN = 1; let maxMN = 6;
-        let changePattern = true;
-        let margin = 50; let w1, w2, h1, h2;
-        let scl = 1;</code></pre>
-    </div>
-  </div>
-    <div class="M_Paragraph">
-      <div class="A_Paragraph">Здесь мы создали пустой массив particles и задали начальные значения n и m. Мы выбрали случайно 5 и 4 в качестве примера. Переменная numParticles указана для примера.</div>
-    </div>
-    <div class="M_Paragraph">
-      <div class="A_Description">Шаг  3</div>
-      <div class="A_Paragraph">Функция setup() запускается первым делом. Ее основная задача — подготовить «сцену» для нашей визуализации.</div>
-    </div>
-    <div class="M_Paragraph">
-      <div class="A_Description">Скопируй</div>
-      <div class="A_NodeBox"><pre><code class="language-javascript">let particles = []; let num = 5000;
-        function setup() {
-          createCanvas(400 , 400 );
-          w1 = margin; w2 = width - margin;
-          h1 = margin; h2 = height - margin;
-          
-          bgColor = color(39, 39, 39);  
-          particleColor = color(239, 239, 239);  
-        ​
-          for (let i = 0; i = num; i++) {
-            particles.push(new Particle());
-          }
-        }</code></pre>
-    </div>
-  </div>
-    <div class="M_Paragraph">
-      <div class="A_Paragraph">createCanvas(400, 400) создает область для рисования размером 400 на 400 пикселей. Теперь узор будет ограничены этим холстом.</div>
-    </div>
-
-    <div class="M_Paragraph">
-      <div class="A_Paragraph">Далее мы вызываем background(0), чтобы закрасить весь холст черным цветом. Это будет начальный фон. </div>
-    </div>
-
-    <div class="M_Paragraph">
-      <div class="A_Paragraph">Следующая строка stroke(255) устанавливает цвет обводки (контуров) для фигур на холсте в белый. В p5.js функция stroke() отвечает за цвет линий и точек. Таким образом, когда мы будем рисовать частицы как точки, они будут белыми на черном фоне – как песок на темной пластине.  </div>
-    </div>
-    <div class="M_Paragraph">
-      <div class="A_Paragraph">Далее самая важная часть setup() – цикл, который заполняет массив particles. Здесь мы решаем, сколько частиц (песчинок) будем симулировать, и размещаем их по случайным позициям на пластине. В примере мы используем for-цикл от 0 до numParticles. На каждой итерации генерируем случайные координаты x и y внутри границ холста с помощью функции random(). random(width) дает случайное число от 0 до значения width, а random(height) – от 0 до height. Затем мы создаем объект частицы, в простейшем случае это объект с двумя свойствами, x и y, и добавляем этот объект в массив particles.</div>
-    </div>
-    <div class="M_Paragraph">
-      <div class="A_Paragraph">После выполнения setup() у нас будет создан холст, фон настроен, и в памяти хранится много «песчинок», каждая со своей случайной позицией. Они пока ещё не нарисованы на экране (мы только подготовили данные). Рисоваться и обновляться они будут в функции draw().</div>
-    </div>
-
-    <div class="M_Paragraph">
-      <div class="A_Paragraph">Функция draw() отвечает за анимацию. Каждую итерацию кадра она обновляет состояние системы и выводит результат на экран. Для нашей визуализации узоров Хладни это означает: стирать предыдущий кадр, рассчитывать, куда двинутся частицы (если двинутся), и рисовать их на новых местах.</div>
+        <div class="A_Description">Шаг 1</div>
+        <div class="A_Paragraph">Сначала объявляем переменные. Тебе нужно использовать PGraphics для рендеринга текста, PFont 
+          для шрифта, PImage для фона и waveOffset для управления анимацией. Количество тайлов (плиток) задается через tilesX и tilesY — они определяют, на сколько частей делится изображение.</div>
+      </div>      
     </div>
 
     <div class="M_Paragraph">
       <div class="A_Description">Скопируй</div>
-      <div class="A_NodeBox"><pre><code class="language-javascript">function draw() 
-        if (frameCount % 60 == 0) {
-          pg.beginDraw();
-          pg.clear();
-          pg.fill(#ECFF0C);
-          pg.textFont(font);
-          pg.textAlign(CENTER, CENTER);
-          pg.textSize(180);
-          pg.pushMatrix();
-          pg.translate(width/2, height/2 - 80);
-          pg.text("JUST\nTIRED", 0, 0);
-          pg.popMatrix();
-          pg.endDraw();
-        }
-        
-       </code> </pre>
+      <div class="A_NodeBox"><pre><code class="language-processing">PGraphics pg;
+PFont font;
+float waveOffset;
+int tilesX = 16;
+int tilesY = 24;
+PImage bg;</code></pre>
     </div>
   </div>
 
-    <div class="M_Paragraph">
+  <div class="M_Paragraph">
+    <div class="A_Description">Шаг 2</div>
+    <div class="A_Paragraph">В setup() происходит начальная настройка анимации. Строка size(1115, 700, P2D) создает окно размером 1115 </div>
+    <div class="A_Description Right">Размер холста ты можешь задать исходя из размеров картинки</div>
+  </div>
 
-      <div class="A_Paragraph">В начале каждого кадра мы вызываем background(0) – это очищение холста, закрашивая его заново черным цветом. Делается это каждый раз, чтобы мы видели только актуальные положения частиц, а старые положения не оставались на экране. Если бы мы не очищали фон, частицы бы оставляли «следы» , и картинка быстро превратилась бы в сплошное пятно. Нам же важно видеть именно узор из частиц, собравшихся в определенных местах.</div>
-    </div>
-
-    <div class="M_Paragraph">
-      <div class="A_Description">Шаг  7</div>
-      <div class="A_Paragraph">Далее идет цикл for через все частицы. Внутри мы сначала вычисляем величину vibration = chladni(p.x, p.y). Здесь мы вызываем нашу специальную функцию chladni(), о ней подробнее чуть ниже, и передаем ей координаты частицы. Эта функция нам возвращает некоторую численную величину, характеризующую, насколько сильно вибрирует пластина в данной точке.</div>
-    </div>
-
-    <div class="M_Paragraph">
-      <div class="A_Description">Шаг  8</div>
-      <div class="A_Paragraph">Далее с помощью if мы решаем, двигать частицу или нет. Мы берём абсолютное значение abs(vibration) – модуль колебания. Почему модуль? Потому что формула может давать как положительные, так и отрицательные значения, нас интересует именно по модулю величина колебания. Мы сравниваем это значение с некоторым порогом, например 0.1 (в приведённом примере кода). Если abs(vibration) > 0.1, условно считаем, что в этой точке пластина заметно колеблется (анти-узел, где песок не удерживается и будет «стряхиваться»). Слегка сдвинем ее на небольшое случайное расстояние по X и Y. Здесь random(-1, 1) возвращает случайное число от — 1 до 1. То есть мы смещаем частицу на долю пикселя или несколько пикселей в случайном направлении. Этот случайный толчок имитирует вибрацию.</div>
-    </div>
   
+  <div class="M_Paragraph">
+    <div class="A_Paragraph">Затем если ты хочешь загрузить фоновое изображение, 
+      то можно вставить ссылку. Если интернета нет или ссылка битая, в блоке catch создается черный фон. Картинка автоматически растягивается под размер окна 
+      с помощью bg.resize(width, height).</div>
+  </div>
 
-    <div class="W_ParagraphWithTitle">
-      <h3 class="A_H3">А вот что получилось у редакции</h3>
-      <img src="../../images/articles/KineticTypography/2.gif" alt="" class="A_GalleryRedactionContainer"></video>
-      <div class="C_RedactionPreview">
-        <img src="../../images/articles/KineticTypography/4.webp" class="A_Redaction"></img>
-        <img src="../../images/articles/KineticTypography/2.gif"  alt="" class="A_Redaction">
-        <img src="../../images/articles/KineticTypography/3.webp"  alt="" class="A_Redaction">
-      </div>
-    </div>
+
+  <div class="M_Paragraph">
+    <div class="A_Description">Скопируй</div>
+    <div class="A_NodeBox"><pre><code class="language-java">void setup() {
+  size(1115, 700, P2D);
+  font = createFont("Helvetica", 200);
+  pg = createGraphics(width, height, P2D);
+
+  try {
+    bg = loadImage("https://
+  i.pinimg.com/736x/31/4f/32/314f3220e6c8bbb205e.jpg");
+    bg.resize(width, height); 
+  } catch (Exception e) {
+    println("Ошибка загрузки изображения: " + e.getMessage());    
+    bg = createImage(width, height, RGB);
+  }
+}</code></pre>
+  </div>
+</div>
   
+<div class="M_Paragraph">
+  <div class="A_Description">Шаг 3</div>
+  <div class="A_Paragraph">Функция draw() выполняется 60 раз в секунду. Каждый 
+    раз мы начинаем с отрисовки фона: image(bg, 0, 0). Затем увеличиваем waveOffset на 0.04 — это «двигатель» анимации.</div>
+  <div class="A_Description Right">Если увеличить это число, волны побегут быстрее</div>
+</div>
+
+<div class="M_Paragraph">
+  <div class="A_Description">Скопируй</div>
+  <div class="A_NodeBox"><pre><code class="language-java">void setup() {
+  void draw() {
+    image(bg, 0, 0);
+    waveOffset += 0.04;
+  }
+}</code></pre>
+</div>
+</div>
+
+<div class="M_Paragraph">
+  <div class="A_Description">Шаг 4</div>
+  <div class="A_Paragraph">Раз в секунду (когда frameCount делится на 60 без остатка) мы обновляем текст в буфере pg. Начини с pg.beginDraw(), чтобы подготовить буфер к работе. pg.clear() стирает старый текст, а pg.fill(#ECFF0C) задает твой выбранный цвет.  Центрируй текст с помощью pg.textAlign(CENTER, CENTER). Надпись «JUST\nTIRED» располагается с переносом строки, а pg.endDraw() завершает работу с буфером. </div>
+</div>
+
+<div class="M_Paragraph">
+  <div class="A_Description">Скопируй</div>
+  <div class="A_NodeBox"><pre><code class="language-java">if (frameCount % 60 == 0) {
+pg.beginDraw();
+pg.clear();
+pg.fill(#ECFF0C);
+pg.textFont(font);
+pg.textAlign(CENTER, CENTER);
+pg.textSize(180);
+pg.pushMatrix();
+pg.translate(width/2, height/2 - 80);
+pg.text("JUST\nTIRED", 0, 0);
+pg.popMatrix();
+pg.endDraw();
+}</code></pre>
+</div>
+</div>
+
+<div class="M_Paragraph">
+  <div class="A_Description">Шаг 5</div>
+  <div class="A_Paragraph">Разбей текст на плитки размером tileW и tileH (ширина 
+    и высота одной плитки). Для каждой плитки вычисли смещение по вертикали и горизонтали с помощью функций sin() и cos(). Например, sin(waveOffset + y * 0.2) * 30 создает вертикальное смещение: чем ниже плитка (больше y), тем больше задержка, что дает эффект бегущей волны. Горизонтальное смещение cos(waveOffset * 1.5 + x * 0.3) * 40 работает похоже, но волна здесь движется быстрее за счет множителя 1.5. </div>
+</div>
+
+<div class="M_Paragraph">
+  <div class="A_Description">Скопируй</div>
+  <div class="A_NodeBox"><pre><code class="language-java">int tileW = width/tilesX;
+int tileH = height/tilesY;
+
+for (int y = 0; y &lt; tilesY; y++) {
+    float yOffset = sin(waveOffset + y*0.2) * 30;
+    for (int x = 0; x &lt; tilesX; x++) {
+      float xOffset = cos(waveOffset*1.5 + x*0.3) * 40;
+</code></pre>
+</div>
+</div>
+
+<div class="M_Paragraph">
+  <div class="A_Description">Шаг 6</div>
+  <div class="A_Paragraph">Оператор % pg.width обеспечивает циклическое смещение плиток: если элемент выходит за границу экрана, он появляется с противоположной стороны. Функция tint(255, 220) задает прозрачность плиток, позволяя фону просвечивать. copy() переносит фрагменты из буфера на экран, а blendMode(NORMAL) сбрасывает параметры смешивания цветов для нового кадра. </div>
+</div>
+
+<div class="M_Paragraph">
+  <div class="A_Description">Скопируй</div>
+  <div class="A_NodeBox"><pre><code class="language-java">float sx = (x * tileW + xOffset + pg.width) % pg.width;
+float sy = (y * tileH + yOffset + pg.height) % pg.height;
+      
+tint(255, 220);
+      copy(pg, (int)sx, (int)sy, tileW, tileH, x*tileW, y*tileH, tileW, tileH);
+    }
+  }
+  
+  blendMode(NORMAL);
+}</code></pre>
+</div>
+</div>
+
+<div class="W_ParagraphWithTitle">
+  <h3 class="A_H3">Кастомизация</h3>
+  <div class="M_Paragraph">
+    <div class="A_Paragraph">Ты можешь поэксперементировать, например поменяй цвет текста, заменив #ECFF0C на свой. Ускорь волну, увеличив значение 0.04 в строке waveOffset += 0.04 до 0.07. Сделай плитки крупнее, уменьшив tilesX до 12 и tilesY до 18.</div>
+  </div>      
+</div>
+
+<div class="W_ParagraphWithTitle">
+  <h3 class="A_H3">А вот что получилось у редакции</h3>
+  <img src="../../images/articles/KineticTypography/2.gif" alt="" class="A_GalleryRedactionContainer"></video>
+  <div class="C_RedactionPreview">
+    <img src="../../images/articles/KineticTypography/4.webp" class="A_Redaction"></img>
+    <img src="../../images/articles/KineticTypography/2.gif"  alt="" class="A_Redaction">
+    <img src="../../images/articles/KineticTypography/3.webp"  alt="" class="A_Redaction">
   </div>
-  </div>
-  <div class="W_ArticleRecommendation">
+</div>
+
+<div class="W_ArticleRecommendation">
     <h2 class="A_H2">Похожие статьи</h2>
       <div class="C_ArticlesRecommendation">
-      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="articles/pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
-      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="articles/pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
-      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="articles/pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
+      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="FluffyTheNoise.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/fluffyTheNoisePreview.png"></a><h4 class="A_Label Important">Пушистый шум</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
+      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
+      <div class="O_Card" id="article-card-2" data-category="code beginner tutorial"><a class="M_ArticlePreviewLink" href="slimeMold.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/slimeMoldPreview.png"></a><h4 class="A_Label Important">Симуляция плесени</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
   </div>
-    </div>
-    
+</div>
+
+</div>
+</div>
     <div class="O_Footer Light">
       <div class="W_FooterSlogan">
       <div class="M_FooterSlogan">

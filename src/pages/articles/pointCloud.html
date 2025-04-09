@@ -39,7 +39,7 @@
     <div class="O_PopUp Opened">
       <div class="M_PopupOpenLine"><div class="A_Description Important">Важная инфа</div>
     <div class="Q_PopUpIcon Opened"></div></div>
-      <div class="A_Description">Этот тутор ты можешь повторить в нашей песочнице</div>
+      <div class="A_Description">Большое количество дубликатов текста может сильно нагрузить After Effects, особенно на слабых компьютерах, не забудь включить аввтосейв. Экспрешны работают только при включенном движке JavaScript</div>
         <div class="A_Description Important">Материалы</div>
         <div class="C_PopUpMateirals">
           <div class="A_Description">Проджект файл</div>
@@ -66,7 +66,7 @@
         <div class="O_PopUp Closed Mobile">
           <div class="M_PopupOpenLine"><h4 class="A_Label Important">Важная инфа</h4>
         <div class="Q_PopUpIcon Closed"></div></div>
-          <div class="A_Description Closed">Этот тутор ты можешь повторить в нашей песочнице</div>
+          <div class="A_Description Closed">Большое количество дубликатов текста может сильно нагрузить After Effects, особенно на слабых компьютерах, не забудь включить аввтосейв. Экспрешны работают только при включенном движке JavaScript</div>
             <h4 class="A_Label Important Closed">Материалы</h4>
             <div class="C_PopUpMateirals Closed">
               <div class="A_Description Closed">Проджект файл</div>
@@ -80,56 +80,121 @@
         <div class="M_Paragraph">
           <div class="A_Paragraph ArticleMain">Поинтклауд — это набор точек в трехмерном пространстве, каждая из которых имеет свои координаты (x, y, z) и может содержать дополнительную информацию, такую как цвет или интенсивность.</div>
           <div class="M_ArticleStats">
-            <div class="A_Description">Лиза Цимайло</div>
+            <div class="A_Description">Даша Бушенева</div>
             <div class="A_Description">16/02/20025</div>
-            <div class="Q_AvatarIMG Lisa"></div>
+            <div class="Q_AvatarIMG Dasha"></div>
           </div>
         </div>
       </div>
     </div>
     <video class="A_VideoPreview Tablet" src="../../images/articles/PointCloud/redaction1.mp4" loop="" autoplay="" muted=""></video>
+
     <div class="W_ParagraphWithTitle">
       <h3 class="A_H3">Алгоритм</h3>
       <div class="M_Paragraph">
         <div class="A_Description">Шаг  1</div>
-        <div class="A_Paragraph">Сначала объявляются глобальные переменные. Эти переменные нужны, чтобы разные части кода могли к ним обращаться.</div>
+        <div class="A_Paragraph">Открываем After Effects и создаeм новую композицию. Устанавливаем размеры композиции на 1080 на 1920 пикселей. Настриваем 25 кадров в секунду и продолжительность композиции — 30 секунд</div>
+        <div class="A_Description Right">В этом шаге все опционально</div>
       </div>
     </div>
+
     <div class="M_Paragraph">
-      <div class="A_Description">Чекни</div>
-      <div class="A_NodeBox"><img src="../../images/articles/PointCloud/2.png" alt=""></div>
+      <div class="A_Description">Шаг  2</div>
+      <div class="A_Paragraph">Создаeм текстовый объект. Для примера можно взять слово «NONSTATIC». В панели настройки текста устанавливаем размер шрифта, в туторе 28 пикселей, выбираем сам шрифт и начертание. Можно взять любое слово, текст или букву.</div>
     </div>
-    <div class="M_Paragraph">
-      <div class="A_Description">Шаг 2</div>
-      <div class="A_Paragraph">Далее нужно добавить Geo , затем Cam и один источник света Light. К Geo подсоедини Line из семейства МАТ.</div>
-    </div>
+
     <div class="M_Paragraph">
       <div class="A_Description">Шаг  3</div>
-      <div class="A_Paragraph">Добавь Render из семейства ТОР и поменяй ему разрешение 1080 на 1350. В качестве фона используй Transform и поставь режим Ол в последнем пункте Comp Over Background Color. Между Render и Transform нужно поставить Null.</div>
-      <div class="A_Description Right">Ты можешь поставить 
-        в Transform любой цвет фона, но я оставлю черный</div>
+      <div class="A_Paragraph">Нужно продублировать это слово много раз. Чтобы не деать это вручную, переходим в тектовый слой и найти Source Text, выделяем этот слой зажми Alt или Option на macOS и кликни на секундомер. Пишем команду repeat(500), текст должен продублироваться 500 раз автоматически. Ты можешь адаптировать этот скрипт под нужное количество символов.</div>
+      <div class="A_Description Right">Экспрешны работают только на свойствах слоeeв, убедись, что слой выделен</div>
     </div>
+
     <div class="M_Paragraph">
-      <div class="A_Description">Чекни</div>
-      <div class="A_NodeBox"><img src="../../images/articles/PointCloud/2.png" alt=""></div>
+      <div class="A_Description">Скопируй</div>
+      <div class="A_NodeBox"><pre><code class="language-javascript">repeat(500)</code></pre>
     </div>
-    <div class="M_Paragraph">
-      <div class="A_Description">Шаг  4</div>
-      <div class="A_Paragraph">Вернись в раздел Grid и поставь значения Size: 2 и 6. Чтобы добавить глубины и деталей, нужно настроить Primitive Type: Nurbs, Rows: 50 и Columns: 20.</div>
-    </div>
+  </div>
+
   
     <div class="M_Paragraph">
-      <div class="A_Paragraph">Вернись в раздел Noise и выстави настройки шероховатости Roughness: 0.4 и Amplitude: 1.5 </div>
-      <div class="A_Description Right">Во всех этих параметрах можно выставить свои значения, так результат получится оригинальным </div>
+      <div class="A_Paragraph">Теперь нужно сделать так, чтобы все буквы наложились друг на друга. Для этого возврощаемся в панель настройки текста и меняем трекинг, пока все символы не совпадут в единое целое.</div>
     </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Шаг  4</div>
+      <div class="A_Paragraph">В панели Animate находим Position, после проваливаемся в этот слой и настраиваем насколько далеко будут разлетаться частцы. В туторе они разлетаются на 500.</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Paragraph">В панели Animate находим Position, после проваливаемся в этот слой и настраиваем насколько далеко будут разлетаться частцы. В туторе они разлетаются на 500.</div>
+      <div class="A_Description Right">Мы будем работать с процентами, мы не можем выйти за 100%</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Paragraph">Мы будем работать с двумерным массивом x и y. Движение по кругу это синус и косинус, значит нам нужно чтобы по одной оси был синус, по другой оси был косинус, мы для этого и пишем в Expression селекторе выражение:</div>
+    </div>
+
+  
+    <div class="M_Paragraph">
+      <div class="A_Description">Скопируй</div>
+      <div class="A_NodeBox"><pre><code class="language-javascript">x = Math.sin(time + textIndex)*75;
+y = Math.cos(time + textIndex)*75;
+[x,y]</code></pre>
+    </div>
+  </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Paragraph">Этот экспрешн заставляет текст кружиться по кругу. Буквы двигаются влево-вправо (sin) и вверх-вниз (cos). 75 — это радиус основного движения в процентах.</div>
+    </div>
+
     <div class="M_Paragraph">
       <div class="A_Description">Шаг  5</div>
-      <div class="A_Paragraph">В Line выключаем параметр Draw Lines и во вкладке Vector включаем Draw Vectors, и меняем параметры Scale: 1.3, Taper Strenght: 0.25, Far Alpha: 0. Во вкладке Setup меняем DN: 0-0.5, DF: 35-40, WN: 0.5</div>
+      <div class="A_Paragraph">Для случайных колебаний добавим функцию noise(). Для движения передадим ей время. И умножим на сколько она будет влиять в процентах на текст. В туторе это 25%, но ты можешь эксперементировать с параметрами.</div>
     </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Скопируй</div>
+      <div class="A_NodeBox"><pre><code class="language-javascript">x = Math.sin(time + textIndex/10)*75 + noise(time + textIndex)*25;
+y = -Math.cos(time + textIndex/10)*75 + noise(time + 10 + textIndex)*25;
+[x,y]</code></pre>
+    </div>
+  </div>
+
     <div class="M_Paragraph">
       <div class="A_Description">Шаг  6</div>
-      <div class="A_Paragraph">Вернемся к началу нашей цепочки и между Noise и Null добавь Fractal из семейства TOP, выключи фиксированную  границу и выстави Divisions: 2, Smoothness: 2, Scale: 0.25  </div>
+      <div class="A_Paragraph">TextIndex необходим, чтобы было влияние на каждый символ. /10 уменьшает разницу между буквами. Дополнительное +10 в noise нужно, чтобы шум для y был другим, а не таким же, как для x. Если нам нужно, чтобы круг крутился в другую сторону, то мы можем добавить у math.sin или math.cos минус, тем самым мы меняем направление движения.</div>
     </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Paragraph">Можно замедлить шум, например на 7. Стоит помнить, что весь прекол генеративной графиики в том, что, меняя параетры, можно получить совершенно разные картинки.</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Шаг  7</div>
+      <div class="A_Paragraph">Ещe можно замедлить или ускорить время анимации. В этом тутое замедлим, чтобы движение было более вальяжное, нужно написать time = time/10;</div>
+      <div class="A_Description Right">В настройках проекта обязательно нужно чекнуть, что в Expression стоит Java Script</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Скопируй</div>
+      <div class="A_NodeBox"><pre><code class="language-javascript">time = time/10;
+x = Math.sin(time + textIndex/10)*75 + noise(time+textIndex/7)*25;
+y = -Math.cos(time+textIndex/10)*75 + noise(time+10+textIndex/7)*25;
+[x,y]</code></pre>
+    </div>
+  </div>
+
+  <div class="M_Paragraph">
+    <div class="A_Description">Шаг  8</div>
+    <div class="A_Paragraph">Добавим ещe Opacity обычным аниматором, без эспрешенов. Добавляем, следим, чтобы у нас добавился ещe один аниматор. Делаем опасити 0 и давайте сделаем, чтобы он у нас работал по функции треугольника, а не по квадрату.</div>
+  </div>
+
+  <div class="W_ParagraphWithTitle">
+    <h3 class="A_H3">Кастомизация</h3>
+    <div class="M_Paragraph">
+      <div class="A_Paragraph">Дальше можно накидывать сюда различные эффекты и пресеты, которые можно найти в Ae. Изменять и эксперемнтировать с параметрами. Пробовать изменять текст, буквы или символы, а также обязательно попробуй покрутить кернинг.</div>
+    </div>
+  </div>
 
     <div class="W_ParagraphWithTitle">
       <h3 class="A_H3">А вот что получилось у редакции</h3>a
@@ -146,9 +211,9 @@
   <div class="W_ArticleRecommendation">
     <h2 class="A_H2">Похожие статьи</h2>
       <div class="C_ArticlesRecommendation">
-      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="articles/pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
-      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="articles/pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
-      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="articles/pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
+        <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="FluffyTheNoise.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/fluffyTheNoisePreview.png"></a><h4 class="A_Label Important">Пушистый шум</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
+      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
+      <div class="O_Card" id="article-card-2" data-category="code beginner tutorial"><a class="M_ArticlePreviewLink" href="slimeMold.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/slimeMoldPreview.png"></a><h4 class="A_Label Important">Симуляция плесени</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
   </div>
     </div>
     
