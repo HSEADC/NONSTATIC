@@ -39,7 +39,7 @@
     <div class="O_PopUp Opened">
       <div class="M_PopupOpenLine"><div class="A_Description Important">Важная инфа</div>
     <div class="Q_PopUpIcon Opened"></div></div>
-      <div class="A_Description">Этот тутор ты можешь повторить в нашей песочнице</div>
+      <div class="A_Description">Сдвиги осуществляются по UV карте</div>
         <div class="A_Description Important">Материалы</div>
         <div class="C_PopUpMateirals">
           <div class="A_Description">Проджект файл</div>
@@ -66,7 +66,7 @@
         <div class="O_PopUp Closed Mobile">
           <div class="M_PopupOpenLine"><h4 class="A_Label Important">Важная инфа</h4>
         <div class="Q_PopUpIcon Closed"></div></div>
-          <div class="A_Description Closed">Этот тутор ты можешь повторить в нашей песочнице</div>
+          <div class="A_Description Closed">Сдвиги осуществляются по UV карте</div>
             <h4 class="A_Label Important Closed">Материалы</h4>
             <div class="C_PopUpMateirals Closed">
               <div class="A_Description Closed">Проджект файл</div>
@@ -89,102 +89,171 @@
       </div>
     </div>
     <img class="A_VideoPreview Tablet" src="../../images/articles/PixelSlice/pixelSlicePreview.mp4"></img>
+
     <div class="W_ParagraphWithTitle">
       <h3 class="A_H3">Алгоритм</h3>
       <div class="M_Paragraph">
-        <div class="A_Description">Шаг  1</div>
-        <div class="A_Paragraph">Сначала объявляются глобальные переменные. Эти переменные нужны, чтобы разные части кода могли к ним обращаться.</div>
+        <div class="A_Paragraph">В этом туториале мы используем смещение по UV карте, поэтому в начале нам нужно будет ее создать. Подробнее о том, как они устроены - тут.</div>
+        <div class="A_Description Right">Ты можешь поставить 
+          в Transform любой цвет фона, но я оставлю черный</div>
       </div>
     </div>
   
     <div class="M_Paragraph">
-      <div class="A_Description">Шаг 2</div>
-      <div class="A_Paragraph">Далее нужно добавить Geo , затем Cam и один источник света Light. К Geo подсоедини Line из семейства МАТ.</div>
+      <div class="A_Description">Шаг 1</div>
+      <div class="A_Paragraph">Для нача достаем ноду Constant из семейства CHOP. Зададим значение 1280. Теперь создаем Ramp1 и Ramp2 
+        из семейства TOP. Ramp2 меняем на вертикальный. В их Resolution перетягиваем ноду Constant. Соединяем Rampы 
+        в Reorder, в OutputGreen меняем на Input2, а в OutputBlue - Zero. PixelFormat ставим на 32-bit float RGBA.</div>
     </div>
-    <div class="M_Paragraph">
-      <div class="A_Description">Шаг  3</div>
-      <div class="A_Paragraph">Добавь Render из семейства ТОР и поменяй ему разрешение 1080 на 1350. В качестве фона используй Transform и поставь режим Ол в последнем пункте Comp Over Background Color. Между Render и Transform нужно поставить Null.</div>
-      <div class="A_Description Right">Ты можешь поставить 
-        в Transform любой цвет фона, но я оставлю черный</div>
-    </div>
+
     <div class="M_Paragraph">
       <div class="A_Description">Чекни</div>
       <div class="A_NodeBox"><img src="../../images/articles/PixelSlice/1.png" alt=""></div>
     </div>
+
+      
     <div class="M_Paragraph">
-      <div class="A_Description">Шаг  4</div>
-      <div class="A_Paragraph">Вернись в раздел Grid и поставь значения Size: 2 и 6. Чтобы добавить глубины и деталей, нужно настроить Primitive Type: Nurbs, Rows: 50 и Columns: 20.</div>
+      <div class="A_Description">Шаг 2</div>
+      <div class="A_Paragraph">Начнем видоизменять нашу UV карту. Создаем Ramp3 
+        и Ramp4. Ramp4 меняем на вертикальный, обоим ставим Period: 0.5, Extend Left: Mirror, Extend Right: Same as Left, Interpolate Notches: Ease-in, ease-out. Дальше оба подключаем в Noise1 и Noise2 во 2 вход (в Noise Coordinate Map).</div>
     </div>
-  
+
     <div class="M_Paragraph">
-      <div class="A_Paragraph">Вернись в раздел Noise и выстави настройки шероховатости Roughness: 0.4 и Amplitude: 1.5 </div>
-      <div class="A_Description Right">Во всех этих параметрах можно выставить свои значения, так результат получится оригинальным </div>
+      <div class="A_Description">Шаг 3</div>
+      <div class="A_Paragraph">Добавляю их в Limit1 и Limit2 из семейства TOP, ставлю Quantize: Floor, Value Step: 0.1 Итог оборачиваю в Reorder по аналогии с 1 шагом, после - закидываю в Math 
+        из семейства CHOP, и изменяю Range To Range на 0.3 и 0.7, чтобы немного ослабить контраст.</div>
+      <div class="A_Description Right">Limit нужен, чтобы убрать плавный переход между линиями, нам нужны четкие срезы</div>
     </div>
-    <div class="M_Paragraph">
-      <div class="A_Description">Шаг  5</div>
-      <div class="A_Paragraph">В Line выключаем параметр Draw Lines и во вкладке Vector включаем Draw Vectors, и меняем параметры Scale: 1.3, Taper Strenght: 0.25, Far Alpha: 0. Во вкладке Setup меняем DN: 0-0.5, DF: 35-40, WN: 0.5</div>
-    </div>
-    <div class="M_Paragraph">
-      <div class="A_Description">Шаг  6</div>
-      <div class="A_Paragraph">Вернемся к началу нашей цепочки и между Noise и Null добавь Fractal из семейства TOP, выключи фиксированную  границу и выстави Divisions: 2, Smoothness: 2, Scale: 0.25  </div>
-    </div>
+
+
     <div class="M_Paragraph">
       <div class="A_Description">Чекни</div>
       <div class="A_NodeBox"><img src="../../images/articles/PixelSlice/2.png" alt=""></div>
     </div>
-     <div class="M_Paragraph">
-      <div class="A_Description">Шаг  7</div>
-      <div class="A_Paragraph">Чтобы шум смотрелся лучше, добавим еще два оператора из семейства TOP Composite и Blur. В Composite во вкладке Operation выбери режим наложения во вкладке Operation выбери режим наложения Screen. В Blurво вкладке Pre-Shrink, нужно выставить значение: 3, Filter Size: 19.</div>
-    </div>
+
     <div class="M_Paragraph">
-      <div class="A_Description">Шаг 2</div>
-      <div class="A_Paragraph">Particles – массив для хранения всех частиц (песчинок) на пластине. По сути, это список объектов или координат, представляющих каждую песчинку, которая будет двигаться по холсту. Параметры узора Хладни, например n и m – числа, определяющие форму узора. Они соответствуют различным режимам колебаний пластины. Изменяя эти числа, мы получаем разные фигуры (разное количество узлов и петель в узоре). Изначально им могут быть присвоены какие-то стартовые значения по умолчанию. </div>
-        <div class="A_Description Right">Возможны вспомогательные переменные, например, numParticles, если мы хотим легко менять, сколько песчинок используется в симуляции или threshold для определения, сильно или слабо вибрирует точка</div>
-      </div>
-      <div class="M_Paragraph">
-        <div class="A_Description">Чекни</div>
-        <div class="A_NodeBox"><img src="../../images/articles/PixelSlice/3.png" alt=""></div>
-      </div>
-      <div class="M_Paragraph">
-        <div class="A_Description">Скопируй</div>
-        <div class="A_NodeBox"><pre><code class="language-javascript">let particles = []; let num = 5000;
-          let m = 5; let n = 4; let threshold = 0.05;
-          let minMN = 1; let maxMN = 6;
-          let changePattern = true;
-          let margin = 50; let w1, w2, h1, h2;
-          let scl = 1;</code></pre>
-      </div>
+      <div class="A_Description">Шаг  4</div>
+      <div class="A_Paragraph">Чтобы увидеть смещение, соединим наш Null1 и Null2 
+        в Displace. Сейчас у нас статичное смещение, но если 
+        мы добавим Feedback и в Target Top перекинем Displace, 
+        у нас появится динамичная картинка. Переключая параметры Noise1, Noise2, альфа-каналы мы можем 
+        в прямом эфире менять анимацию. Подробнее о Feedback вот тут. </div>
     </div>
-      <div class="M_Paragraph">
-        <div class="A_Description">Чекни</div>
-        <div class="A_NodeBox"><img src="../../images/articles/PixelSlice/4.png" alt=""></div>
-      </div>
-       <div class="M_Paragraph">
-        <div class="A_Description">Шаг  7</div>
-        <div class="A_Paragraph">Чтобы шум смотрелся лучше, добавим еще два оператора из семейства TOP Composite и Blur. В Composite во вкладке Operation выбери режим наложения во вкладке Operation выбери режим наложения Screen. В Blurво вкладке Pre-Shrink, нужно выставить значение: 3, Filter Size: 19.</div>
-      </div>
-      <div class="M_Paragraph">
-        <div class="A_Description">Чекни</div>
-        <div class="A_NodeBox"><img src="../../images/articles/PixelSlice/5.png" alt=""></div>
-      </div>
+  
     <div class="M_Paragraph">
-      <div class="A_Paragraph">Здесь мы создали пустой массив particles и задали начальные значения n и m. Мы выбрали случайно 5 и 4 в качестве примера. Переменная numParticles указана для примера.</div>
+      <div class="A_Description">Шаг  5</div>
+      <div class="A_Paragraph">Также добавим MovieFileIn, воткнем его в 1 вход в Remap, 
+        а во второй вход - Displace.</div>
     </div>
+
     <div class="M_Paragraph">
-      <div class="A_Description">Шаг  3</div>
-      <div class="A_Paragraph">Функция setup() запускается первым делом. Ее основная задача — подготовить «сцену» для нашей визуализации.</div>
+      <div class="A_Description">Чекни</div>
+      <div class="A_NodeBox"><img src="../../images/articles/PixelSlice/3.png" alt=""></div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Шаг 6</div>
+      <div class="A_Paragraph">Осталось автоматизировать нашу цепочку. Я сделала сеттинг, где 2 клавиша останавливает анимацию, а 3 меняет мод (горизонталь/вертикаль).  Добавляем keyboardin2 
+        и keyboardin3. После я завернула в Logic CHOP каждую 
+        и в начал Channel Pre Op поменяла на Toggle. Ко 2 кнопке  добавим Math, и изменим To range от 0 до 0.1, чтобы displace был не таким сильным. Null2 перетягиваем 
+        в Displace Weight в Displace. Добавляем еще одну кнопку - пока просто завернем ее в null4.</div>
+      <div class="A_Description Right">Limit нужен, чтобы убрать плавный переход между линиями, нам нужны четкие срезыДля удобства, нуль для 2 кнопки я переименовала 
+        в disp_weight, 3 - в mode, 4 - в seed.</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Чекни</div>
+      <div class="A_NodeBox"><img src="../../images/articles/PixelSlice/4.png" alt=""></div>
     </div>
 
     <div class="M_Paragraph">
       <div class="A_Description">Шаг  7</div>
-      <div class="A_Paragraph">Далее идет цикл for через все частицы. Внутри мы сначала вычисляем величину vibration = chladni(p.x, p.y). Здесь мы вызываем нашу специальную функцию chladni(), о ней подробнее чуть ниже, и передаем ей координаты частицы. Эта функция нам возвращает некоторую численную величину, характеризующую, насколько сильно вибрирует пластина в данной точке.</div>
+      <div class="A_Paragraph">Для смены мода нам понадобится chopexec1 из семейства DAT. Кладем ее рядом с null2. В CHOP’s нужно написать название null2, включить OffToOn, OnToOff.</div>
     </div>
 
     <div class="M_Paragraph">
       <div class="A_Description">Шаг  8</div>
-      <div class="A_Paragraph">Далее с помощью if мы решаем, двигать частицу или нет. Мы берём абсолютное значение abs(vibration) – модуль колебания. Почему модуль? Потому что формула может давать как положительные, так и отрицательные значения, нас интересует именно по модулю величина колебания. Мы сравниваем это значение с некоторым порогом, например 0.1 (в приведённом примере кода). Если abs(vibration) > 0.1, условно считаем, что в этой точке пластина заметно колеблется (анти-узел, где песок не удерживается и будет «стряхиваться»). Слегка сдвинем ее на небольшое случайное расстояние по X и Y. Здесь random(-1, 1) возвращает случайное число от — 1 до 1. То есть мы смещаем частицу на долю пикселя или несколько пикселей в случайном направлении. Этот случайный толчок имитирует вибрацию.</div>
+      <div class="A_Paragraph">Внутрь мы кладем скрипт, который меняет в Displace смещение по альфа-каналам. При значении OnToOff горизонтальное смещение присивается 4 индекс (None), вертикальному - 0 (Red) и по такой же логике OffToOne.</div>
     </div>
-  
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Скопируй</div>
+      <div class="A_NodeBox"><pre><code class="language-python">def onOffToOn(channel, sampleIndex, val, prev):
+    op('displace').par.horzsource = 1
+    op('displace').par.vertsource = 4
+    return
+   ​
+def whileOn(channel, sampleIndex, val, prev):
+    return
+​
+def onOnToOff(channel, sampleIndex, val, prev):
+    op('displace').par.horzsource = 4
+    op('displace').par.vertsource = 0
+    return
+​
+def whileOff(channel, sampleIndex, val, prev):
+    return
+​
+def onValueChange(channel, sampleIndex, val, prev):
+    return
+​
+def onValueChange(channel, sampleIndex, val, prev):
+    return
+def onValueChange(channel, sampleIndex, val, prev):
+    return
+def onValueChange(channel, sampleIndex, val, prev):
+    return
+def onValueChange(channel, sampleIndex, val, prev):
+    return</code></pre>
+    </div>
+  </div>
+
+  <div class="M_Paragraph">
+    <div class="A_Description">Шаг  9</div>
+    <div class="A_Paragraph">Для изменения зерна зума я также написала небольшой скрипт, по аналогии с 5 шагом добавляем chopexec2 рядом с null3. В CHOP’s указываем null3, включаем OffToOn, OnToOff. </div>
+  </div>
+
+  <div class="M_Paragraph">
+    <div class="A_Description">Скопируй</div>
+    <div class="A_NodeBox"><pre><code class="language-python">def onOffToOn(channel, sampleIndex, val, prev):
+  op('displace').par.horzsource = 1
+  op('displace').par.vertsource = 4
+  return
+ ​
+ def whileOn(channel, sampleIndex, val, prev):
+      return
+ ​
+ def onOnToOff(channel, sampleIndex, val, prev):
+      op('displace').par.horzsource = 4
+      op('displace').par.vertsource = 0
+      return
+ ​
+ def whileOff(channel, sampleIndex, val, prev):
+      return
+ ​
+ def onValueChange(channel, sampleIndex, val, prev):
+      return
+ ​
+ def onValueChange(channel, sampleIndex, val, prev):
+      return
+ def onValueChange(channel, sampleIndex, val, prev):
+      return
+ def onValueChange(channel, sampleIndex, val, prev):
+      return
+ def onValueChange(channel, sampleIndex, val, prev):
+      return</code></pre>
+  </div>
+</div>
+
+<div class="M_Paragraph">
+  <div class="A_Paragraph">Последний штрих - добавим пятую кнопку keyboardin5, чтобы сбрасывать Feedback, включаем на нем Reset.</div>
+</div>
+
+<div class="M_Paragraph">
+  <div class="A_Description">Чекни</div>
+  <div class="A_NodeBox"><img src="../../images/articles/PixelSlice/5.png" alt=""></div>
+</div>
+
 
     <div class="W_ParagraphWithTitle">
       <h3 class="A_H3">А вот что получилось у редакции</h3>a
@@ -201,9 +270,9 @@
   <div class="W_ArticleRecommendation">
     <h2 class="A_H2">Похожие статьи</h2>
       <div class="C_ArticlesRecommendation">
-      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="articles/pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
-      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="articles/pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
-      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="articles/pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
+      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="FluffyTheNoise.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/fluffyTheNoisePreview.png"></a><h4 class="A_Label Important">Пушистый шум</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
+      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
+      <div class="O_Card" id="article-card-2" data-category="code beginner tutorial"><a class="M_ArticlePreviewLink" href="slimeMold.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/slimeMoldPreview.png"></a><h4 class="A_Label Important">Симуляция плесени</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
   </div>
     </div>
     

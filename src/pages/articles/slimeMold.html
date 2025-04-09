@@ -92,99 +92,296 @@
     <div class="W_ParagraphWithTitle">
       <h3 class="A_H3">Алгоритм</h3>
       <div class="M_Paragraph">
-        <div class="A_Description">Шаг  1</div>
-        <div class="A_Paragraph">Сначала объявляются глобальные переменные. Эти переменные нужны, чтобы разные части кода могли к ним обращаться.</div>
+        <div class="A_Paragraph">Сначала создадим класс Mold, внутри которого будет точка, которая двигается в рандомном направлении. Нам понадобится 3 метода: constructor(), display() и update(). В constructor() пропишем базовое местоположение точки, ее радиус (для начала, напишем 0.5), направление в градусах. В update() будем менять координаты точки, а в display() сделаем ей отображение в виде белого круга без контура.</div>
+        <div class="A_Description Right">Весь туториал построен на принципе ООП - объектно-ориентированного программирования. Так, в JS базовым методом, который вызывается при инициализации  класса, является constructor(), а к свойствам мы обращаемся через ключевое слово this.</div>
       </div>
     </div>
     <div class="M_Paragraph">
-      <div class="A_Description">Шаг 2</div>
-      <div class="A_Paragraph">Particles – массив для хранения всех частиц (песчинок) на пластине. По сути, это список объектов или координат, представляющих каждую песчинку, которая будет двигаться по холсту. Параметры узора Хладни, например n и m – числа, определяющие форму узора. Они соответствуют различным режимам колебаний пластины. Изменяя эти числа, мы получаем разные фигуры (разное количество узлов и петель в узоре). Изначально им могут быть присвоены какие-то стартовые значения по умолчанию. </div>
-        <div class="A_Description Right">Возможны вспомогательные переменные, например, numParticles, если мы хотим легко менять, сколько песчинок используется в симуляции или threshold для определения, сильно или слабо вибрирует точка</div>
-      </div>
+      <div class="A_Description">Шаг 1</div>
+      <div class="A_Paragraph">В update() будем менять координаты точки следующим образом: к горизонтальному смещению будем прибавлять косинус направления, а к вертикальному - синус, согласно принципам тригонометрии.</div>
+      <div class="A_Description Right">Например, если мы поставим heading = 0, все точки пойдут вправо, а если поставим heading = 90, они пойдут вниз (в 5p.js изначально вектор Y направлен вниз, а не вверх)</div>
+    </div>
     <div class="M_Paragraph">
       <div class="A_Description">Скопируй</div>
-      <div class="A_NodeBox"><pre><code class="language-javascript">let particles = []; let num = 5000;
-        let m = 5; let n = 4; let threshold = 0.05;
-        let minMN = 1; let maxMN = 6;
-        let changePattern = true;
-        let margin = 50; let w1, w2, h1, h2;
-        let scl = 1;</code></pre>
+      <div class="A_NodeBox"><pre><code class="language-javascript">class Mold {
+        constructor() {
+          this.x = random(width); 
+          this.y = random(height); 
+          this.r = 0.5; 
+          this.heading = random(360); 
+        }
+        update() {
+          this.x += cos(this.heading)
+          this.y += sin(this.heading)
+        }
+      ​
+        display() {
+          noStroke()
+          fill(255)
+          ellipse(this.x, this.y, this.r)
+        }
+      }</code></pre>
     </div>
   </div>
     <div class="M_Paragraph">
-      <div class="A_Paragraph">Здесь мы создали пустой массив particles и задали начальные значения n и m. Мы выбрали случайно 5 и 4 в качестве примера. Переменная numParticles указана для примера.</div>
+      <div class="A_Description">Шаг 2</div>
+      <div class="A_Paragraph">Сейчас мы ничего не видим, потому что не добавили draw() и setup(). В setup() cоздадим кэнвас, переключим angleMode(DEGREES) (изначально он в радианах), создадим новый объект и присвоим ему класс Mold. В draw() будем обращаться к 2 методам класса - обновлять и отображать нашу точку. Мы также будем наслаивать фреймы друг на друга, чтобы у точек было эхо, этого можно добиться, добавив черному фону полупрозрачность (0, 5).</div>
+      <div class="A_Description Right">При инилизации класса в JS, мы прописываем ключевое слово new</div>
     </div>
-    <div class="M_Paragraph">
-      <div class="A_Description">Шаг  3</div>
-      <div class="A_Paragraph">Функция setup() запускается первым делом. Ее основная задача — подготовить «сцену» для нашей визуализации.</div>
-    </div>
+
     <div class="M_Paragraph">
       <div class="A_Description">Скопируй</div>
-      <div class="A_NodeBox"><pre><code class="language-javascript">let particles = []; let num = 5000;
-        function setup() {
-          createCanvas(400 , 400 );
-          w1 = margin; w2 = width - margin;
-          h1 = margin; h2 = height - margin;
-          
-          bgColor = color(39, 39, 39);  
-          particleColor = color(239, 239, 239);  
+      <div class="A_NodeBox"><pre><code class="language-javascript">class Mold {
+        ...
+        }
         ​
-          for (let i = 0; i = num; i++) {
-            particles.push(new Particle());
-          }
+        ​
+        function setup() {
+          createCanvas(400, 400)
+          angleMode(DEGREES)
+          m = new Mold()
+        }
+        ​
+        function draw() {
+          background(0, 5)
+          m.update()
+          m.display()
         }</code></pre>
     </div>
   </div>
+  <div class="M_Paragraph">
+    <div class="A_Description">Шаг  3</div>
+    <div class="A_Paragraph">Создадим несколько таких точек через цикл. Создадим пустой список, назовем его molds и в переменную n поместим количество точек, которые нас интересуют. Допустим, 400. Теперь в цикле создадим n-ое количество точек и добавих их в список, чтобы потом пройтись по каждому элементу в списке и применить к нему display() и update()</div>
+  </div>
+  <div class="M_Paragraph">
+    <div class="A_Description">Скопируй</div>
+    <div class="A_NodeBox"><pre><code class="language-javascript">class Mold {
+      ...
+      }
+      ​
+      let molds = []
+      let n = 400
+      ​
+      ​
+      function setup() {
+        createCanvas(400, 400)
+        angleMode(DEGREES)
+        for (let i = 0; i &lt; n; i++) {
+        molds.push(new Mold())
+        }
+      }
+      ​
+      function draw() {
+        background(0, 5)
+        for (let mold of molds) {
+        mold.display();
+        mold.update()
+       }
+      }</code></pre>
+    </div>
+  </div>
     <div class="M_Paragraph">
-      <div class="A_Paragraph">createCanvas(400, 400) создает область для рисования размером 400 на 400 пикселей. Теперь узор будет ограничены этим холстом.</div>
+      <div class="A_Description">Шаг  4</div>
+      <div class="A_Paragraph">Добавим сенсоры. В constructor() добавим sensorAngle (угол, на котором расположены сенсоры) и sensorDist (расстояние до них). Суть сенсоров в том, чтобы смещать положение точки в сторону других объектов. Т.к. объекты оставляют за собой белый путь, нам нужно находить самые светлые участки и стремиться к ним. Добавим в класс метод getPixelValue(). Будем находить координаты сенсоров и возвращать их яркость. </div>
     </div>
 
     <div class="M_Paragraph">
-      <div class="A_Paragraph">Далее мы вызываем background(0), чтобы закрасить весь холст черным цветом. Это будет начальный фон. </div>
-    </div>
-
-    <div class="M_Paragraph">
-      <div class="A_Paragraph">Следующая строка stroke(255) устанавливает цвет обводки (контуров) для фигур на холсте в белый. В p5.js функция stroke() отвечает за цвет линий и точек. Таким образом, когда мы будем рисовать частицы как точки, они будут белыми на черном фоне – как песок на темной пластине.  </div>
-    </div>
-    <div class="M_Paragraph">
-      <div class="A_Paragraph">Далее самая важная часть setup() – цикл, который заполняет массив particles. Здесь мы решаем, сколько частиц (песчинок) будем симулировать, и размещаем их по случайным позициям на пластине. В примере мы используем for-цикл от 0 до numParticles. На каждой итерации генерируем случайные координаты x и y внутри границ холста с помощью функции random(). random(width) дает случайное число от 0 до значения width, а random(height) – от 0 до height. Затем мы создаем объект частицы, в простейшем случае это объект с двумя свойствами, x и y, и добавляем этот объект в массив particles.</div>
-    </div>
-    <div class="M_Paragraph">
-      <div class="A_Paragraph">После выполнения setup() у нас будет создан холст, фон настроен, и в памяти хранится много «песчинок», каждая со своей случайной позицией. Они пока ещё не нарисованы на экране (мы только подготовили данные). Рисоваться и обновляться они будут в функции draw().</div>
-    </div>
-
-    <div class="M_Paragraph">
-      <div class="A_Paragraph">Функция draw() отвечает за анимацию. Каждую итерацию кадра она обновляет состояние системы и выводит результат на экран. Для нашей визуализации узоров Хладни это означает: стирать предыдущий кадр, рассчитывать, куда двинутся частицы (если двинутся), и рисовать их на новых местах.</div>
+      <div class="A_Description">Шаг  5</div>
+      <div class="A_Paragraph">В методе getPixelValue() создадим 2 новые переменные - sx и sy. Чтобы найти координаты сенсоров, нам нужно просто к координате точек добавить направление вектора (this.heading) и расстояние, на котором расположены сенсоры от точек (sensorDist)</div>
     </div>
 
     <div class="M_Paragraph">
       <div class="A_Description">Скопируй</div>
-      <div class="A_NodeBox"><pre><code class="language-javascript">function draw() 
-        background(0);
-        
-        if (changePattern) {
-          randomPatterns();
+      <div class="A_NodeBox"><pre><code class="language-javascript">class Mold {
+        constructor() {
+          this.x = random(width)
+          this.y = random(height)
+          this.r = 0.5
+          this.heading = random(360)
+          this.sensorDist = 10
+          this.sensorAngle = 45
+        }
+        update() {
+        ...
         }
-        
-       </code> </pre>
+        getPixelValue(angle) {
+          let sx = this.x + this.sensorDist * cos(angle)
+          let sy = this.y + this.sensorDist * sin(angle)
+          return brightness(get(sx, sy))
+        }
+      }
+      ​
+      let molds = []
+      let n = 400
+      ​
+      ​
+      function setup() {
+      ...
+      }
+      ​
+      function draw() {
+      ...
+      }</code></pre>
+      </div>
     </div>
-  </div>
 
     <div class="M_Paragraph">
+      <div class="A_Description">Шаг  6</div>
+      <div class="A_Paragraph">Создадим новый метод checkSensors(). Т.к. нам нужны 3 сенсора, создаем 3 переменные - f, l и r. Для каждого нужно узнать значение яркости, поэтому мы вызываем метод getPixelValue() для каждого из них. Для переднего сенсора угол тот же, что в this.heading, для левого - из изначального вектора вычитаем поворот сенсора, а для правого - прибавляем.</div>
+    </div>
 
-      <div class="A_Paragraph">В начале каждого кадра мы вызываем background(0) – это очищение холста, закрашивая его заново черным цветом. Делается это каждый раз, чтобы мы видели только актуальные положения частиц, а старые положения не оставались на экране. Если бы мы не очищали фон, частицы бы оставляли «следы» , и картинка быстро превратилась бы в сплошное пятно. Нам же важно видеть именно узор из частиц, собравшихся в определенных местах.</div>
+    <div class="M_Paragraph">
+      <div class="A_Description">Скопируй</div>
+      <div class="A_NodeBox"><pre><code class="language-javascript">class Mold {
+          constructor() {
+          ...
+          }
+          update() {
+          ... 
+          }
+          checkSensors() {
+            let f = this.getPixelValue(this.heading)
+            let l = this.getPixelValue(this.heading - this.sensorAngle)
+            let r = this.getPixelValue(this.heading + this.sensorAngle)
+          }
+          getPixelValue(angle) {
+          ...
+          }
+          display() {
+          ...
+          }
+        }
+        ​
+        let molds = []
+        let n = 4000
+        ​
+        function setup() {
+          ...
+        }
+        ​
+        function draw() {
+          ...
+        }</code></pre>
+      </div>
     </div>
 
     <div class="M_Paragraph">
       <div class="A_Description">Шаг  7</div>
-      <div class="A_Paragraph">Далее идет цикл for через все частицы. Внутри мы сначала вычисляем величину vibration = chladni(p.x, p.y). Здесь мы вызываем нашу специальную функцию chladni(), о ней подробнее чуть ниже, и передаем ей координаты частицы. Эта функция нам возвращает некоторую численную величину, характеризующую, насколько сильно вибрирует пластина в данной точке.</div>
+      <div class="A_Paragraph">Осталось изменять направление, взависимости от значений сенсоров. Если один из боковых сенсоров светлее переднего, мы делаем поворот. Если левый светлее - налево, если правый - направо.</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Скопируй</div>
+      <div class="A_NodeBox"><pre><code class="language-javascript">class Mold {
+          constructor() {
+          ...
+          }
+          update() {
+          ... 
+          }
+          checkSensors() {
+            let f = this.getPixelValue(this.heading)
+            let l = this.getPixelValue(this.heading - this.sensorAngle)
+            let r = this.getPixelValue(this.heading + this.sensorAngle)
+        ​
+            if (f &lt; l || f &lt; r) {
+               this.heading += (l > r) ? -45 : 45;
+            }
+          }
+        ​
+          getPixelValue(angle) {
+          ...
+          }
+          display() {
+          ...
+          }
+        }
+        ​
+        let molds = []
+        let n = 4000
+        ​
+        function setup() {
+          ...
+        }
+        ​
+        function draw() {
+          ...
+        }</code></pre>
+      </div>
     </div>
 
     <div class="M_Paragraph">
       <div class="A_Description">Шаг  8</div>
-      <div class="A_Paragraph">Далее с помощью if мы решаем, двигать частицу или нет. Мы берём абсолютное значение abs(vibration) – модуль колебания. Почему модуль? Потому что формула может давать как положительные, так и отрицательные значения, нас интересует именно по модулю величина колебания. Мы сравниваем это значение с некоторым порогом, например 0.1 (в приведённом примере кода). Если abs(vibration) > 0.1, условно считаем, что в этой точке пластина заметно колеблется (анти-узел, где песок не удерживается и будет «стряхиваться»). Слегка сдвинем ее на небольшое случайное расстояние по X и Y. Здесь random(-1, 1) возвращает случайное число от — 1 до 1. То есть мы смещаем частицу на долю пикселя или несколько пикселей в случайном направлении. Этот случайный толчок имитирует вибрацию.</div>
+      <div class="A_Paragraph">Мы почти закончили! Но сейчас плесень распространяется в рамках нашего кэнваса. Хочется, чтобы она выходила и за его границы. Для этого добавим в координаты точки и сенсоров принцип тороидального пространства. Подробнее об этом можно прочитать здесь. Для этого используем формулу (координаты + ширина) % ширина.</div>
+      <div class="A_Description Right">Тороидальное пространство бесконечно, поэтому нам нужно, чтобы точки не исчезали, а появлялись с обратной стороны. Сделать это можно через остаток от деления. Если координаты выходят за границы кэнваса, они сбрасываются.</div>
     </div>
-  
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Скопируй</div>
+      <div class="A_NodeBox"><pre><code class="language-javascript">class Mold {
+          constructor() {
+            this.x = random(width)
+            this.y = random(height)
+            this.r = 0.5
+            this.heading = random(360)
+            this.sensorAngle = 45
+            this.sensorDist = 10
+          }
+        
+          update() {
+            this.x = (this.x + cos(this.heading) + width) % width
+            this.y = (this.y + sin(this.heading) + height) % height
+            this.checkSensors()
+          }
+        
+          checkSensors() {
+            let f = this.getPixelValue(this.heading)
+            let l = this.getPixelValue(this.heading - this.sensorAngle)
+            let r = this.getPixelValue(this.heading + this.sensorAngle)
+            if (f &lt; l || f &lt; r) {
+              this.heading += l > r ? -45 : 45
+            }
+          }
+        
+          getPixelValue(angle) {
+            let sx = (this.x + this.sensorDist * cos(angle) + width) % width
+            let sy = (this.y + this.sensorDist * sin(angle) + height) % height
+            return brightness(get(sx, sy))
+          }
+        
+          display() {
+            noStroke()
+            fill(255)
+            ellipse(this.x, this.y, this.r)
+          }
+        ​
+        let molds = []
+        let n = 4000
+        
+        function setup() {
+          createCanvas(400, 400)
+          angleMode(DEGREES)
+          for (let i = 0; i &lt; n; i++) {
+          molds.push(new Mold())
+          }
+        }
+        
+        function draw() {
+          background(0, 5)
+          for (let mold of molds) {
+          mold.display();
+          mold.update()
+         }
+        }</code></pre>
+      </div>
+    </div>
+
+    <div class="W_ParagraphWithTitle">
+      <h3 class="A_H3">Кастомизация</h3>
+      <div class="M_Paragraph">
+        <div class="A_Paragraph">Паттерн плесени можно изменять через угол поворота сенсоров. Так, можно от ретикулярной структуры (ячейковидной) прийти к островной (когда объекты образуют отдельные кластеры). Можно изменять точку их спавна, расстояние, на котором расположены сенсоры и т.д.</div>
+      </div>
+    </div>
 
     <div class="W_ParagraphWithTitle">
       <h3 class="A_H3">А вот что получилось у редакции</h3>
@@ -201,9 +398,9 @@
   <div class="W_ArticleRecommendation">
     <h2 class="A_H2">Похожие статьи</h2>
       <div class="C_ArticlesRecommendation">
-      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="articles/pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
-      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="articles/pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
-      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="articles/pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
+        <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="FluffyTheNoise.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/fluffyTheNoisePreview.png"></a><h4 class="A_Label Important">Пушистый шум</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
+      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
+      <div class="O_Card" id="article-card-2" data-category="code beginner tutorial"><a class="M_ArticlePreviewLink" href="slimeMold.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/slimeMoldPreview.png"></a><h4 class="A_Label Important">Симуляция плесени</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
   </div>
     </div>
     

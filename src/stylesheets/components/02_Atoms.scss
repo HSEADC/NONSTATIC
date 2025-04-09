@@ -403,9 +403,14 @@
   z-index: 5;
 }
 
+.SO_VideoPreview.Mobile > .A_ElectricCanvas {
+  display: none;
+}
+
 .A_ArticlePreviewIMG {
   aspect-ratio: 4 / 3;
   width: 100%;
+  height: 100%;
   mask-size: 100% 100%;
   position: relative;
   object-fit: cover;

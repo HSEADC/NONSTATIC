@@ -88,86 +88,209 @@
       </div>
     </div>
     <video class="A_VideoPreview Tablet" src="../../images/articles/blobs/1.mp4" muted='' loop="" playsinline=""></video>
+
     <div class="W_ParagraphWithTitle">
       <h3 class="A_H3">Основная цепочка</h3>
       <div class="M_Paragraph">
-        <div class="A_Description">Шаг  1</div>
-        <div class="A_Paragraph">Открываем After Effects и создаем новую композицию. Устанавливаем размеры композиции на 1080 на 1920 пикселей. Настриваем 25 кадров в секунду и продолжительность композиции — 30 секунд </div>
+        <div class="A_Description">Шаг 1</div>
+        <div class="A_Paragraph">Начинаем с того, что загружаем видео в тач. Для этого берем ноду Movie File In и добавляем любое видео или гиф. Также во вкладке common я устанавливаю разрешение 1920 на 1080 пикселей.</div>
+        <div class="A_Description Right">Можно взять графику из предыдущих туторов или найти что‑нибудь новое.   Скорость видоса можно изменить в строке speed</div>
       </div>
     </div>
+
     <div class="M_Paragraph">
       <div class="A_Description">Шаг 2</div>
-      <div class="A_Paragraph">Создадим три окружности и добавим Merge path. Ставим mode Merge. Делаем gradient stroke и группируем все.</div>
+      <div class="A_Paragraph">Сначала я ставлю ноду Cache. В строке Output Index меняю индекс на Frame. Дальше добавляем ноду BlobTrack и подключаем к нему ноду Cache.</div>
     </div>
+
+    
     <div class="M_Paragraph">
-      <div class="A_Description">Шаг 2</div>
-      <div class="A_Paragraph">Теперь добавляем два Offset Path. У второго нужно сделать отрицательное значение первого, для этого парентим amount и пишем — content("Offset Paths 1»).amount</div>
-    </div>
-    <div class="M_Paragraph">
-      <div class="A_Description">Скопируй</div>
-      <div class="A_NodeBox"><pre><code class="language-javascript">- content("Offset Paths 1»).amount</code></pre></div>
-    </div>
-    <div class="M_Paragraph">
-      <div class="A_Paragraph">В обоих Offset Paths стаивм Round Join</div>
-    </div>
-    <div class="M_Paragraph">
-      <div class="A_Description">Шаг  3</div>
-      <div class="A_Paragraph">Чтобы эта штука ожила, добавим до Offset Path Wiggle Transform. Настраиваем Wiggle/second 0.3, Scale на 15, Rotation на 30 и Position на 20.</div>
-      <div class="A_Description Right">Тут можно экспериментировать с параметрами</div>
-    </div>
-    <div class="M_Paragraph">
-      <div class="A_Description">Шаг  4</div>
-      <div class="A_Paragraph">Дублируем этот Wiggle Transform и ставим под Offset Path.</div>
+      <div class="A_Paragraph">Cейчас мы получили простейший блоб. Но мы пойдём дальше.</div>
     </div>
 
     <div class="M_Paragraph">
-      <div class="A_Description">Шаг  5</div>
-      <div class="A_Paragraph">Для шлейфа мы ставим инкор поинт в удобное место и делаем анимацию, чтобы обьект перемещался наверх, за границы артборда.</div>
+      <div class="A_Description">Шаг 3</div>
+      <div class="A_Paragraph">У ноды BlobTrack внизу есть две стрелочки. Нажмём на крайнюю правую. И у нас появляется нода из семейства Dat. Эта нода содержит всю информацию о прямоугольниках, которые притречиваются к движению, их координаты, их размер и другие данные.</div>
+      <div class="A_Description Right">Можно крутить параметр Treshold и менять интенсивность блоба</div>
     </div>
 
     <div class="M_Paragraph">
-      <div class="A_Description">Шаг  6</div>
-      <div class="A_Paragraph">Создаем Adjustment layer и делаем на него эффект Echo. Настраиваеи количество эхи и отступ между. В этом шаге можно экспериментировать количеством, в туторе 50, отступ настраиваем так, что бы эхо выглядело непрерывным, в туторе 0,01.</div>
+      <div class="A_Paragraph">Cейчас мы будем работать с некоторыми данными из этой таблицы, а именно со столбцами u, v, width и height. Поэтому сейчас мы берем в семействе Dat ноду Select и видим в параметрах ноды Select строку Select calls, то есть выбор столбца. Нам нужен только один столбец, поэтому выбираем By name и внизу пишем название нужного нам столбца. Тут нужен первый столбец, который называется u.</div>
+      <div class="A_Description Right">U и v отвечают за положение, а width и height отвечают за размер</div>
     </div>
 
     <div class="M_Paragraph">
-      <div class="A_Description">Шаг  7</div>
-      <div class="A_Paragraph">На эом же Adjustment layer создаем эффект Transform. Тут нужно обнулить значения у Anchor point и Position.</div>
+      <div class="A_Paragraph">Далее копируем ноду select и пишем здесь уже не u, а v, то есть следующий столбец.</div>
     </div>
 
     <div class="M_Paragraph">
-      <div class="A_Description">Шаг  8</div>
-      <div class="A_Paragraph">В самом начале нашему шейп лееру обнулить координаты. Для этого нужно создать Null object. Перетащить координаты в наш шейп леер и отвязать его > поставит none. Потом запарентить шейп лаер с нулевым обьектом.</div>
+      <div class="A_Paragraph">Точно так же копируем еще раз, пишем уже width. И последний, четвёртый столбец, height.</div>
+      <div class="A_Description Right">Получается, что мы взяли из таблицы четыре нужных нам столбца и разделили их на отдельные ноды</div>
     </div>
     
     <div class="M_Paragraph">
-      <div class="A_Paragraph">В Adjustment layer нужно открыть Position в Transform и запарентить значения с Position в нашем шейп лаере. В эспрешенне позишина пишем — thisComp.layer("Shape Layer 2").transform.position.</div>
+      <div class="A_Description">Шаг 4</div>
+      <div class="A_Paragraph">Сейчас нам надо эти ноды Dat преобразовать в ноды Chop, поэтому от каждой ноды select нужно поставть ноду Datto.</div>
     </div>
 
     <div class="M_Paragraph">
-      <div class="A_Description">Скопируй</div>
-      <div class="A_NodeBox"><pre><code class="language-javascript">-thisComp.layer("Shape Layer 2").transform.position</code></pre></div>
+      <div class="A_Description">Шаг 5</div>
+      <div class="A_Paragraph">В каждой из этих нод надо поменять некоторые параметры. Далее переходим в параметры первой ноды Dat. Видим здесь строку Output. Здесь мы должны выбрать Channel per column. Далее первая строка это имя, меняем здесь на names, а первый столбец это значение, меняем на values. И меняем теперь точно так же во всех других нодах.</div>
     </div>
 
     <div class="M_Paragraph">
-      <div class="A_Paragraph">Теперь можно настроить градиент строук. Делаем его от крайнеей левой точки до крайней правой и выбираем цвета.</div>
+      <div class="A_Description">Шаг 6</div>
+      <div class="A_Paragraph">И теперь нам нужно ноды Chop преобразовать в ноды Top. Для этого от всех нод до Datto я ставим ноду Chopto. В каждой из этих четырёх нод в строке Image Layout.</div>
+      <div class="A_Description Right">Таким образом мы переходим в семейство Top</div>
     </div>
 
     <div class="M_Paragraph">
-      <div class="A_Paragraph">Чтобы градиент был бескончным и начинался с нулевой секунды необходимо написать loopOut("offset")+loopOut("offset")-value</div>
+      <div class="A_Description">Шаг 7</div>
+      <div class="A_Paragraph">Из этих данных будем делать карты градиента. Ставим первую ноду Reorder из семейства Top и подключаем Chopto1 в первый вход Reorder и Chopto1 во второй вход.</div>
     </div>
 
     <div class="M_Paragraph">
-      <div class="A_Description">Скопируй</div>
-      <div class="A_NodeBox"><pre><code class="language-javascript">-thisComp.layer("Shape Layer 2").transform.position</code></pre></div>
+      <div class="A_Paragraph">Перехожу в параметры output green заменяю на input 2, blue заменяю на 0, градиент должен стать красно-зеленым, но сейчас он черно-белый, поэтому во вкладке common нужно поменять пиксель формат на 32-бит float rgba.</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Paragraph">Точно так же проделываем с двумя нижними нодами. Берем еще один reorder, подключаю к нему две ноды и ставим input 2, blue заменяем на 0 и также меняем пиксель формат на 32 bit float rgba.</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Paragraph">Теперь от каждого Reorder ставим ноду Null как завершение.</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Чекни</div>
+      <div class="A_NodeBox"><img src="../../images/articles/blobs/1.png" alt=""></div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Шаг 8</div>
+      <div class="A_Paragraph">Далее нам предстоит создать инстансинг и первый null у нас будет отвечает за Translate OP, а второй NULL за Scale OP.</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Paragraph">Теперь в семействе SOP мы берём ноду Rectangle, это плоский прямоугольник, от него ставим ноду Geometry, далее ставим камеру, из семейства TOP ставим Render.</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Paragraph">Из семейства MAT берем Material Constant, то есть постоянный цвет, и накидываем его на геометрию. В ноде Geometry переходим во вкладку Instancing и включаем Instancing on. Теперь первый Null мы перетаскиваем во вкладку Translate IP, там где Translate X выбираем R, там где Translate Y выбираем G.</div>
+    </div>
+
+    
+    <div class="M_Paragraph">
+      <div class="A_Paragraph">И далее в строку Scale op и мы перетаскиваем второй Null, выбираем здесь r и ниже g.</div>
+      <div class="A_Description Right">Так как в этом туторе мы не работаем с объемом, ось Z не задействована</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Шаг 9</div>
+      <div class="A_Paragraph">Возможно, сейчас прямоугольники притречиваются неверно, и они, скорее всего, не совпадут с прямоугольниками из ноды BlobTrack. Чтобы это исправить, нам надо настроить камеру. Переходим в параметры камеры, во вкладку view и в строке projection меняем перспектив на ортографик.</div>
+    </div>
+    
+    <div class="M_Paragraph">
+      <div class="A_Paragraph">Ниже меняем параметр с центра на bottom left и ortho width меняем на 1. На превью ноду render и похоже, что прямоугольники притречились верно, но давайте это проверим. От ноды Render я ставлю ноду Composite и к этой ноде мне также надо присоединить исходное видео с BlobTrack, чтобы проверить совпадение.</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Paragraph">Для этого вернемся в начало нашей цепочки, возьму из семейства Top ноду Select и перетащим BlobTrack.</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Paragraph">Теперь берем ноду Select, возвращаюсь в конец цепочки и подсоединяю эту ноду к ноде Composite. Режим наложения меняем на add.</div>
+    </div>
+    
+    <div class="M_Paragraph">
+      <div class="A_Description">Чекни</div>
+      <div class="A_NodeBox"><img src="../../images/articles/blobs/2.png" alt=""></div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Шаг 10</div>
+      <div class="A_Paragraph">Теперь нам нужны линии соединяющие прямоугольники.</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Paragraph">Для этого понадобятся две ноды из семейства Chop, отвечающие за положение U и V. Я беру в семействе Chop ноду Select и перетаскиваю в нее первую ноду Datto. Копируем этот Select и и перетаскиваю второй Datto.</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Шаг 11</div>
+      <div class="A_Paragraph">Теперь эти две ноды мне нужно соединить при помощи ноды Merge из семейства Chop. И сейчас нам нужно, чтобы из этих значений получилась линия. Поэтому после ноды Merge ставим ноду Chop2 из семейства Sop. И вот уже начинает рисоваться линия, но нужно поменять параметры. Здесь мы видим вкладку channel scope и здесь ставим tx, ty, tz.</div>
+    </div>
+
+    
+    <div class="M_Paragraph">
+      <div class="A_Paragraph">Tz нам вообще не нужно, потому что мы работаем с плоскостью, а tx и ty нужно поменять на u и v.</div>
+    </div>
+
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Шаг 12</div>
+      <div class="A_Paragraph">Эту линию нам нужно поместить в Geometry. Поэтому в семействе Comp берем ноду Geometry. И также ставим ноду Wireframe из семейства Mat и накидаваем материал.</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Чекни</div>
+      <div class="A_NodeBox"><img src="../../images/articles/blobs/3.png" alt=""></div>
+    </div>
+
+    
+    <div class="M_Paragraph">
+      <div class="A_Description">Шаг 13</div>
+      <div class="A_Paragraph">Итак, последний этап это добавление текста. Перейдем к ноде BlobTrack, в самое начало цепочки. Здесь мы можем выбрать, какие числа мы хотим подключить к нашей графике. Можем выбрать любую колонку. Например, мы хотим выбрать первый столбец, который называется ID. Это номер прямоугольника. В емействе DAT берем ноду Select и переносим сюда данные ноды BlobTrack.</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Шаг 14</div>
+      <div class="A_Paragraph">В параметрах ноды Select я выбираю Select calls by name и пишу здесь имя нужного нам столбца. В нашем случае это id.</div>
+    </div>
+    
+    <div class="M_Paragraph">
+      <div class="A_Description">Шаг 15</div>
+      <div class="A_Paragraph">Теперь нужны еще две ноды, которые отвечают за положение. Берём ещё один Select и перенсим первый Select u. Копируем ещё Select и переносим Select v. Отодвинем эти ноды ниже.</div>
+    </div>
+        
+    <div class="M_Paragraph">
+      <div class="A_Paragraph">Сначала у нас идет u, потом v и потом id, то есть текст. Теперь после первой ноды Select ставим снова ноду Dotto и переходим в ее параметры. Output меняем на ChannelPerColumn. Далее, первая строка — это имя, Names. Первый столбец — это значение, Values. И все то же самое делаем с двумя другими нодами.</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Шаг 16</div>
+      <div class="A_Paragraph">Далее, нам нужно сделать так, чтобы текст притречивался к исходному видео. Поэтому от первых двух нод, которые отвечают за положение, мы ставим ноду math. Переходим в параметры первой ноды во вкладку multi add. И в значение multiply нам нужно сделать равным ширине видео, то есть 1920. А во второй ноде math делаем то же самое, только здесь уже пишем 1080, то есть по высоте нашего видео.</div>
+      <div class="A_Description Right">Если мы это не сделаем, то тогда текст не будет раскидан по всему пространству, а будет находиться в одной точке</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Шаг 17</div>
+      <div class="A_Paragraph">И теперь нам надо вот эти три ноды, 1, 2, 3, соединить. И это мы будем делать при помощи ноды Merge. Ставим ее на рабочее поле и подсоединяем к ней три ноды.</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Шаг 18</div>
+      <div class="A_Paragraph">Далее от ноды Merge нам нужно поставить ноду Rename и переименовать каналы. То есть первый канал u у нас будет называться x. Далее V — это Y, так как V отвечает за положение по оси Y. И третий канал, канал ID.</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Шаг 19</div>
+      <div class="A_Paragraph">Теперь мы берем из семейства Top ноду Text, переходим в параметры этой ноды и видим здесь вкладку specification. Именно сюда нам нужно перенести ноду Chopto. Теперь нам нужно выставить нужное разрешение в ноде текста, поэтому переходим по вкладку common и меняем разрешение на 1920 на 1080.</div>
+      <div class="A_Description Right">Еще в параметрах ноды Text по вкладке font мы можем поменять шрифт и другие его параметры</div>
+    </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Шаг 20</div>
+      <div class="A_Paragraph">Берем из семейства Top ноду Composite и подключаю к ней Сщьз2 и Еуче1. Режим наложения ставим на Add. И ура основа готова!</div>
     </div>
 
     <div class="W_ParagraphWithTitle">
       <h3 class="A_H3">Кастомизация</h3>
       <div class="M_Paragraph">
-        <div class="A_Paragraph">Дальше можно накидывать сюда различные эффекты и пресеты, которые можно найти в Ae. Изменять и эксперемнтировать с параметрами. Пробовать изменять форму шейпа, а также обязательно попробуй покрутить эффект эхо.</div>
+        <div class="A_Paragraph">Цепочка получилась вариативная, позволяющая разные эксперименты. С ней можно работать дальше, можно усложнять, играть с параметрами, менять материалы, менять исходное видео.</div>
       </div>
     </div>
+  
 
     <div class="W_ParagraphWithTitle">
       <h3 class="A_H3">А вот что получилось у редакции</h3>
@@ -178,18 +301,19 @@
         <video src="../../images/articles/blobs/1.mp4" autoplay="" loop="" alt="" class="A_Redaction"></video>
       </div>
     </div>
-  
-  </div>
+
+    </div>
   </div>
   <div class="W_ArticleRecommendation">
     <h2 class="A_H2">Похожие статьи</h2>
       <div class="C_ArticlesRecommendation">
-      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="articles/pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
-      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="articles/pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
-      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="articles/pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
+        <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="FluffyTheNoise.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/fluffyTheNoisePreview.png"></a><h4 class="A_Label Important">Пушистый шум</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
+      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
+      <div class="O_Card" id="article-card-2" data-category="code beginner tutorial"><a class="M_ArticlePreviewLink" href="slimeMold.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/slimeMoldPreview.png"></a><h4 class="A_Label Important">Симуляция плесени</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
   </div>
     </div>
     
+
     <div class="O_Footer Light">
       <div class="W_FooterSlogan">
       <div class="M_FooterSlogan">

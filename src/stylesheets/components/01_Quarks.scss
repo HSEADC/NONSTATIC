@@ -121,6 +121,13 @@
   overflow: hidden;
 }
 
+@media (max-width: 900px) and (min-width: 414px) {
+  .Q_AvatarIMG {
+    width: 35px;
+    top: 0%;
+  }
+}
+
 @media (max-width: 414px) {
   .Q_ScrollBlur {
     height: 120px;

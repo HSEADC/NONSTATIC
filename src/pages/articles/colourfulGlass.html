@@ -92,68 +92,93 @@
     </div>
     <video class="A_VideoPreview Tablet" src="../../images/articles/ColourfullGlass/1.mov" muted='' loop="" playsinline=""></video>
     <div class="W_ParagraphWithTitle">
-      <h3 class="A_H3">Основная цепочка</h3>
+      <h3 class="A_H3">Алгоритм</h3>
       <div class="M_Paragraph">
-        <div class="A_Description">Шаг  1</div>
-        <div class="A_Paragraph">Для начала нам необходимо добавить Grid и Noise.
-          Ставим ноду Null из семейства SOP отодвигаем ее дальше. </div>
-      </div>
+        <div class="A_Description">Шаг 1</div>
+        <div class="A_Paragraph">Создай элемент Noise из семейства TOP. Установи для него Period значение 24, а Exponent — 0. Отключи опцию монохром. Перейди во вкладку Transform и в поле Translate введи absTime.seconds/15. Установи разрешение, например, 1280 на 720.</div>
+      </div>      
     </div>
+
+    <div class="M_Paragraph">
+      <div class="A_Paragraph">Добавь из семейства TOP элемент Edge. Установи параметр Simple Step на значение 10. Подключи к Edge ноду Null 
+        и перемести ее в свободное пространство.</div>
+    </div>     
+
     <div class="M_Paragraph">
       <div class="A_Description">Чекни</div>
       <div class="A_NodeBox"><img src="../../images/articles/ColourfullGlass/1.png" alt=""></div>
     </div>
+
     <div class="M_Paragraph">
       <div class="A_Description">Шаг 2</div>
-      <div class="A_Paragraph">Далее нужно добавить Geo , затем Cam и один источник света Light. К Geo подсоедини Line из семейства МАТ.</div>
+      <div class="A_Paragraph">С левой стороны от Null добавь элемент RGBKey, 
+        чтобы изменить фон на черный. Создай еще одну ноду Null, подключи ее к Edge, затем выбери Collapse Selected, 
+        чтобы создать цикл, его назови только что созданный Null feedBackLoop.</div>
     </div>
+    
     <div class="M_Paragraph">
-      <div class="A_Description">Шаг  3</div>
-      <div class="A_Paragraph">Добавь Render из семейства ТОР и поменяй ему разрешение 1080 на 1350. В качестве фона используй Transform и поставь режим Ол в последнем пункте Comp Over Background Color. Между Render и Transform нужно поставить Null.</div>
-      <div class="A_Description Right">Ты можешь поставить 
-        в Transform любой цвет фона, но я оставлю черный</div>
-    </div>
+      <div class="A_Description">Шаг 3</div>
+      <div class="A_Paragraph">Дважды кликни на созданный цикл, чтобы войти в него. Удали ноду Null. К элементу In добавь из семейства TOP операторы Feedback, Transform, Level.</div>
+    </div>  
+    
+    <div class="M_Paragraph">
+      <div class="A_Paragraph">Вставь Composite между In и Out, соединяя их с циклом обратной связи. В Composite смени операцию с Multiply 
+        на Add. Перетащи Composite на Feedback.</div>
+    </div>   
+
+    <div class="M_Paragraph">
+      <div class="A_Paragraph">Выбери в CHOP элемент KeyBoard In и перетащи 
+        его на FeedbackLoop, выбирая CHOP Reference, чтобы сбрасывать цикл при нажатии цифры 1.</div>
+    </div>   
+
+    
     <div class="M_Paragraph">
       <div class="A_Description">Чекни</div>
       <div class="A_NodeBox"><img src="../../images/articles/ColourfullGlass/2.png" alt=""></div>
     </div>
+
     <div class="M_Paragraph">
-      <div class="A_Description">Шаг  4</div>
-      <div class="A_Paragraph">Вернись в раздел Grid и поставь значения Size: 2 и 6. Чтобы добавить глубины и деталей, нужно настроить Primitive Type: Nurbs, Rows: 50 и Columns: 20.</div>
-    </div>
-  
+      <div class="A_Description">Шаг 4</div>
+      <div class="A_Paragraph">Выйди из цикла обратной связи. Подключи Displace к Edge 
+        и FeedBackLoop. Выстави значение смещения на 0.019. </div>
+    </div>   
+
     <div class="M_Paragraph">
-      <div class="A_Paragraph">Вернись в раздел Noise и выстави настройки шероховатости Roughness: 0.4 и Amplitude: 1.5 </div>
-      <div class="A_Description Right">Во всех этих параметрах можно выставить свои значения, так результат получится оригинальным </div>
-    </div>
+      <div class="A_Paragraph">Displace также надо подключить в петлю к RGBKey. 
+        На этом этапе необходимо проверить, чтобы все было подключено правильно. После правильного подключения, ты можешь увидеть, что у тебя получились первые необычные линии. </div>
+    </div>  
+    
     <div class="M_Paragraph">
-      <div class="A_Description">Шаг  5</div>
-      <div class="A_Paragraph">В Line выключаем параметр Draw Lines и во вкладке Vector включаем Draw Vectors, и меняем параметры Scale: 1.3, Taper Strenght: 0.25, Far Alpha: 0. Во вкладке Setup меняем DN: 0-0.5, DF: 35-40, WN: 0.5</div>
-    </div>
-    <div class="M_Paragraph">
-      <div class="A_Description">Шаг  6</div>
-      <div class="A_Paragraph">Вернемся к началу нашей цепочки и между Noise и Null добавь Fractal из семейства TOP, выключи фиксированную  границу и выстави Divisions: 2, Smoothness: 2, Scale: 0.25  </div>
-    </div>
+      <div class="A_Paragraph">Скопируй цикл обратной связи FeedBackLoop и подсоедини к Displace и соедини с петлей RGBKey. Войди в этот цикл 
+        и добавь Blur c параметрами Pre-Shrink: 2, Sample Step:1. </div>
+    </div>   
+
+        
     <div class="M_Paragraph">
       <div class="A_Description">Чекни</div>
-      <div class="A_NodeBox"><img src="../../images/articles/ColourfullGlass/3.png" alt=""></div>
+      <div class="A_NodeBox"><img src="../../images/articles/ColourfullGlass/2.png" alt=""></div>
     </div>
-     <div class="M_Paragraph">
-      <div class="A_Description">Шаг  7</div>
-      <div class="A_Paragraph">Чтобы шум смотрелся лучше, добавим еще два оператора из семейства TOP Composite и Blur. В Composite во вкладке Operation выбери режим наложения во вкладке Operation выбери режим наложения Screen. В Blurво вкладке Pre-Shrink, нужно выставить значение: 3, Filter Size: 19.</div>
+
+    <div class="M_Paragraph">
+      <div class="A_Description">Шаг 5</div>
+      <div class="A_Paragraph">Подсоедини Level к основному feedBackLoop, установив контраст на 1.4. Добавь Lookup, подключив к нему Ramp, чтобы задать цвет эффекту. Установи требуемые цвета, например синий, добавь градиент при необходимости.</div>
+        <div class="A_Description Right">Если хочешь сделать градиент, на цветовой панели Ramp дважды нажми на участки для создания меток градиента.</div>
     </div>
+
     <div class="M_Paragraph">
       <div class="A_Description">Чекни</div>
       <div class="A_NodeBox"><img src="../../images/articles/ColourfullGlass/4.png" alt=""></div>
     </div>
+
     <div class="W_ParagraphWithTitle">
       <h3 class="A_H3">Кастомизация</h3>
       <div class="M_Paragraph">
-        <div class="A_Description">Шаг  1</div>
         <div class="A_Paragraph">Для работы с цветовой палитрой используй Ramp (градиент) и RGBKey: задай фону любой оттенок 
-          (не только черный), создавай сложные градиенты двойным кликом по Ramp для добавления новых цветов. Чтобы добиться нестандартных переходов, подключи Lookup. </div>
-      </div>
+          (не только черный), создавай сложные градиенты двойным кликом по Ramp для добавления новых цветов. Чтобы добиться нестандартных переходов, подключи Lookup. </div>
+      </div>      
     </div>
+    
+
     <div class="W_ParagraphWithTitle">
       <h3 class="A_H3">А вот что получилось у редакции</h3>
       <img src="../../images/articles/ColourfullGlass/2.webp" alt="" class="A_GalleryRedactionContainer"></img>
@@ -163,18 +188,19 @@
         <img src="../../images/articles/ColourfullGlass/3.webp"  alt="" class="A_Redaction">
       </div>
     </div>
-  
-  </div>
-  </div>
-  <div class="W_ArticleRecommendation">
-    <h2 class="A_H2">Похожие статьи</h2>
-      <div class="C_ArticlesRecommendation">
-      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="articles/pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
-      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="articles/pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
-      <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="articles/pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
-  </div>
+
+    <div class="W_ArticleRecommendation">
+      <h2 class="A_H2">Похожие статьи</h2>
+        <div class="C_ArticlesRecommendation">
+        <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="FluffyTheNoise.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/fluffyTheNoisePreview.png"></a><h4 class="A_Label Important">Пушистый шум</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
+        <div class="O_Card" id="article-card-2" data-category="nodeProgramme beginner tutorial"><a class="M_ArticlePreviewLink" href="pointCloud.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/pointCloudPreview.png"></a><h4 class="A_Label Important">Облако точек</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
+        <div class="O_Card" id="article-card-2" data-category="code beginner tutorial"><a class="M_ArticlePreviewLink" href="slimeMold.html"><div class="C_Tags Preview"><div class="A_Tag">Нодовые</div><div class="A_Tag">Новичок</div><div class="A_Tag">Туториал</div></div><img class="A_ArticlePreviewIMG" src="../../images/articles/slimeMoldPreview.png"></a><h4 class="A_Label Important">Симуляция плесени</h4><canvas class="A_ElectricCanvas" width="728" height="644"></canvas></div>
     </div>
-    
+      </div>
+
+    </div>
+  </div>
+
     <div class="O_Footer Light">
       <div class="W_FooterSlogan">
       <div class="M_FooterSlogan">
