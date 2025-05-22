@@ -1,6 +1,6 @@
 import '../index.css'
 import { generativeSelection } from './generativeSelection.js'
-import 'prismjs'
+import Prism from 'prismjs'
 import 'prismjs/themes/prism.css'
 import 'prismjs/components/prism-javascript.min.js'
 

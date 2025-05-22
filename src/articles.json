@@ -5,6 +5,7 @@
     "imgSrc": "images/articles/SlimeMold/slimeMoldPreview.mp4",
     "altText": "slime mold simulation on black background",
     "programTag": "codeProgramme intermediate tutorial",
+    "sphereTag": "Код промежуточный туториал",
     "type": "video",
     "link": "articles/slimeMold.html"
   },
@@ -14,6 +15,7 @@
     "imgSrc": "images/articles/PointCloud/redaction1.mp4",
     "altText": "point cloud of tree particles flying around",
     "programTag": "nodeProgramme beginner tutorial",
+    "sphereTag": "нодовые новичок туториал",
     "type": "video",
     "link": "articles/pointCloud.html"
   },
@@ -23,6 +25,7 @@
     "imgSrc": "images/articles/chladniPatternsPreview.png",
     "altText": "chladni patters on black bacground",
     "programTag": "codeProgramme beginner tutorial",
+    "sphereTag": "Код новичок туториал",
     "link": "articles/chladniPatterns.html"
   },
   {
@@ -31,6 +34,7 @@
     "imgSrc": "images/articles/KineticTypography/1.mp4",
     "altText": "green glitch typography on background with fashion",
     "programTag": "codeProgramme beginner tutorial",
+    "sphereTag": "Код новичок туториал",
     "type": "video",
     "link": "articles/kineticTypography.html"
   },
@@ -41,6 +45,7 @@
     "altText": "colourful glass refractions",
     "type": "video",
     "programTag": "nodeProgramme beginner tutorial",
+    "sphereTag": "Нодовые новичок туториал",
     "link": "articles/colourfulGlass.html"
   },
   {
@@ -50,6 +55,7 @@
     "altText": "creepy 3d eyes on black background",
     "type": "video",
     "programTag": "codeProgramme intermediate tutorial",
+    "sphereTag": "Код промежуточный туториал",
     "link": "articles/creepyEyes.html"
   },
   {
@@ -59,6 +65,7 @@
     "altText": "landscape pixel slice",
     "type": "video",
     "programTag": "nodeProgramme intermediate tutorial",
+    "sphereTag": "Нодовые промежуточный туториал",
     "link": "articles/pixelSlice.html"
   },
   {
@@ -67,6 +74,7 @@
     "imgSrc": "images/articles/blobs/1.mp4",
     "altText": "white gradient blobs on black background",
     "programTag": "graphProgramme beginner tutorial",
+    "sphereTag": "Нодовые промежуточный туториал",
     "link": "articles/blobs.html",
     "type": "video"
   },
@@ -77,6 +85,7 @@
     "type": "video",
     "altText": "fluffy cloud of particles on black background",
     "programTag": "nodeProgramme beginner tutorial",
+    "sphereTag": "Нодовые новичок туториал",
     "link": "articles/FluffyTheNoise.html"
   }
 ]

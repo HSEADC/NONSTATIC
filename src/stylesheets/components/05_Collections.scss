@@ -26,6 +26,12 @@
   grid-row-start: 1;
 }
 
+.C_SearchPreviews {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
 .C_IndexSandBoxLang {
   grid-column: 10 / -1;
   display: grid;

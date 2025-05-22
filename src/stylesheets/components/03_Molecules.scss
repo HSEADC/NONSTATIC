@@ -72,6 +72,28 @@
   }
 }
 
+.M_IndexTutorial:hover::after {
+  content: '';
+  top: 0;
+  left: 0;
+  position: absolute;
+  height: 95%;
+  width: 100%;
+  border: 4px solid var(--mainGreen);
+  box-shadow: 0px 0px 112.2px 0px var(--mainGreen, #d1ff8c) inset;
+}
+
+.M_VideoPreview:hover::after {
+  content: '';
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  height: 84%;
+  width: 70%;
+  border: 4px solid var(--mainGreen);
+  box-shadow: 0px 0px 112.2px 0px var(--mainGreen, #d1ff8c) inset;
+}
+
 .M_GalleryRecommendation:hover::after {
   border: 4px solid var(--mainGreen);
   box-shadow: 0px 0px 112.2px 0px var(--mainGreen, #d1ff8c) inset;
@@ -141,8 +163,15 @@
   gap: 40px;
 }
 
+.M_SearchPreview {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
 .M_ArticlePreviewLink {
-  height: 100%;
+  width: 100%;
+  aspect-ratio: 4 / 3;
   position: relative;
 }
 

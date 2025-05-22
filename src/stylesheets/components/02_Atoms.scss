@@ -96,6 +96,9 @@
   &.Important {
     color: var(--black);
   }
+  &.White {
+    color: var(--white);
+  }
 }
 
 .O_Card > .A_Label {
@@ -134,33 +137,43 @@
   box-shadow: 0px 0px 112.2px 0px var(--mainGreen, #d1ff8c) inset;
 }
 
-.M_IndexTutorial:hover::after {
-  content: '';
-  top: 0;
-  left: 0;
-  position: absolute;
-  height: 95%;
-  width: 100%;
-  border: 4px solid var(--mainGreen);
-  box-shadow: 0px 0px 112.2px 0px var(--mainGreen, #d1ff8c) inset;
-}
-
-.M_VideoPreview:hover::after {
-  content: '';
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  height: 84%;
-  width: 70%;
-  border: 4px solid var(--mainGreen);
-  box-shadow: 0px 0px 112.2px 0px var(--mainGreen, #d1ff8c) inset;
-}
-
 .M_GalleryRecommendation > .A_ElectricCanvas {
   width: 105%;
   height: 105%;
   left: -2.5%;
   top: -2.5%;
+}
+
+.A_SearchIMG > .A_ElectricCanvas {
+  width: 100%;
+  height: 100%;
+}
+
+.A_SearchIMG {
+  position: relative;
+  width: 50%;
+  aspect-ratio: 3 / 4;
+  mask-image: url('../../images/searchmask.png');
+  mask-size: 100% 100%;
+}
+
+.A_SearchIMG:hover::after {
+  border: 4px solid var(--mainGreen);
+  box-shadow: 0px 0px 112.2px 0px var(--mainGreen, #d1ff8c) inset;
+  width: 100%;
+  height: 100%;
+  display: block;
+  top: 0;
+  left: 0;
+  content: '';
+  position: absolute;
+}
+
+.A_SearchIMG > img,
+.A_SearchIMG > video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .A_Input::placeholder {
@@ -187,6 +200,25 @@
   color: var(--black);
   outline: none;
   border: none;
+  position: relative;
+  width: 100%;
+}
+
+.M_InputWrapper {
+  position: relative;
+  &.Big {
+    width: 100%;
+  }
+}
+
+.M_InputWrapper::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  top: 32px;
+  left: 0;
+  background-color: var(--color-black-04);
 }
 
 .O_PopUp.Closed > .A_Description,

@@ -1,5 +1,12 @@
 import './index.css'
 
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import Search from './scripts/Search.jsx'
+
+const root = ReactDOM.createRoot(document.getElementById('react-search-root'))
+root.render(<Search />)
+
 import { glitchText } from './scripts/glitchText.js'
 
 document.addEventListener('DOMContentLoaded', () => {

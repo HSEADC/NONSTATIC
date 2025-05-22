@@ -25,28 +25,20 @@ module.exports = {
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'docs'),
+    publicPath: '/',
     clean: true
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.jsx?$/, // ← строка 70
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
+            cacheDirectory: true, // ← объединяем здесь
             presets: ['@babel/preset-env', '@babel/preset-react'],
             plugins: ['@babel/plugin-proposal-class-properties']
-          }
-        }
-      },
-      {
-        test: /\.js?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true
           }
         }
       },
@@ -208,6 +200,15 @@ module.exports = {
       filename: './gallery/DissipativeBird.html',
       chunks: ['index', 'galleryItem']
     }),
+
+    new HtmlWebpackPartialsPlugin([
+      {
+        path: path.join(__dirname, './src/partials/analytics.html'),
+        location: 'analytics',
+        template_filename: '*',
+        priority: 'replace'
+      }
+    ]),
 
     new HtmlWebpackPlugin({
       template: './src/pages/gallery/DissipativeBird.html',
